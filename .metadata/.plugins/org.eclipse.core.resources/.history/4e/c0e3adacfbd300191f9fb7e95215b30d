@@ -1,0 +1,16 @@
+package logic;
+
+public class Almacen {
+	private Vino[] misVinos;
+	private Suministrador[] misSumis;
+	private static int cantVinos;
+	private static int cantSumis;
+	
+	public Almacen() {
+		super();
+		cantSumi = 0;
+		cantVinos = 0;
+		misSumis = new Suministrador[50];
+		misVinos = new Vino[50];
+	}
+}
