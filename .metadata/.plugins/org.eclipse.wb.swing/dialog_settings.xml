@@ -6,4 +6,16 @@
 		<item key="width" value="622"/>
 		<item key="height" value="474"/>
 	</section>
+	<section name="org.eclipse.wb.internal.swing.model.property.editor.models.combo.ComboBoxModelDialog">
+		<item key="x" value="731"/>
+		<item key="y" value="352"/>
+		<item key="width" value="457"/>
+		<item key="height" value="341"/>
+	</section>
+	<section name="org.eclipse.wb.internal.swing.laf.ui.AddCustomLookAndFeelDialog">
+		<item key="x" value="688"/>
+		<item key="y" value="331"/>
+		<item key="width" value="543"/>
+		<item key="height" value="383"/>
+	</section>
 </section>

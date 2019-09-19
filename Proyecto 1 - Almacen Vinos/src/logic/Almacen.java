@@ -100,7 +100,8 @@ public class Almacen {
 		return aux;
 	}
 
-	private Suministrador buscarSuministrador(String idSumi) 
+
+	public Suministrador buscarSuministrador(String idSumi) 
 	{
 
 		Suministrador aux = null;
@@ -181,13 +182,12 @@ public class Almacen {
 	}
 	
 	public void eliminarSuplidor(String suministradorEliminar) {
-		int indice = -1;
+		
 		int i = 0;
 		
 		if(obtenerIndiceSumi(suministradorEliminar) >= -1)
 		{
-			index = obtenerIndiceSumi(suministradorEliminar);
-			i = index;
+			i = obtenerIndiceSumi(suministradorEliminar);
 			
 			while(i < cantSumis-1)
 			{

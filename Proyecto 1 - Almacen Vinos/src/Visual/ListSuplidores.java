@@ -5,20 +5,26 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+
 import logic.Almacen;
+import logic.Suministrador;
 
 import javax.swing.JScrollPane;
-import javax.swing.BoxLayout;
 import javax.swing.JTable;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.ListSelectionModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class ListSuplidores extends JDialog {
+public class listSuplidores extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTable table;
@@ -26,51 +32,58 @@ public class ListSuplidores extends JDialog {
 	private Object[] row;
 	private Almacen alma;
 	private String idSupli = "";
-	private JButton btnModificar;
+	private JButton btnModificar ;
+	private JButton btnEliminar;
+
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		try {
-			alma = new Almacen();
-			ListSuplidores dialog = new ListSuplidores(alma);
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+
 
 	/**
 	 * Create the dialog.
 	 */
-	public ListSuplidores(Almacen alma) {
-		setTitle("Lista de Suministradores");
-		setResizable(false);
-		getContentPane().setLayout(new BorderLayout(0, 0));
-		
-		JButton btnModificar = new JButton("Modificar");
-		getContentPane().add(btnModificar, BorderLayout.SOUTH);
+	public listSuplidores(Almacen alma) {
 		this.alma = alma;
 		setResizable(false);
-		setTitle("Listado de Suministradores");
-		setBounds(100, 100, 748, 523);
+		setTitle("Listado de suministradores");
+		setBounds(100, 100, 582, 353);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
-			JScrollPane scrollPane = new JScrollPane();
-			contentPanel.add(scrollPane, BorderLayout.CENTER);
+			JPanel panel = new JPanel();
+			panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			contentPanel.add(panel, BorderLayout.CENTER);
+			panel.setLayout(new BorderLayout(0, 0));
 			{
-				model = new DefaultTableModel();
-				String[] headers = new String{"Código", "Nombre", "País", "Tiempo"};
-				model.setColumnIdentifiers(headers);
-				
-				
-				table = new JTable();
-				scrollPane.setViewportView(table);
+				JScrollPane scrollPane = new JScrollPane();
+				scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+				panel.add(scrollPane, BorderLayout.CENTER);
+				{
+					
+					model = new DefaultTableModel();
+					String[] header = {"Código","Nombre","País","Tiempo"};
+					model.setColumnIdentifiers(header);
+					table = new JTable();
+					table.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							if(table.getSelectedRow()>-1){
+								int index = table.getSelectedRow();
+								btnEliminar.setEnabled(true);
+								btnModificar.setEnabled(true);
+								idSupli = String.valueOf(table.getValueAt(index, 0));
+								
+							}
+						}
+					});
+					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+					table.setModel(model);
+					scrollPane.setViewportView(table);
+				}
 			}
 		}
 		{
@@ -79,37 +92,59 @@ public class ListSuplidores extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnModificar = new JButton("Modificar");
-				});
+				btnModificar = new JButton("Modificar");
+				btnModificar.setEnabled(false);
 				btnModificar.setActionCommand("OK");
 				buttonPane.add(btnModificar);
 				getRootPane().setDefaultButton(btnModificar);
 			}
 			{
-				JButton btnEliminar = new JButton("Eliminar");
+				btnEliminar = new JButton("Eliminar");
+				btnEliminar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if(!idSupli.equals("")){
+						   Suministrador aux = alma.buscarSuministrador(idSupli);
+						   int option = JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar el Suministrador: " + aux.getNombre(),"Información",JOptionPane.WARNING_MESSAGE);
+							  if(option == JOptionPane.OK_OPTION){
+							
+								alma.eliminarSuplidor(idSupli);
+								loadSuplidores();
+								btnEliminar.setEnabled(false);
+								btnModificar.setEnabled(false);	
+							
+							  }
+						 						 
+						}
+					}
+				});
+				btnEliminar.setEnabled(false);
 				buttonPane.add(btnEliminar);
 			}
 			{
 				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				btnCancelar.setActionCommand("Cancel");
 				buttonPane.add(btnCancelar);
 			}
 		}
-	loadSuplidores();
+		loadSuplidores();
 	}
 
 	private void loadSuplidores() {
-		// TODO Auto-generated method stub
 		model.setRowCount(0);
-		row = new Object[mode.getColumnCount()];
-		
-		for(int i = 0; i < alma.getCantSumis(); i++)
-		{
+		row = new Object[model.getColumnCount()];
+		for (int i = 0; i < alma.getCantSumis(); i++) {
 			row[0] = alma.getMisSumis()[i].getId();
 			row[1] = alma.getMisSumis()[i].getNombre();
 			row[2] = alma.getMisSumis()[i].getPais();
 			row[3] = alma.getMisSumis()[i].getTiempoEntrega();
 			model.addRow(row);
 		}
+		
 	}
+
 }

@@ -6,14 +6,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logic.Almacen;
+
 import java.awt.FlowLayout;
 import java.awt.Color;
 import javax.swing.border.BevelBorder;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JMenu;
-import java.awt.SystemColor;
-import javax.swing.border.TitledBorder;
+import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.UIManager;
 
 public class Principal extends JFrame {
 
@@ -24,12 +28,18 @@ public class Principal extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Almacen alma = new Almacen();
 					Principal frame = new Principal(alma);
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -43,23 +53,37 @@ public class Principal extends JFrame {
 	public Principal(Almacen alma) {
 		this.mialma = alma;
 		setResizable(false);
-		setTitle("Almac\u00E9n");
+		setTitle("Almacen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 537, 435);
-		
+		setBounds(100, 100, 549, 342);
 		setLocationRelativeTo(null);
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBackground(SystemColor.activeCaptionBorder);
+		menuBar.setBackground(new Color(173, 216, 230));
 		setJMenuBar(menuBar);
 		
 		JMenu mnSuplidores = new JMenu("Suplidores");
 		menuBar.add(mnSuplidores);
 		
 		JMenuItem mntmRegistrar = new JMenuItem("Registrar");
+		mntmRegistrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegSuplidor reg = new RegSuplidor(mialma);
+				reg.setModal(true);
+				reg.setVisible(true);
+			}
+		});
 		mnSuplidores.add(mntmRegistrar);
 		
 		JMenuItem mntmListar = new JMenuItem("Listar");
+		mntmListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listSuplidores list = new listSuplidores(mialma);
+				list.setModal(true);
+				list.setVisible(true);
+				
+			}
+		});
 		mnSuplidores.add(mntmListar);
 		
 		JMenu mnVinos = new JMenu("Vinos");
@@ -73,10 +97,10 @@ public class Principal extends JFrame {
 		setContentPane(contentPane);
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel.setBackground(new Color(173, 216, 230));
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
-		flowLayout.setHgap(15);
+		flowLayout.setVgap(10);
 		contentPane.add(panel, BorderLayout.SOUTH);
 	}
 

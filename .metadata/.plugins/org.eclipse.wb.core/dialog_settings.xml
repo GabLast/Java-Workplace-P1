@@ -18,4 +18,8 @@
 		<item key="width" value="682"/>
 		<item key="height" value="473"/>
 	</section>
+	<section name="org.eclipse.wb.internal.core.editor.actions.assistant.LayoutAssistantWindow">
+		<item key="x" value="940"/>
+		<item key="y" value="493"/>
+	</section>
 </section>
