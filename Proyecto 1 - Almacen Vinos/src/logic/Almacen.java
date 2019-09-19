@@ -197,5 +197,10 @@ public class Almacen {
 			cantSumis--;
 		}
 	}
+	
+	public void modificarSuministrador(Suministrador sumi)
+	{
+		int index = obtenerIndiceSumi(sumi.getId());
+	}
 }
 

@@ -68,7 +68,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmRegistrar = new JMenuItem("Registrar");
 		mntmRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegSuplidor reg = new RegSuplidor(mialma);
+				RegSuplidor reg = new RegSuplidor(mialma, null);
 				reg.setModal(true);
 				reg.setVisible(true);
 			}
@@ -88,6 +88,16 @@ public class Principal extends JFrame {
 		
 		JMenu mnVinos = new JMenu("Vinos");
 		menuBar.add(mnVinos);
+		
+		JMenuItem mntmRegistrar_1 = new JMenuItem("Registrar");
+		mntmRegistrar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegVino regvino = new RegVino(alma, null);
+				regvino.setModal(true);
+				regvino.SetVisible(true);
+			}
+		});
+		mnVinos.add(mntmRegistrar_1);
 		
 		JMenu mnAdministracin = new JMenu("Administraci\u00F3n");
 		menuBar.add(mnAdministracin);

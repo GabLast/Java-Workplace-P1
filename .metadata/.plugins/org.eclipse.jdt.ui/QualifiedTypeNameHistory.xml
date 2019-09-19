@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="logic.Suministrador"/>
 <fullyQualifiedTypeName name="javax.swing.JComboBox"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
 <fullyQualifiedTypeName name="logic.Almacen"/>
+<fullyQualifiedTypeName name="Visual.RegSuplidor"/>
+<fullyQualifiedTypeName name="logic.Suministrador"/>
+<fullyQualifiedTypeName name="Visual.listSuplidores"/>
 </qualifiedTypeNameHistroy>

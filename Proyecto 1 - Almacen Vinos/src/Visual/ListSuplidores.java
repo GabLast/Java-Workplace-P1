@@ -28,9 +28,9 @@ public class listSuplidores extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTable table;
-	private DefaultTableModel model;
-	private Object[] row;
-	private Almacen alma;
+	private static DefaultTableModel model;
+	private static Object[] row;
+	private static Almacen alma;
 	private String idSupli = "";
 	private JButton btnModificar ;
 	private JButton btnEliminar;
@@ -93,6 +93,14 @@ public class listSuplidores extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				btnModificar = new JButton("Modificar");
+				btnModificar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if(!idSupli.equals("")) {
+							Suministrador aux = alma.buscarSuministrador(idSupli);
+							RegSuplidor regSupli = new RegSuplidor(alma, aux);
+						}	   
+					}
+				});
 				btnModificar.setEnabled(false);
 				btnModificar.setActionCommand("OK");
 				buttonPane.add(btnModificar);
@@ -134,7 +142,7 @@ public class listSuplidores extends JDialog {
 		loadSuplidores();
 	}
 
-	private void loadSuplidores() {
+	public static void loadSuplidores() {
 		model.setRowCount(0);
 		row = new Object[model.getColumnCount()];
 		for (int i = 0; i < alma.getCantSumis(); i++) {

@@ -30,6 +30,7 @@ public class RegSuplidor extends JDialog {
 	private JComboBox cbxpais;
 	private JSpinner spntiempo;
 	private Almacen mialma = null;
+	private Suministrador miSumi = null;
 
 	/**
 	 * Launch the application.
@@ -39,9 +40,16 @@ public class RegSuplidor extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public RegSuplidor(Almacen alma) {
+	public RegSuplidor(Almacen alma, Suministrador sumi) {
 		this.mialma = alma;
+		this.miSumi = sumi;
 		setResizable(false);
+		if(miSumi == null) {
+			setTitle("Registrar Suplidor");
+		}else
+		{
+			setTitle("Modificar: " + miSumi.getNombre());
+		}
 		setTitle("Registrar Suplidor");
 		setBounds(100, 100, 415, 281);
 		setLocationRelativeTo(null);
@@ -99,22 +107,39 @@ public class RegSuplidor extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnaceptar = new JButton("Registrar");
+				JButton btnaceptar = new JButton("");
+				if(miSumi == null) {
+					btnaceptar.setText("Registrar");
+				}else
+				{
+					btnaceptar.setText("Modificar");
+				}
 				btnaceptar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Suministrador aux = new Suministrador(txtcodigo.getText(), txtnombre.getText(), cbxpais.getSelectedItem().toString(), Integer.valueOf(spntiempo.getValue().toString()));
 						
-						
-						if(txtnombre.getText()!="" && txtnombre.getText().length()>2 && cbxpais.getSelectedIndex()>0) {
-							JOptionPane.showMessageDialog(null, "Operación Sastifactoria", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-							mialma.insertarSuministrador(aux);
-							clean();
-						}
-						else {
-							JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-						}
+						if(miSumi == null ) {
 							
-					    
+							Suministrador aux = new Suministrador(txtcodigo.getText(), txtnombre.getText(), cbxpais.getSelectedItem().toString(), Integer.valueOf(spntiempo.getValue().toString()));
+							
+							if(txtnombre.getText()!="" && txtnombre.getText().length()>2 && cbxpais.getSelectedIndex()>0) {
+								JOptionPane.showMessageDialog(null, "Operación Sastifactoria", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+								mialma.insertarSuministrador(aux);
+								clean();
+							}
+							else {
+								JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+							}
+						}else
+						{
+							miSumi.setNombre(txtnombre.getText());
+							miSumi.setPais(cbxpais.getSelectedItem().toString());
+							miSumi.setTiempoEntrega(Integer.valueOf(spntiempo.getValue()));
+							mialma.modificarSuministrador(miSumi);
+							listSuplidores.loadSuplidores();
+							dispose();
+							
+						}			
+						
 					}
 
 					
@@ -134,8 +159,19 @@ public class RegSuplidor extends JDialog {
 				buttonPane.add(btncancelar);
 			}
 		}
+		
+		loadSuministrador();
 	}
 	
+	private void loadSuministrador() {
+		if(miSumi != null) {
+			txtcodigo.setText(miSumi.getId());
+			txtnombre.setText(miSumi.getNombre());
+			spntiempo.setValue(Integer.valueOf(miSumi.getTiempoEntrega()));			
+			cbxpais.setSelectedItem(miSumi.getPais().toString());
+		}
+	}
+
 	private void clean() {
 		cbxpais.setSelectedIndex(0);
 		spntiempo.setValue(Integer.valueOf("1"));
