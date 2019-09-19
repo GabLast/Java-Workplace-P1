@@ -24,7 +24,7 @@ public class Vino {
 		this.disponibilidadMin = disponibilidadMin;
 		this.disponibilidadMax = disponibilidadMax;
 		this.disponibilidadReal = disponibilidadReal;
-		this.miSumi = miSumi; //no es necesario un new porque es conocer. Si fuera una composiicon, si fuera new.
+		this.miSumi = miSumi; //no es necesario un new porque es conocer. Si fuera una composicion, si fuera new.
 		this.ventas = new int[10];
 		this.precioCompra = precioCompra;
 		this.precioVenta = precioVenta;

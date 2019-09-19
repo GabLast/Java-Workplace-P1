@@ -5,6 +5,8 @@ public class Almacen {
 	private Suministrador[] misSumis;
 	private static int cantVinos;
 	private static int cantSumis;
+	private static int generadorCodigoVino = 1;
+	private static int generadorCodigoSupli = 1;
 
 
 	public Almacen() {
@@ -52,12 +54,14 @@ public class Almacen {
 	{
 		misSumis[cantSumis] = sumi;
 		cantSumis++;
+		generadorCodigoSupli++;
 	}
 
 	public void insertarVino(Vino vino)
 	{
 		misVinos[cantVinos] = vino;
 		cantVinos++;
+		generadorCodigoVino++;
 	}
 
 	public boolean hacerPedido(String idVino)
@@ -67,8 +71,8 @@ public class Almacen {
 
 		if(aux != null)
 		{
-			if(aux.getMiSumi().getTiempoEntrega() < 30 && aux.getDisponibilidadReal() < aux.getDisponibilidadMin() && aux.promedioVentas())
-			{
+			if(aux.getMiSumi().getTiempoEntrega() < 30 && aux.getDisponibilidadReal() > aux.getDisponibilidadMin() && aux.getDisponibilidadReal() < aux.getDisponibilidadMax() && aux.promedioVentas())
+			{//aux.getDisponibilidadReal() < aux.getDisponibilidadMin() antes
 				hacer = true;
 			}
 		}
@@ -137,18 +141,61 @@ public class Almacen {
 	public String vinoMasRentable()
 	{
 		String nombre = misVinos[0].getNombre();
-		float aux = misVinos[0].rentabilidad();
+		float masRentable = misVinos[0].rentabilidad();
 		
 		for(int i = 1; i < cantVinos; i++)
 		{
-			if(aux < misVinos[i].rentabilidad())
+			if(masRentable < misVinos[i].rentabilidad())
 			{
-				aux = misVinos[i].rentabilidad();
+				masRentable = misVinos[i].rentabilidad();
 				nombre = misVinos[i].getNombre();
 			}
 		}
 		
 		return nombre;
+	}
+
+	public static int getGeneradorCodigoVino() {
+		return generadorCodigoVino;
+	}
+
+	public static int getGeneradorCodigoSupli() {
+		return generadorCodigoSupli;
+	}
+	
+	public int obtenerIndiceSumi(String codigo) {
+		boolean aEncontrar = false;
+		int i = 0;
+		int index = -1;
+		
+		while(!aEncontrar && i < cantSumis)
+		{
+			if(codigo.equalsIgnoreCase(misSumis[i].getId()))
+			{
+				aEncontrar = true;
+				index = i;
+			}
+			i++;
+		}
+		return index;		
+	}
+	
+	public void eliminarSuplidor(String suministradorEliminar) {
+		int indice = -1;
+		int i = 0;
+		
+		if(obtenerIndiceSumi(suministradorEliminar) >= -1)
+		{
+			index = obtenerIndiceSumi(suministradorEliminar);
+			i = index;
+			
+			while(i < cantSumis-1)
+			{
+				misSumis[i] = misSumis[i+1];
+				i++;
+			}
+			cantSumis--;
+		}
 	}
 }
 

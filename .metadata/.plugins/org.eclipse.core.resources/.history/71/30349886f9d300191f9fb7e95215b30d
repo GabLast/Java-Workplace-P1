@@ -1,8 +1,0 @@
-package logic;
-
-public class Suministrador {
-	private String id;
-	private String nombre;
-	private String pais;
-	private 
-}

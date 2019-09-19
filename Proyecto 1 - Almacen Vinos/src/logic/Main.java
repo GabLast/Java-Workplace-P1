@@ -8,7 +8,7 @@ public class Main {
 		
 		Suministrador S1 = new Suministrador("s-1", "Jose", "USA", 95);
 		
-		Vino V1 = new Vino("v-1", "Carlos", "Tinto", 2015, 10, 20, 15, S1, 240, 340);
+		Vino V1 = new Vino("v-1", "Jose", "Tinto", 2015, 10, 20, 15, S1, 240, 340);
 		Vino V2 = new Vino("v-2", "Pedro", "Blanco", 2013, 9, 19, 10, S1, 140, 350);
 		
 		int ventas[] = new int[10];
