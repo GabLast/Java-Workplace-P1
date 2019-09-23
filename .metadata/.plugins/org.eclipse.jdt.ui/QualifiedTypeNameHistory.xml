@@ -7,4 +7,8 @@
 <fullyQualifiedTypeName name="Visual.RegSuplidor"/>
 <fullyQualifiedTypeName name="logic.Suministrador"/>
 <fullyQualifiedTypeName name="Visual.listSuplidores"/>
+<fullyQualifiedTypeName name="logica.Cuenta"/>
+<fullyQualifiedTypeName name="logica.Cliente"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="logica.Banco"/>
 </qualifiedTypeNameHistroy>
