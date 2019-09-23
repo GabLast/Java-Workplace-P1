@@ -1,15 +1,17 @@
 package logica;
 
+import java.util.Date;
+
 public class Cuenta {
 	
 	private String codigo;
-	private String fechaApertura;
-	private String fechaCorte;
+	private Date fechaApertura = new Date();
+	private Date fechaCorte;
 	private String estado;
 	private String tipoDeCuenta;
 	private double dineroActual;
 	
-	public Cuenta(String codigo, String fechaApertura, String fechaCorte, String estado, String tipoDeCuenta,
+	public Cuenta(String codigo, Date fechaApertura, Date fechaCorte, String estado, String tipoDeCuenta,
 			double dineroActual) {
 		super();
 		this.codigo = codigo;
@@ -28,19 +30,19 @@ public class Cuenta {
 		this.codigo = codigo;
 	}
 
-	public String getFechaApertura() {
+	public Date getFechaApertura() {
 		return fechaApertura;
 	}
 
-	public void setFechaApertura(String fechaApertura) {
+	public void setFechaApertura(Date fechaApertura) {
 		this.fechaApertura = fechaApertura;
 	}
 
-	public String getFechaCorte() {
+	public Date getFechaCorte() {
 		return fechaCorte;
 	}
 
-	public void setFechaCorte(String fechaCorte) {
+	public void setFechaCorte(Date fechaCorte) {
 		this.fechaCorte = fechaCorte;
 	}
 

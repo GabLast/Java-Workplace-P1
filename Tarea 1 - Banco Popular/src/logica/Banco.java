@@ -6,6 +6,7 @@ public class Banco {
 	private Cuenta[] cuentas;
 	private static int cantClientes;
 	private static int cantCuentas;
+	private static int codigoCuenta = 0;
 
 	public Banco() {
 		super();
@@ -48,6 +49,11 @@ public class Banco {
 		Banco.cantCuentas = cantCuentas;
 	}
 
+	public static int getCodigoCuenta() {
+		return codigoCuenta;
+	}
+
+	
 	public void insertarCliente(Cliente cliente) {
 		clientes[cantClientes] = cliente;
 		cantClientes++;
@@ -56,6 +62,7 @@ public class Banco {
 	public void insertarCuenta(Cuenta cuenta) {
 		cuentas[cantCuentas] = cuenta;
 		cantCuentas++;
+		codigoCuenta++;
 	}
 
 	public Cuenta buscarCuenta(String codigoCuenta) {

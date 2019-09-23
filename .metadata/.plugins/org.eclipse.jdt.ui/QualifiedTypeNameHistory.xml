@@ -11,4 +11,5 @@
 <fullyQualifiedTypeName name="logica.Cliente"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="logica.Banco"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
 </qualifiedTypeNameHistroy>
