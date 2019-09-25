@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="javax.swing.JComboBox"/>
-<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
 <fullyQualifiedTypeName name="logic.Almacen"/>
 <fullyQualifiedTypeName name="Visual.RegSuplidor"/>
 <fullyQualifiedTypeName name="logic.Suministrador"/>
 <fullyQualifiedTypeName name="Visual.listSuplidores"/>
-<fullyQualifiedTypeName name="logica.Cuenta"/>
+<fullyQualifiedTypeName name="java.util.logging.SimpleFormatter"/>
+<fullyQualifiedTypeName name="java.lang.UnknownError"/>
+<fullyQualifiedTypeName name="javax.swing.JTable"/>
+<fullyQualifiedTypeName name="visual.RegCliente"/>
+<fullyQualifiedTypeName name="visual.listClientes"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="logica.Cliente"/>
+<fullyQualifiedTypeName name="logica.Cuenta"/>
+<fullyQualifiedTypeName name="visual.RegCuenta"/>
+<fullyQualifiedTypeName name="visual.ListaCuentas"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="logica.Banco"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.lang.Double"/>
+<fullyQualifiedTypeName name="visual.IngresarSaldo"/>
 </qualifiedTypeNameHistroy>

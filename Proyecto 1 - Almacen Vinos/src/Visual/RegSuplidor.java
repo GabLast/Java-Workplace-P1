@@ -133,7 +133,7 @@ public class RegSuplidor extends JDialog {
 						{
 							miSumi.setNombre(txtnombre.getText());
 							miSumi.setPais(cbxpais.getSelectedItem().toString());
-							miSumi.setTiempoEntrega(Integer.valueOf(spntiempo.getValue()));
+							miSumi.setTiempoEntrega(Integer.valueOf((String)spntiempo.getValue()));
 							mialma.modificarSuministrador(miSumi);
 							listSuplidores.loadSuplidores();
 							dispose();

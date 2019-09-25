@@ -1,18 +1,21 @@
 package logica;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Cuenta {
 	
 	private String codigo;
-	private Date fechaApertura = new Date();
-	private Date fechaCorte;
+	private Cliente propietario;
+	private String fechaApertura;
+	private String fechaCorte;
 	private String estado;
 	private String tipoDeCuenta;
 	private double dineroActual;
+	private int puntos;
 	
-	public Cuenta(String codigo, Date fechaApertura, Date fechaCorte, String estado, String tipoDeCuenta,
-			double dineroActual) {
+	public Cuenta( String codigo, String fechaApertura, Cliente propietario, String fechaCorte, String estado, String tipoDeCuenta,
+			double dineroActual, int puntos) {
 		super();
 		this.codigo = codigo;
 		this.fechaApertura = fechaApertura;
@@ -20,6 +23,8 @@ public class Cuenta {
 		this.estado = estado;
 		this.tipoDeCuenta = tipoDeCuenta;
 		this.dineroActual = dineroActual;
+		this.propietario = propietario;
+		this.puntos = puntos;
 	}
 
 	public String getCodigo() {
@@ -30,19 +35,31 @@ public class Cuenta {
 		this.codigo = codigo;
 	}
 
-	public Date getFechaApertura() {
-		return fechaApertura;
-	}
-
-	public void setFechaApertura(Date fechaApertura) {
+	public void setFechaApertura(String fechaApertura) {
 		this.fechaApertura = fechaApertura;
 	}
 
-	public Date getFechaCorte() {
+	public Cliente getPropietario() {
+		return propietario;
+	}
+
+	public void setPropietario(Cliente propietario) {
+		this.propietario = propietario;
+	}
+
+	public String getFechaApertura() {
+		return fechaApertura;
+	}
+
+//	public void setFechaApertura(String fechaApertura) {
+//		this.fechaApertura = fechaApertura;
+//	}
+
+	public String getFechaCorte() {
 		return fechaCorte;
 	}
 
-	public void setFechaCorte(Date fechaCorte) {
+	public void setFechaCorte(String fechaCorte) {
 		this.fechaCorte = fechaCorte;
 	}
 
@@ -68,6 +85,14 @@ public class Cuenta {
 
 	public void setDineroActual(double dineroActual) {
 		this.dineroActual = dineroActual;
+	}
+
+	public int getPuntos() {
+		return puntos;
+	}
+
+	public void setPuntos(double d) {
+		this.puntos = (int) d;
 	}
 	
 	

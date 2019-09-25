@@ -2,31 +2,26 @@ package logica;
 
 public class Cliente {
 
+	private String id;
 	private String cedula;
 	private String nombre;
 	private String apellidos;
 	private String telefono;
-	private boolean cuentaCorriente;
-	private boolean cuentaVivienda;
-	private boolean cuentaFondoInversion;
-	private Cuenta miCuentaCorriente;
-	private Cuenta miCuentaVivienda;
-	private Cuenta miCuentaFondoInversion;
+	private int puntos = 0;
+	
 
-	public Cliente(String cedula, String nombre, String apellidos, String telefono, boolean cuentaCorriente,
-			boolean cuentaVivienda, boolean cuentaFondoInversion, Cuenta miCuentaCorriente, Cuenta miCuentaVivienda,
-			Cuenta miCuentaFondoInversion) {
+	public Cliente(String id, String cedula, String nombre, String apellidos, String telefono, int puntos) {
 		super();
+		this.id = id;
 		this.cedula = cedula;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.telefono = telefono;
-		this.cuentaCorriente = cuentaCorriente;
-		this.cuentaVivienda = cuentaVivienda;
-		this.cuentaFondoInversion = cuentaFondoInversion;
-		this.miCuentaCorriente = miCuentaCorriente;
-		this.miCuentaVivienda = miCuentaVivienda;
-		this.miCuentaFondoInversion = miCuentaFondoInversion;
+		this.puntos = puntos;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public String getCedula() {
@@ -61,52 +56,12 @@ public class Cliente {
 		this.telefono = telefono;
 	}
 
-	public boolean isCuentaCorriente() {
-		return cuentaCorriente;
+	public int getPuntos() {
+		return puntos;
 	}
 
-	public void setCuentaCorriente(boolean cuentaCorriente) {
-		this.cuentaCorriente = cuentaCorriente;
+	public void setPuntos(double puntos) {
+		this.puntos = (int) puntos;
 	}
-
-	public boolean isCuentaVivienda() {
-		return cuentaVivienda;
-	}
-
-	public void setCuentaVivienda(boolean cuentaVivienda) {
-		this.cuentaVivienda = cuentaVivienda;
-	}
-
-	public boolean isCuentaFondoInversion() {
-		return cuentaFondoInversion;
-	}
-
-	public void setCuentaFondoInversion(boolean cuentaFondoInversion) {
-		this.cuentaFondoInversion = cuentaFondoInversion;
-	}
-
-	public Cuenta getMiCuentaCorriente() {
-		return miCuentaCorriente;
-	}
-
-	public void setMiCuentaCorriente(Cuenta miCuentaCorriente) {
-		this.miCuentaCorriente = miCuentaCorriente;
-	}
-
-	public Cuenta getMiCuentaVivienda() {
-		return miCuentaVivienda;
-	}
-
-	public void setMiCuentaVivienda(Cuenta miCuentaVivienda) {
-		this.miCuentaVivienda = miCuentaVivienda;
-	}
-
-	public Cuenta getMiCuentaFondoInversion() {
-		return miCuentaFondoInversion;
-	}
-
-	public void setMiCuentaFondoInversion(Cuenta miCuentaFondoInversion) {
-		this.miCuentaFondoInversion = miCuentaFondoInversion;
-	}
-
+		
 }

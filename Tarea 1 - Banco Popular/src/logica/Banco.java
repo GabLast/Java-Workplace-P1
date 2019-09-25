@@ -7,6 +7,7 @@ public class Banco {
 	private static int cantClientes;
 	private static int cantCuentas;
 	private static int codigoCuenta = 0;
+	private static int codigoCliente = 0;
 
 	public Banco() {
 		super();
@@ -54,9 +55,14 @@ public class Banco {
 	}
 
 	
+	public static int getCodigoCliente() {
+		return codigoCliente;
+	}
+
 	public void insertarCliente(Cliente cliente) {
 		clientes[cantClientes] = cliente;
 		cantClientes++;
+		codigoCliente++;
 	}
 
 	public void insertarCuenta(Cuenta cuenta) {
@@ -83,14 +89,14 @@ public class Banco {
 		return aBuscar;
 	}
 
-	public Cliente buscarCliente(String cedulaCliente) {
+	public Cliente buscarCliente(String idCliente) {
 
 		boolean encontrado = false;
 		Cliente aBuscar = null;
 		int i = 0;
 
 		while(!encontrado && i < cantClientes) {
-			if(clientes[i].getCedula().equalsIgnoreCase(cedulaCliente))
+			if(clientes[i].getId().equalsIgnoreCase(idCliente))
 			{
 				encontrado = true;
 				aBuscar = clientes[i];
@@ -100,35 +106,129 @@ public class Banco {
 
 		return aBuscar;
 	}
-
+	
 	public int buscarIndiceCuenta(String codigoCuenta) {
 
-		boolean encontrado = false;
-		int aBuscar = -1;
-		int i = 0;
-		
-		while(!encontrado && i < cantCuentas) {
-			if(cuentas[i].getCodigo().equalsIgnoreCase(codigoCuenta))
-			{
-				encontrado = true;
-				aBuscar = i;
+//		boolean encontrado = false;
+//		int aBuscar = -1;
+//		int i = 0;
+//		
+//		while(!encontrado && i < cantCuentas) {
+//			if(cuentas[i].getCodigo().equalsIgnoreCase(codigoCuenta))
+//			{
+//				encontrado = true;
+//				aBuscar = i;
+//			}
+//			i++;
+//		}
+//		
+//		return aBuscar;
+		int indice = 0;
+		for (Cuenta cuenta : cuentas) {
+			
+			if(cuenta.getCodigo().equalsIgnoreCase(codigoCuenta)) {
+				return indice;
 			}
-			i++;
+			indice++;
+			
 		}
-		return aBuscar;
+		return -1;
+	}
+	
+	public int buscarIndiceCliente(String idCliente) {
+
+//		boolean encontrado = false;
+//		int aBuscar = -1;
+//		int i = 0;
+
+//		while(!encontrado && i < cantClientes) {
+//			if(clientes[i].getId().equalsIgnoreCase(idCliente))
+//			{
+//				aBuscar = i;
+//				encontrado = true;
+//				
+//			}
+//			i++;
+//		}
+//		return aBuscar;
+		
+		int indice = 0;
+		for (Cliente cliente : clientes) {
+			
+			if(cliente.getId().equalsIgnoreCase(idCliente)) {
+				return indice;
+			}
+			indice++;
+			
+		}
+		return -1;
+	}
+	
+	public void eliminarCliente(String idCliente) {
+
+		int i = 0;
+
+		if(buscarIndiceCliente(idCliente) > -1)
+		{
+			i = buscarIndiceCliente(idCliente);
+
+			while(i < cantClientes-1)
+			{
+				clientes[i] = clientes[i+1];
+				i++;
+			}
+			cantClientes--;
+		}
+	}
+	
+	public void eliminarCuenta(String idCuenta) {
+
+		int i = 0;
+
+		if(buscarIndiceCuenta(idCuenta) > -1)
+		{
+			i = buscarIndiceCuenta(idCuenta);
+			
+			while(i < cantClientes-1)
+			{
+				cuentas[i] = cuentas[i+1];
+				i++;
+			}
+			cantCuentas--;
+		}
+	}
+	
+	public boolean verificarTipoCuentaUnico(String idCliente, String tipo)
+	{
+		for(Cuenta cuenta : cuentas) 
+		{
+			if(cuenta != null)
+			{
+				if(cuenta.getPropietario().getId().equalsIgnoreCase(idCliente)) 
+				{
+
+					if(cuenta.getTipoDeCuenta().equalsIgnoreCase(tipo)) 
+					{
+						return true;
+					}
+
+				}
+			}
+		}
+		return false;
 	}
 
 	public double ingresarDinero(String codigoCuenta, double dineroIngresar) {
 
 		int indiceCuenta = buscarIndiceCuenta(codigoCuenta);
-		//Cuenta cuenta = buscarCuenta(codigoCuenta);
 		
-		if(/*cuenta != null*/cuentas[indiceCuenta] != null && indiceCuenta > -1 
+		
+		if(cuentas[indiceCuenta] != null && indiceCuenta > -1 
 				&& cuentas[indiceCuenta].getEstado().equalsIgnoreCase("Habilitada")) 
 		{
-			//cuenta.setDineroActual(cuenta.getDineroActual()+dineroIngresar);
-			//cuentas[indiceCuenta] = cuenta;
 			cuentas[indiceCuenta].setDineroActual(cuentas[indiceCuenta].getDineroActual() + dineroIngresar);
+			cuentas[indiceCuenta].setPuntos(dineroIngresar/6 + cuentas[indiceCuenta].getPuntos());
+			cuentas[indiceCuenta].getPropietario().setPuntos(dineroIngresar/6 + cuentas[indiceCuenta].getPropietario().getPuntos());
 			return dineroIngresar;
 		}
 		
@@ -142,19 +242,19 @@ public class Banco {
 		if(cuentas[indiceCuenta] != null && indiceCuenta > -1 
 				&& cuentas[indiceCuenta].getEstado().equalsIgnoreCase("Habilitada"))
 		{
-			if(cuentas[indiceCuenta].getTipoDeCuenta().equalsIgnoreCase("Cuenta_Corriente")
+			if(cuentas[indiceCuenta].getTipoDeCuenta().equalsIgnoreCase("Corriente")
 					&& dineroRetirar < cuentas[indiceCuenta].getDineroActual())
 			{
 				cuentas[indiceCuenta].setDineroActual(cuentas[indiceCuenta].getDineroActual() - dineroRetirar);
 				return true;
 			}
 			
-			else if(cuentas[indiceCuenta].getTipoDeCuenta().equalsIgnoreCase("Cuenta_Vivienda"))
+			else if(cuentas[indiceCuenta].getTipoDeCuenta().equalsIgnoreCase("Vivienda"))
 			{
 				return false;
 			}
 			
-			else if(cuentas[indiceCuenta].getTipoDeCuenta().equalsIgnoreCase("Fondo_Inversion"))
+			else if(cuentas[indiceCuenta].getTipoDeCuenta().equalsIgnoreCase("Fondo de inversión"))
 			{
 				if(dineroRetirar > 500)
 				{
@@ -181,5 +281,33 @@ public class Banco {
 		}
 		
 		return -1;
+	}
+	
+	public double revisionMensual(String idCliente)
+	{
+		double saldoTotal = 0;
+		int indice = 0;
+		
+		for(Cuenta cuenta : cuentas)
+		{
+			if(cuentas[indice].getPropietario().getId().equalsIgnoreCase(idCliente))
+			{
+				if(cuentas[indice].getTipoDeCuenta().equalsIgnoreCase("Corriente"))
+				{
+					saldoTotal += cuentas[indice].getDineroActual() * 1.1 - 0.6;
+				}
+				else if(cuentas[indice].getTipoDeCuenta().equalsIgnoreCase("Vivienda"))
+				{
+					saldoTotal += cuentas[indice].getDineroActual() * 1.2 - 0.6;
+				}
+				else if(cuentas[indice].getTipoDeCuenta().equalsIgnoreCase("Fondo de inversión"))
+				{
+					saldoTotal += cuentas[indice].getDineroActual() * 1.34 - 0.6;
+				}
+			}
+			indice++;
+		}
+		
+		return saldoTotal;
 	}
 }

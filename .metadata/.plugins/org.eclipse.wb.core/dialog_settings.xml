@@ -22,4 +22,10 @@
 		<item key="x" value="940"/>
 		<item key="y" value="493"/>
 	</section>
+	<section name="org.eclipse.wb.internal.core.nls.ui.NlsDialog">
+		<item key="x" value="0"/>
+		<item key="y" value="252"/>
+		<item key="width" value="1920"/>
+		<item key="height" value="540"/>
+	</section>
 </section>
