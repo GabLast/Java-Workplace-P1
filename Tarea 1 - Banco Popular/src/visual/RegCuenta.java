@@ -150,7 +150,7 @@ public class RegCuenta extends JDialog {
 				txtPropietario.setBounds(178, 28, 165, 23);
 				panel.add(txtPropietario);
 				txtPropietario.setColumns(10);
-				txtPropietario.setText(miCliente.getNombre() + "{ " + miCliente.getId() + " }");
+				txtPropietario.setText(miCliente.getNombre() + " | [ " + miCliente.getId() + " ]");
 			}
 			
 			cbxTipoCuenta = new JComboBox();
@@ -178,10 +178,10 @@ public class RegCuenta extends JDialog {
 				else
 				{
 					btnRegistrar.setText("Modificar");
-					miCuenta.setCodigo(txtCodigoCuenta.getText());
-					miCuenta.setEstado(cbxEstadoCuenta.getSelectedItem().toString());
-					miCuenta.setFechaCorte(cbxDiaCorte.getSelectedItem().toString());
-					miCuenta.setTipoDeCuenta(cbxTipoCuenta.getSelectedItem().toString());
+					txtCodigoCuenta.setText(miCuenta.getCodigo());
+					cbxEstadoCuenta.setSelectedItem(miCuenta.getEstado());
+					cbxDiaCorte.setSelectedItem(miCuenta.getFechaCorte());
+					cbxTipoCuenta.setSelectedItem(miCuenta.getTipoDeCuenta());
 				}
 				
 				btnRegistrar.addActionListener(new ActionListener() {

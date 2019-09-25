@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -84,7 +85,9 @@ public class RevisionMensual extends JDialog {
 						if(miBanco.buscarIndiceCliente(txtCodigo.getText()) > -1) 
 						{
 							JOptionPane.showMessageDialog(null, "Operación Sastifactoria", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-							miBanco.revisionMensual(txtCodigo.getText());
+//							JOptionPane.showMessageDialog(null, "Saldo total: " + new DecimalFormat("#.##").format(miBanco.revisionMensual(txtCodigo.getText())) , "Notificación", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Saldo total del cliente "+ txtCodigo.getText() + " " + 
+									String.format("%.2f", miBanco.revisionMensual(txtCodigo.getText())), "Notificación", JOptionPane.INFORMATION_MESSAGE);
 							clean();
 						}
 						else

@@ -125,12 +125,13 @@ public class Banco {
 //		return aBuscar;
 		int indice = 0;
 		for (Cuenta cuenta : cuentas) {
-			
-			if(cuenta.getCodigo().equalsIgnoreCase(codigoCuenta)) {
-				return indice;
+			if(cuenta != null)
+			{
+				if(cuenta.getCodigo().equalsIgnoreCase(codigoCuenta)) {
+					return indice;
+				}
+				indice++;
 			}
-			indice++;
-			
 		}
 		return -1;
 	}
@@ -153,17 +154,20 @@ public class Banco {
 //		return aBuscar;
 		
 		int indice = 0;
-		for (Cliente cliente : clientes) {
-			
-			if(cliente.getId().equalsIgnoreCase(idCliente)) {
-				return indice;
+		for (Cliente cliente : clientes) 
+		{
+			if(cliente != null)
+			{
+				if(cliente.getId().equalsIgnoreCase(idCliente)) 
+				{
+					return indice;
+				}
+				indice++;
 			}
-			indice++;
 			
 		}
 		return -1;
 	}
-	
 	public void eliminarCliente(String idCliente) {
 
 		int i = 0;
@@ -286,26 +290,29 @@ public class Banco {
 	public double revisionMensual(String idCliente)
 	{
 		double saldoTotal = 0;
-		int indice = 0;
 		
 		for(Cuenta cuenta : cuentas)
 		{
-			if(cuentas[indice].getPropietario().getId().equalsIgnoreCase(idCliente))
+
+			if(cuenta != null)
 			{
-				if(cuentas[indice].getTipoDeCuenta().equalsIgnoreCase("Corriente"))
+
+				if(cuenta.getPropietario().getId().equalsIgnoreCase(idCliente))
 				{
-					saldoTotal += cuentas[indice].getDineroActual() * 1.1 - 0.6;
-				}
-				else if(cuentas[indice].getTipoDeCuenta().equalsIgnoreCase("Vivienda"))
-				{
-					saldoTotal += cuentas[indice].getDineroActual() * 1.2 - 0.6;
-				}
-				else if(cuentas[indice].getTipoDeCuenta().equalsIgnoreCase("Fondo de inversión"))
-				{
-					saldoTotal += cuentas[indice].getDineroActual() * 1.34 - 0.6;
+					if(cuenta.getTipoDeCuenta().equalsIgnoreCase("Corriente"))
+					{
+						saldoTotal += cuenta.getDineroActual() * 1.1 - 0.6;
+					}
+					else if(cuenta.getTipoDeCuenta().equalsIgnoreCase("Vivienda"))
+					{
+						saldoTotal += cuenta.getDineroActual() * 1.2 - 0.6;
+					}
+					else if(cuenta.getTipoDeCuenta().equalsIgnoreCase("Fondo de inversión"))
+					{
+						saldoTotal += cuenta.getDineroActual() * 1.34 - 0.6;
+					}
 				}
 			}
-			indice++;
 		}
 		
 		return saldoTotal;
