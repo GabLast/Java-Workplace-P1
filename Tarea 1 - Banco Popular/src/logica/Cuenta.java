@@ -95,5 +95,48 @@ public class Cuenta {
 		this.puntos = (int) d;
 	}
 	
+	public boolean ingresarSaldo(double dineroIngresar) {
+		
+		if(getEstado().equalsIgnoreCase("Habilitada"))
+		{
+			setDineroActual(getDineroActual() + dineroIngresar);
+			setPuntos(dineroIngresar/6 + getPuntos());
+			getPropietario().setPuntos(dineroIngresar/6 + getPropietario().getPuntos());
+			return true;
+		}
+		
+		return false;
+		
+	}
+	
+	public boolean retirarMoney(double dineroRetirar) {
+
+		if(getTipoDeCuenta().equalsIgnoreCase("Corriente")
+				&& dineroRetirar <= getDineroActual())
+		{
+			setDineroActual(getDineroActual() - dineroRetirar);
+			return true;
+		}
+		
+		else if(getTipoDeCuenta().equalsIgnoreCase("Vivienda"))
+		{
+			return false;
+		}
+		
+		else if(getTipoDeCuenta().equalsIgnoreCase("Fondo de inversión")
+				&& dineroRetirar <= getDineroActual())
+		{
+			if(dineroRetirar > 500)
+			{
+				setEstado("Bloqueada");;
+				return false;
+			}
+			
+			setDineroActual(getDineroActual() - dineroRetirar);
+			return true;
+		}
+		
+		return false;
+	}
 	
 }

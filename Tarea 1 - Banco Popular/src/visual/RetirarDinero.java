@@ -93,10 +93,12 @@ public class RetirarDinero extends JDialog {
 				btnConfirmar = new JButton("Confirmar");
 				btnConfirmar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if(Double.valueOf(txtDinero.getText()) >= 0 && miBanco.buscarIndiceCuenta(txtCodigo.getText()) > -1) 
+						if(/*Double.valueOf(txtDinero.getText()) >= 0 && miBanco.buscarIndiceCuenta(txtCodigo.getText()) > -1
+								&& Double.valueOf(txtDinero.getText()) <= miBanco.getCuentas()[miBanco.buscarIndiceCuenta(txtCodigo.getText())].getDineroActual()
+								&& !miBanco.getCuentas()[miBanco.buscarIndiceCuenta(txtCodigo.getText())].getTipoDeCuenta().equalsIgnoreCase("Vivienda")*/
+								miBanco.retirarDinero(txtCodigo.getText(), Double.valueOf(txtDinero.getText()))) 
 						{
 							JOptionPane.showMessageDialog(null, "Operación Sastifactoria", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-							miBanco.retirarDinero(txtCodigo.getText(), Double.valueOf(txtDinero.getText()));
 							clean();
 						}
 						else

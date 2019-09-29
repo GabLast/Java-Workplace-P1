@@ -184,6 +184,11 @@ public class RegCliente extends JDialog {
 								miCliente.setPuntos(miCliente.getPuntos());
 								listClientes.loadClientes();
 								dispose();
+								JOptionPane.showMessageDialog(null, "Modificación realizada", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 							}
 						}
 					}

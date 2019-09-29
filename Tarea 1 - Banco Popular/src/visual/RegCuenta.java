@@ -96,7 +96,7 @@ public class RegCuenta extends JDialog {
 				txtCodigoCuenta = new JTextField();
 				txtCodigoCuenta.setEditable(false);
 				txtCodigoCuenta.setColumns(10);
-				txtCodigoCuenta.setBounds(545, 28, 150, 23);
+				txtCodigoCuenta.setBounds(545, 24, 150, 31);
 				txtCodigoCuenta.setText("C-"+mibanco.getCodigoCuenta());
 				panel.add(txtCodigoCuenta);
 			}
@@ -109,7 +109,7 @@ public class RegCuenta extends JDialog {
 				txtFechaApertura = new JTextField();
 				txtFechaApertura.setEditable(false);
 				txtFechaApertura.setColumns(10);
-				txtFechaApertura.setBounds(178, 78, 165, 23);
+				txtFechaApertura.setBounds(178, 75, 165, 31);
 				txtFechaApertura.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
 				
 				panel.add(txtFechaApertura);
@@ -147,7 +147,7 @@ public class RegCuenta extends JDialog {
 			{
 				txtPropietario = new JTextField();
 				txtPropietario.setEditable(false);
-				txtPropietario.setBounds(178, 28, 165, 23);
+				txtPropietario.setBounds(178, 24, 165, 31);
 				panel.add(txtPropietario);
 				txtPropietario.setColumns(10);
 				txtPropietario.setText(miCliente.getNombre() + " | [ " + miCliente.getId() + " ]");
@@ -193,7 +193,7 @@ public class RegCuenta extends JDialog {
 							
 							if(cbxDiaCorte.getSelectedIndex()>0 && cbxEstadoCuenta.getSelectedIndex()>0 
 									&& cbxEstadoCuenta.getSelectedIndex()>0 
-									&& !mibanco.verificarTipoCuentaUnico(nuevaCuenta.getPropietario().getId(), cbxTipoCuenta.getSelectedItem().toString()))
+									&& !mibanco.verificarTipoCuentaUnico(nuevaCuenta.getCodigo(), nuevaCuenta.getPropietario().getId(), cbxTipoCuenta.getSelectedItem().toString()))
 							{
 								JOptionPane.showMessageDialog(null, "Operación Sastifactoria", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 								mibanco.insertarCuenta(nuevaCuenta);
@@ -208,7 +208,9 @@ public class RegCuenta extends JDialog {
 						{
 							if(cbxDiaCorte.getSelectedIndex()>0 && cbxEstadoCuenta.getSelectedIndex()>0 
 									&& cbxEstadoCuenta.getSelectedIndex()>0
-									&& !mibanco.verificarTipoCuentaUnico(miCuenta.getPropietario().getId(), cbxTipoCuenta.getSelectedItem().toString()))
+									&& !mibanco.verificarTipoCuentaUnico(miCuenta.getCodigo() ,miCuenta.getPropietario().getId(), cbxTipoCuenta.getSelectedItem().toString()
+									/*(!mibanco.verificarTipoCuentaUnico(miCuenta.getPropietario().getId(), cbxTipoCuenta.getSelectedItem().toString())
+									|| cbxEstadoCuenta.getSelectedItem().toString().equalsIgnoreCase("Bloqueada"))*/))
 							{
 								miCuenta.setCodigo(txtCodigoCuenta.getText());
 								miCuenta.setPropietario(miCliente);
@@ -217,6 +219,11 @@ public class RegCuenta extends JDialog {
 								miCuenta.setTipoDeCuenta(cbxTipoCuenta.getSelectedItem().toString());
 								ListaCuentas.loadCuentas();
 								dispose();
+								JOptionPane.showMessageDialog(null, "Modificación realizada", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+							}
+							else 
+							{
+								JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 							}
 						}
 					}

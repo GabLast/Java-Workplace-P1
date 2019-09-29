@@ -59,7 +59,6 @@ public class ListaCuentas extends JDialog {
 	 * Create the dialog.
 	 */
 	public ListaCuentas(Banco banco) {
-		setResizable(false);
 		this.miBanco = banco;
 		setTitle("Lista de Cuentas");
 		setBounds(100, 100, 900, 495);

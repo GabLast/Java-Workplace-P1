@@ -202,41 +202,42 @@ public class Banco {
 		}
 	}
 	
-	public boolean verificarTipoCuentaUnico(String idCliente, String tipo)
+	public boolean verificarTipoCuentaUnico(String idCuenta,String idCliente, String tipo)
 	{
 		for(Cuenta cuenta : cuentas) 
 		{
 			if(cuenta != null)
 			{
-				if(cuenta.getPropietario().getId().equalsIgnoreCase(idCliente)) 
+				if(!cuenta.getCodigo().equalsIgnoreCase(idCuenta))
 				{
-
-					if(cuenta.getTipoDeCuenta().equalsIgnoreCase(tipo)) 
+					if(cuenta.getPropietario().getId().equalsIgnoreCase(idCliente)) 
 					{
-						return true;
-					}
 
+						if(cuenta.getTipoDeCuenta().equalsIgnoreCase(tipo)) 
+						{
+							return true;
+						}
+
+					}
 				}
+				
 			}
 		}
 		return false;
 	}
-
-	public double ingresarDinero(String codigoCuenta, double dineroIngresar) {
+	
+	public boolean ingresarDinero(String codigoCuenta, double dineroIngresar) {
 
 		int indiceCuenta = buscarIndiceCuenta(codigoCuenta);
 		
 		
-		if(cuentas[indiceCuenta] != null && indiceCuenta > -1 
-				&& cuentas[indiceCuenta].getEstado().equalsIgnoreCase("Habilitada")) 
+		if(cuentas[indiceCuenta] != null && indiceCuenta > -1) 
 		{
-			cuentas[indiceCuenta].setDineroActual(cuentas[indiceCuenta].getDineroActual() + dineroIngresar);
-			cuentas[indiceCuenta].setPuntos(dineroIngresar/6 + cuentas[indiceCuenta].getPuntos());
-			cuentas[indiceCuenta].getPropietario().setPuntos(dineroIngresar/6 + cuentas[indiceCuenta].getPropietario().getPuntos());
-			return dineroIngresar;
+			cuentas[indiceCuenta].ingresarSaldo(dineroIngresar);
+			return true;
 		}
 		
-		return 0;
+		return false;
 	}
 	
 	public boolean retirarDinero(String codigoCuenta, double dineroRetirar) {
@@ -246,45 +247,10 @@ public class Banco {
 		if(cuentas[indiceCuenta] != null && indiceCuenta > -1 
 				&& cuentas[indiceCuenta].getEstado().equalsIgnoreCase("Habilitada"))
 		{
-			if(cuentas[indiceCuenta].getTipoDeCuenta().equalsIgnoreCase("Corriente")
-					&& dineroRetirar < cuentas[indiceCuenta].getDineroActual())
-			{
-				cuentas[indiceCuenta].setDineroActual(cuentas[indiceCuenta].getDineroActual() - dineroRetirar);
-				return true;
-			}
-			
-			else if(cuentas[indiceCuenta].getTipoDeCuenta().equalsIgnoreCase("Vivienda"))
-			{
-				return false;
-			}
-			
-			else if(cuentas[indiceCuenta].getTipoDeCuenta().equalsIgnoreCase("Fondo de inversión"))
-			{
-				if(dineroRetirar > 500)
-				{
-					cuentas[indiceCuenta].setEstado("Bloqueada");;
-					return false;
-				}
-				
-				cuentas[indiceCuenta].setDineroActual(cuentas[indiceCuenta].getDineroActual() - dineroRetirar);
-				return true;
-			}
-			
+			return cuentas[indiceCuenta].retirarMoney(dineroRetirar);
 		}
 		
 		return false;
-	}
-
-	public double mostrarSaldoActual(String codigoCuenta) {
-		
-		int indiceCuenta = buscarIndiceCuenta(codigoCuenta);
-		
-		if(indiceCuenta > -1) 
-		{
-			return cuentas[indiceCuenta].getDineroActual();
-		}
-		
-		return -1;
 	}
 	
 	public double revisionMensual(String idCliente)
@@ -317,4 +283,69 @@ public class Banco {
 		
 		return saldoTotal;
 	}
+	
+	public double mostrarSaldoActual(String codigoCuenta) {
+
+		int indiceCuenta = buscarIndiceCuenta(codigoCuenta);
+
+		if(indiceCuenta > -1) 
+		{
+			return cuentas[indiceCuenta].getDineroActual();
+		}
+
+		return -1;
+	}
+	
+//	public boolean ingresarDinero(String codigoCuenta, double dineroIngresar) {
+//
+//		int indiceCuenta = buscarIndiceCuenta(codigoCuenta);
+//		
+//		
+//		if(cuentas[indiceCuenta] != null && indiceCuenta > -1 
+//				&& cuentas[indiceCuenta].getEstado().equalsIgnoreCase("Habilitada")) 
+//		{
+//			cuentas[indiceCuenta].setDineroActual(cuentas[indiceCuenta].getDineroActual() + dineroIngresar);
+//			cuentas[indiceCuenta].setPuntos(dineroIngresar/6 + cuentas[indiceCuenta].getPuntos());
+//			cuentas[indiceCuenta].getPropietario().setPuntos(dineroIngresar/6 + cuentas[indiceCuenta].getPropietario().getPuntos());
+//			return true;
+//		}
+//		
+//		return false;
+//	}
+	
+//	public boolean retirarDinero(String codigoCuenta, double dineroRetirar) {
+//
+//		int indiceCuenta = buscarIndiceCuenta(codigoCuenta);
+//		
+//		if(cuentas[indiceCuenta] != null && indiceCuenta > -1 
+//				&& cuentas[indiceCuenta].getEstado().equalsIgnoreCase("Habilitada"))
+//		{
+//			if(cuentas[indiceCuenta].getTipoDeCuenta().equalsIgnoreCase("Corriente")
+//					&& dineroRetirar < cuentas[indiceCuenta].getDineroActual())
+//			{
+//				cuentas[indiceCuenta].setDineroActual(cuentas[indiceCuenta].getDineroActual() - dineroRetirar);
+//				return true;
+//			}
+//			
+//			else if(cuentas[indiceCuenta].getTipoDeCuenta().equalsIgnoreCase("Vivienda"))
+//			{
+//				return false;
+//			}
+//			
+//			else if(cuentas[indiceCuenta].getTipoDeCuenta().equalsIgnoreCase("Fondo de inversión"))
+//			{
+//				if(dineroRetirar > 500)
+//				{
+//					cuentas[indiceCuenta].setEstado("Bloqueada");;
+//					return false;
+//				}
+//				
+//				cuentas[indiceCuenta].setDineroActual(cuentas[indiceCuenta].getDineroActual() - dineroRetirar);
+//				return true;
+//			}
+//			
+//		}
+//		
+//		return false;
+//	}
 }

@@ -21,8 +21,8 @@
 <fullyQualifiedTypeName name="logica.Banco"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="visual.IngresarSaldo"/>
-<fullyQualifiedTypeName name="visual.RetirarDinero"/>
 <fullyQualifiedTypeName name="visual.RevisionMensual"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
+<fullyQualifiedTypeName name="visual.RetirarDinero"/>
 </qualifiedTypeNameHistroy>

@@ -58,6 +58,7 @@ public class Principal extends JFrame {
 		setLocationRelativeTo(null);
 		
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBackground(Color.GRAY);
 		setJMenuBar(menuBar);
 		
 		JMenu mnClientes = new JMenu("Clientes");
