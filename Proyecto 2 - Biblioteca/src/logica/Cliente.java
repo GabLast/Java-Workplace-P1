@@ -78,14 +78,16 @@ public class Cliente {
 		
 	}
 	
-	public ArrayList<int> numeroDocsPerType()
+	public ArrayList numeroDocsPerType()
 	{
 		int i;
-		int libros = articulos = revistas = 0;
+		int libros = 0;
+		int articulos = 0;
+		int revistas = 0;
 		
 		for(i = 0; i < misPrestamos.size(); i++)
 		{
-			if()
+			if(misPrestamos.get(i).getPublicacion())
 		}
 	}
 	

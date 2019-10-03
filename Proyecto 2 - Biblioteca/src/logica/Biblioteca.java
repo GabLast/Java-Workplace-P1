@@ -187,10 +187,11 @@ public class Biblioteca {
 	{
 	
 		Cliente cliente = buscarCliente(idCliente);
+		ArrayList<Integer> arreglo = new ArrayList<>();
 		
 		if(cliente != null)
 		{
-			ArrayList<int> arreglo = cliente.numeroDocsPerType();
+			
 		}
 		
 		return arreglo;
