@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/Proyecto 1 - Almacen Vinos/src/Visual/Principal.java"/>
+<listEntry value="/Tarea 1 - Banco Popular/src/visual/Principal.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
 </listAttribute>
 <booleanAttribute key="org.eclipse.jdt.launching.ATTR_EXCLUDE_TEST_CODE" value="true"/>
-<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="Visual.Principal"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Proyecto 1 - Almacen Vinos"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="visual.Principal"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Tarea 1 - Banco Popular"/>
 </launchConfiguration>

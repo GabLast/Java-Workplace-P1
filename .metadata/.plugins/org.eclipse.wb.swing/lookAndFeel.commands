@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<commands>
-	<set-visible id="__wbp_&lt;undefined&gt;" visible="false"/>
-	<set-visible id="Metal" visible="false"/>
-	<set-visible id="Nimbus" visible="false"/>
-	<set-visible id="CDE/Motif" visible="false"/>
-	<set-visible id="Windows Classic" visible="false"/>
-</commands>

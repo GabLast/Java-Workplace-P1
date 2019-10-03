@@ -12,8 +12,6 @@
 <fullyQualifiedTypeName name="visual.RegCliente"/>
 <fullyQualifiedTypeName name="visual.listClientes"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
-<fullyQualifiedTypeName name="logica.Cliente"/>
 <fullyQualifiedTypeName name="logica.Cuenta"/>
 <fullyQualifiedTypeName name="visual.RegCuenta"/>
 <fullyQualifiedTypeName name="visual.ListaCuentas"/>
@@ -25,4 +23,10 @@
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
 <fullyQualifiedTypeName name="visual.RetirarDinero"/>
+<fullyQualifiedTypeName name="logica.Publicaciones"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="logica.Prestamo"/>
+<fullyQualifiedTypeName name="logica.Publicacion"/>
+<fullyQualifiedTypeName name="logica.Cliente"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
