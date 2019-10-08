@@ -114,8 +114,10 @@ public class Almacen {
 	public String vinoMasRentable(){
 		String nombre = misVinos[0].getNombre();
 		float aux = misVinos[0].gananciaTotal();
-		for (int i = 1; i < cantVinos; i++) {
-			if(aux<misVinos[i].gananciaTotal()){
+		for (int i = 1; i < cantVinos; i++) 
+		{
+			if(aux < misVinos[i].gananciaTotal())
+			{
 				aux = misVinos[i].gananciaTotal();
 				nombre = misVinos[i].getNombre();
 			}
