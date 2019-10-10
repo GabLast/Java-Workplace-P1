@@ -177,23 +177,28 @@ public class Biblioteca {
 			publicacion.actualizarEjemplares(false);
 			realizado = true;
 			
-			prestamo.verificarRetraso();
+			prestamo.verificarRetraso(fechaEntrego);
 		}
 		
 		return realizado;
 	}
-
-	public ArrayList cantidadDocumentosPorTipo(String idCliente)
-	{
 	
-		Cliente cliente = buscarCliente(idCliente);
-		ArrayList<Integer> arreglo = new ArrayList<>();
-		
-		if(cliente != null)
-		{
-			
-		}
-		
-		return arreglo;
-	}
+//	public boolean devolverPrestamoVersionGrupo(String idCliente, String idPrestamo)
+//	{
+//		
+//	}
+	
+//	public ArrayList cantidadDocumentosPorTipo(String idCliente)
+//	{
+//	
+//		Cliente cliente = buscarCliente(idCliente);
+//		ArrayList<Integer> arreglo = new ArrayList<>();
+//		
+//		if(cliente != null)
+//		{
+//			
+//		}
+//		
+//		return arreglo;
+//	}
 }

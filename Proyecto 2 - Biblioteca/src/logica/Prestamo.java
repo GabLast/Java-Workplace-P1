@@ -88,9 +88,10 @@ public class Prestamo {
 		this.multaPorRetraso = multaPorRetraso;
 	}
 
-	public void verificarRetraso()
+	public void verificarRetraso(Date fechaEntregado)
 	{
 		double cantidad = 0;
+		fechaEntrega = fechaEntregado;
 		
 		int dias = fechaEntrega.compareTo(fechaInicio);
 		
@@ -98,7 +99,7 @@ public class Prestamo {
 		{
 			cantidad += dias * 100;
 		}
-		else
+		
 		
 		multaPorRetraso = cantidad;
 	}

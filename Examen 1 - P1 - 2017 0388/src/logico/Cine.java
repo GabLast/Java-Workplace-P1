@@ -9,7 +9,7 @@ public class Cine {
 	private float[] recaudacionMes;
 	private Boleta[] boletas;
 	private static int cantBoletas;
-	
+	//debi poner que el cine conoce las peliculas OJO
 	
 	public Cine(String codigo, String nombre, int cantSalas, String provincia) {
 		super();

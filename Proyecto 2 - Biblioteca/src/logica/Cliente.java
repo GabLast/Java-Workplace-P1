@@ -66,7 +66,7 @@ public class Cliente {
 		if(devolver)
 		{
 			deuda += prestamo.getMultaPorRetraso();
-			misPrestamos.remove(prestamo);
+			prestamo.setEstado(false);
 			cantPrestamos--;
 		}
 		else
@@ -78,17 +78,17 @@ public class Cliente {
 		
 	}
 	
-	public ArrayList numeroDocsPerType()
-	{
-		int i;
-		int libros = 0;
-		int articulos = 0;
-		int revistas = 0;
-		
-		for(i = 0; i < misPrestamos.size(); i++)
-		{
-			if(misPrestamos.get(i).getPublicacion())
-		}
-	}
+//	public ArrayList numeroDocsPerType()
+//	{
+//		int i;
+//		int libros = 0;
+//		int articulos = 0;
+//		int revistas = 0;
+//		
+//		for(i = 0; i < misPrestamos.size(); i++)
+//		{
+//			if(misPrestamos.get(i).getPublicacion())
+//		}
+//	}
 	
 }

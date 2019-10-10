@@ -54,7 +54,7 @@ public class Empresa {
 	{
 		int dia = -1;
 		int i;
-		
+		//usar buscar indice cine para no usar ese for
 		for(i = 0; i < cantCines; i++)
 		{
 			if(misCines[i].getCodigo().equalsIgnoreCase(codigoCine))
