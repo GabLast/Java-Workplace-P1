@@ -28,9 +28,13 @@
 <fullyQualifiedTypeName name="logica.Prestamo"/>
 <fullyQualifiedTypeName name="logica.Publicacion"/>
 <fullyQualifiedTypeName name="logica.Cliente"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="logica.Producto"/>
 <fullyQualifiedTypeName name="logica.Almacen"/>
 <fullyQualifiedTypeName name="logico.Pelicula"/>
 <fullyQualifiedTypeName name="logico.Boleta"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="logico.Factura"/>
+<fullyQualifiedTypeName name="logico.Queso"/>
+<fullyQualifiedTypeName name="java.awt.Dimension"/>
 </qualifiedTypeNameHistroy>
