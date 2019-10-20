@@ -182,23 +182,31 @@ public class Facturar extends JDialog {
 						JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
-//				else
-//				{
+				else
+				{
 //					if(txtCedula.getText().length() > 1 && txtNombre.getText().length() > 1 && txtTelefono.getText().length() > 1
 //							&& txtDireccion.getText().length() > 1)
-//					{
-//						miCliente.setNombre(txtNombre.getText());
-//						miCliente.setDireccion(txtDireccion.getText());
-//						miCliente.setTelefono(txtTelefono.getText());
-//						miCliente.setCedula(txtCedula.getText());
+					if(true)
+					{
+						//btnRegistrar.setText("Modificar");
+						cedula = miCliente.getCedula();
+						btnRegistrar.setVisible(false);
+						txtNombre.setText(miCliente.getNombre());
+						txtDireccion.setText(miCliente.getDireccion());
+						txtTelefono.setText(miCliente.getTelefono());
+						txtCedula.setText(miCliente.getCedula());
+						miCliente.setNombre(txtNombre.getText());
+						miCliente.setDireccion(txtDireccion.getText());
+						miCliente.setTelefono(txtTelefono.getText());
+						miCliente.setCedula(txtCedula.getText());
 //						ListarClientes.loadClientes();
 //						dispose();
 //						JOptionPane.showMessageDialog(null, "Modificación realizada", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-//					}
-//					else
-//						JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-//					
-//				}
+					}
+					else
+						JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+					
+				}
 			}
 		});
 		btnRegistrar.setBounds(661, 223, 131, 31);
@@ -488,14 +496,19 @@ public class Facturar extends JDialog {
 						
 						micliente = Complejo.getInstance().buscarClienteByCedula(cedula);
 						
-						if(micliente != null)
+						if(micliente != null && quesos.size() > 0)
 						{
 							Factura fact = new Factura("FACT" + Complejo.getGenCodeQueso(), micliente, quesos);
 							Complejo.getInstance().agregarFactura(fact);
+							JOptionPane.showMessageDialog(null, "Factura generada satisfactoriamente", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+							dispose();
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 						}
 						
-						JOptionPane.showMessageDialog(null, "Factura generada satisfactoriamente", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-						dispose();
+						
 					}
 				});
 				btnGenerar.setActionCommand("OK");
