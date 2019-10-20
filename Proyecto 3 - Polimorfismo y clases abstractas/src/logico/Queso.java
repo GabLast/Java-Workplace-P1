@@ -3,15 +3,26 @@ import java.lang.Math;
 
 public abstract class Queso {
 
+	protected String id;
 	protected float precioBase;
 	protected float precioUnitario;
+	protected boolean estadoDeVenta;
 	
-	
-	public Queso(float precioBase, float precioUnitario) {
+	public Queso(String id, float precioBase, float precioUnitario, boolean estadoDeVenta) {
 		super();
+		this.id = id;
 		this.precioBase = precioBase;
 		this.precioUnitario = precioUnitario;
+		this.estadoDeVenta = estadoDeVenta;
 		
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public float getPrecioBase() {
@@ -30,6 +41,14 @@ public abstract class Queso {
 		this.precioUnitario = precioUnitario;
 	}
 	
+	public boolean isEstadoDeVenta() {
+		return estadoDeVenta;
+	}
+
+	public void setEstadoDeVenta(boolean estadoDeVenta) {
+		this.estadoDeVenta = estadoDeVenta;
+	}
+
 	public abstract float volumen();
 	
 	public float precioTotal()

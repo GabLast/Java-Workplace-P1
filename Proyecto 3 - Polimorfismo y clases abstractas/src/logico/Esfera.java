@@ -4,12 +4,14 @@ public class Esfera extends Queso {
 
 	private float radio;
 	
-	public Esfera(float precioBase, float precioUnitario, float radio) {
-		super(precioBase, precioUnitario);
+	
+	
+	public Esfera(String id, float precioBase, float precioUnitario, boolean estadoDeVenta, float radio) {
+		super(id, precioBase, precioUnitario, estadoDeVenta);
 		
 		this.radio = radio;
 	}
-	
+
 	public float getRadio() {
 		return radio;
 	}
@@ -24,4 +26,6 @@ public class Esfera extends Queso {
 		float volumen = (float) ((4/3) * Math.PI * (float) Math.pow(radio, 3));
 		return volumen;
 	}
+
+	
 }

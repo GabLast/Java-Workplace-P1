@@ -8,6 +8,13 @@ public class Factura {
 	private Cliente miCliente;
 	private ArrayList<Queso> misQuesos;
 
+	public Factura(String codigo, Cliente miCliente, ArrayList<Queso> misQuesos) {
+		super();
+		this.codigo = codigo;
+		this.miCliente = miCliente;
+		misQuesos = new ArrayList<>();
+	}
+
 	public String getCodigo() {
 		return codigo;
 	}
@@ -31,8 +38,17 @@ public class Factura {
 	public void setMisQuesos(ArrayList<Queso> misQuesos) {
 		this.misQuesos = misQuesos;
 	}
-
 	
+	public boolean agregarQuesoFactura(Queso unQueso)
+	{
+		if(unQueso != null)
+		{
+			misQuesos.add(unQueso);
+			unQueso.setEstadoDeVenta(false);
+			return true;
+		}
+		return false;
+	}
 	
 	public float valorTotal()
 	{
@@ -44,5 +60,25 @@ public class Factura {
 		}
 		
 		return total;
+	}
+	
+	public float precioQuesoEsfericoMayor()
+	{
+		float precioDelMayor = 0;
+		float volumenDelMayor = 0;
+		
+		for(Queso queso : misQuesos)
+		{
+			if(queso instanceof Esfera)
+			{
+				if(queso.volumen() > volumenDelMayor)
+				{
+					volumenDelMayor = queso.volumen();
+					precioDelMayor = queso.getPrecioBase();
+				}
+			}
+		}
+		
+		return precioDelMayor;
 	}
 }

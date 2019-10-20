@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="javax.swing.JComboBox"/>
-<fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
 <fullyQualifiedTypeName name="logic.Almacen"/>
 <fullyQualifiedTypeName name="Visual.RegSuplidor"/>
 <fullyQualifiedTypeName name="logic.Suministrador"/>
@@ -15,12 +14,10 @@
 <fullyQualifiedTypeName name="logica.Cuenta"/>
 <fullyQualifiedTypeName name="visual.RegCuenta"/>
 <fullyQualifiedTypeName name="visual.ListaCuentas"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="logica.Banco"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="visual.IngresarSaldo"/>
 <fullyQualifiedTypeName name="visual.RevisionMensual"/>
-<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
 <fullyQualifiedTypeName name="visual.RetirarDinero"/>
 <fullyQualifiedTypeName name="logica.Publicaciones"/>
@@ -32,9 +29,28 @@
 <fullyQualifiedTypeName name="logica.Almacen"/>
 <fullyQualifiedTypeName name="logico.Pelicula"/>
 <fullyQualifiedTypeName name="logico.Boleta"/>
-<fullyQualifiedTypeName name="java.lang.Math"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="logico.Factura"/>
-<fullyQualifiedTypeName name="logico.Queso"/>
 <fullyQualifiedTypeName name="java.awt.Dimension"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="javax.swing.DefaultListModel"/>
+<fullyQualifiedTypeName name="javax.swing.JList"/>
+<fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.lang.Compiler"/>
+<fullyQualifiedTypeName name="javax.naming.ldap.Rdn"/>
+<fullyQualifiedTypeName name="visual.ListarQuesos"/>
+<fullyQualifiedTypeName name="logico.Esfera"/>
+<fullyQualifiedTypeName name="logico.Cilindro"/>
+<fullyQualifiedTypeName name="visual.FabricarQueso"/>
+<fullyQualifiedTypeName name="logico.Factura"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="logico.Queso"/>
+<fullyQualifiedTypeName name="visual.ListarClientes"/>
+<fullyQualifiedTypeName name="logico.CHueco"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="logico.Cliente"/>
+<fullyQualifiedTypeName name="visual.ModificarCliente"/>
+<fullyQualifiedTypeName name="logico.Complejo"/>
+<fullyQualifiedTypeName name="visual.Facturar"/>
+<fullyQualifiedTypeName name="visual.ListarFacturas"/>
 </qualifiedTypeNameHistroy>
