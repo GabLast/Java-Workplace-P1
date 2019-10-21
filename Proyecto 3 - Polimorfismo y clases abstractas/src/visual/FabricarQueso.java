@@ -239,23 +239,33 @@ public class FabricarQueso extends JDialog {
 						
 						if(rdBtnEsferico.isSelected())
 						{
-							queso = new Esfera("ESF" + Complejo.getGenCodeQueso(), Float.valueOf(txtPrecioBase.getText()),
-									Float.valueOf(txtPrecioUnit.getText()), true, (int)spnRadio.getValue());
-							clean();
+							if((int)spnRadio.getValue() > 0)
+							{
+								queso = new Esfera("ESF" + Complejo.getGenCodeQueso(), Float.valueOf(txtPrecioBase.getText()),
+										Float.valueOf(txtPrecioUnit.getText()), true, (int)spnRadio.getValue());
+								clean();
+							}
 						}
 						else if(rdBtnCilindrico.isSelected())
 						{
-							queso = new Cilindro("CIL" + Complejo.getGenCodeQueso(), Float.valueOf(txtPrecioBase.getText()),
-									Float.valueOf(txtPrecioUnit.getText()), true, (int)spnRadioCilindro.getValue(), 
-									(int)spnLongitudCilindro.getValue());
-							clean();
+							if((int)spnRadioCilindro.getValue() > 0 && (int)spnLongitudCilindro.getValue() > 0)
+							{
+								queso = new Cilindro("CIL" + Complejo.getGenCodeQueso(), Float.valueOf(txtPrecioBase.getText()),
+										Float.valueOf(txtPrecioUnit.getText()), true, (int)spnRadioCilindro.getValue(), 
+										(int)spnLongitudCilindro.getValue());
+								clean();
+							}
 						}
 						else if(rdBtnHueco.isSelected())
 						{
-							queso = new CHueco("CHUE" + Complejo.getGenCodeQueso(), Float.valueOf(txtPrecioBase.getText()),
-									Float.valueOf(txtPrecioUnit.getText()), true, (int)spnRadioExtHueco.getValue(),
-									(int)spnRadioIntHueco.getValue(), (int)spnLongitudHueco.getValue());
-							clean();
+							if((int)spnRadioExtHueco.getValue() > (int)spnRadioIntHueco.getValue())
+							{
+								queso = new CHueco("CHUE" + Complejo.getGenCodeQueso(), Float.valueOf(txtPrecioBase.getText()),
+										Float.valueOf(txtPrecioUnit.getText()), true, (int)spnRadioExtHueco.getValue(),
+										(int)spnRadioIntHueco.getValue(), (int)spnLongitudHueco.getValue());
+								clean();
+							}
+							
 						}
 						
 						if(queso != null)
@@ -265,6 +275,14 @@ public class FabricarQueso extends JDialog {
 						}
 						else
 						{
+							if((int)spnRadioExtHueco.getValue() < (int)spnRadioIntHueco.getValue())
+							{
+								JOptionPane.showMessageDialog(null, "El radio exterior debe ser mayor que el radio interior", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+							}
+							else if((int)spnRadio.getValue() > 0 || (int)spnRadioCilindro.getValue() > 0 && (int)spnLongitudCilindro.getValue() > 0)
+							{
+								JOptionPane.showMessageDialog(null, "No se permiten números negativos", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+							}
 							JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 						}
 					}
@@ -290,6 +308,7 @@ public class FabricarQueso extends JDialog {
 
 		spnRadio.setValue(0);
 		spnLongitudCilindro.setValue(0);
+		spnRadioCilindro.setValue(0);
 		spnLongitudHueco.setValue(0);
 		spnRadioExtHueco.setValue(0);
 		spnRadioIntHueco.setValue(0);

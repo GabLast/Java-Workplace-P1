@@ -108,6 +108,14 @@ public class Principal extends JFrame {
 		});
 		mnFacturar.add(mntmNewMenuItem_1);
 		
+//		JMenuItem mntmReporteDe = new JMenuItem("Reporte de factura");
+//		mntmReporteDe.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				new ReporteFactura().setVisible(true);
+//			}
+//		});
+//		mnFacturar.add(mntmReporteDe);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

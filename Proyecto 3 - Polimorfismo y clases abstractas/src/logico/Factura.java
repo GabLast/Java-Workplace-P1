@@ -12,7 +12,8 @@ public class Factura {
 		super();
 		this.codigo = codigo;
 		this.miCliente = miCliente;
-		misQuesos = new ArrayList<>();
+//		misQuesos = new ArrayList<>();
+		this.misQuesos = misQuesos;
 	}
 
 	public String getCodigo() {
@@ -74,7 +75,7 @@ public class Factura {
 				if(queso.volumen() > volumenDelMayor)
 				{
 					volumenDelMayor = queso.volumen();
-					precioDelMayor = queso.getPrecioBase();
+					precioDelMayor = queso.precioTotal();
 				}
 			}
 		}

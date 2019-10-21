@@ -66,6 +66,7 @@ public class Facturar extends JDialog {
 	private String cedula = "";
 	
 	private JTextField txtTotal;
+	private JTextField txtFactCode;
 	
 	
 	/**
@@ -90,6 +91,7 @@ public class Facturar extends JDialog {
 	 * Create the dialog.
 	 */
 	public Facturar(boolean modificarCliente) {
+		setTitle("Facturando");
 		
 		setResizable(false);
 		if(modificarCliente)
@@ -117,11 +119,11 @@ public class Facturar extends JDialog {
 		contentPanel.add(panel);
 		
 		JLabel lblCdula = new JLabel("C\u00E9dula:");
-		lblCdula.setBounds(17, 36, 73, 23);
+		lblCdula.setBounds(17, 95, 73, 23);
 		panel.add(lblCdula);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(17, 95, 88, 23);
+		lblNombre.setBounds(17, 154, 88, 23);
 		panel.add(lblNombre);
 		if(modificarCliente)
 			lblNombre.setVisible(true);
@@ -129,7 +131,7 @@ public class Facturar extends JDialog {
 			lblNombre.setVisible(false);
 		
 		JLabel lblDireccin = new JLabel("Direcci\u00F3n:");
-		lblDireccin.setBounds(17, 154, 88, 23);
+		lblDireccin.setBounds(17, 214, 88, 23);
 		panel.add(lblDireccin);
 		if(modificarCliente)
 			lblDireccin.setVisible(true);
@@ -137,7 +139,7 @@ public class Facturar extends JDialog {
 			lblDireccin.setVisible(false);
 		
 		JLabel lblTelfono = new JLabel("Tel\u00E9fono:");
-		lblTelfono.setBounds(17, 213, 88, 23);
+		lblTelfono.setBounds(438, 154, 88, 23);
 		panel.add(lblTelfono);
 		if(modificarCliente)
 			lblTelfono.setVisible(true);
@@ -156,7 +158,13 @@ public class Facturar extends JDialog {
 //			txtCedula.setText(miCliente.getCedula());
 		}
 		else
+		{
 			btnRegistrar.setVisible(false);
+			txtTelefono.setEditable(false);
+			txtDireccion.setEditable(false);
+			txtNombre.setEditable(false);
+		}
+			
 		btnRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -170,6 +178,8 @@ public class Facturar extends JDialog {
 					{
 						miCliente = new Cliente(txtNombre.getText(), txtCedula.getText(), txtDireccion.getText(), 
 								txtTelefono.getText());
+						
+						System.out.println(miCliente.getCedula());
 						
 						cedula = miCliente.getCedula();
 						Complejo.getInstance().agregarCliente(miCliente);
@@ -188,6 +198,7 @@ public class Facturar extends JDialog {
 //							&& txtDireccion.getText().length() > 1)
 					if(true)
 					{
+						//System.out.println(miCliente.getCedula());
 						//btnRegistrar.setText("Modificar");
 						cedula = miCliente.getCedula();
 						btnRegistrar.setVisible(false);
@@ -203,8 +214,8 @@ public class Facturar extends JDialog {
 //						dispose();
 //						JOptionPane.showMessageDialog(null, "Modificación realizada", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 					}
-					else
-						JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+//					else
+//						JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 					
 				}
 			}
@@ -213,13 +224,13 @@ public class Facturar extends JDialog {
 		panel.add(btnRegistrar);
 		
 		txtCedula = new JTextField();
-		txtCedula.setBounds(107, 31, 244, 29);
+		txtCedula.setBounds(107, 92, 314, 29);
 		panel.add(txtCedula);
 		txtCedula.setColumns(10);
 		
 		txtNombre = new JTextField();
 		txtNombre.setColumns(10);
-		txtNombre.setBounds(107, 91, 244, 29);
+		txtNombre.setBounds(107, 151, 314, 29);
 		panel.add(txtNombre);
 		if(modificarCliente)
 			txtNombre.setVisible(true);
@@ -228,7 +239,7 @@ public class Facturar extends JDialog {
 		
 		txtDireccion = new JTextField();
 		txtDireccion.setColumns(10);
-		txtDireccion.setBounds(107, 151, 244, 29);
+		txtDireccion.setBounds(107, 211, 314, 29);
 		panel.add(txtDireccion);
 		if(modificarCliente)
 			txtDireccion.setVisible(true);
@@ -238,7 +249,7 @@ public class Facturar extends JDialog {
 		
 		txtTelefono = new JTextField();
 		txtTelefono.setColumns(10);
-		txtTelefono.setBounds(107, 211, 244, 29);
+		txtTelefono.setBounds(529, 151, 263, 29);
 		panel.add(txtTelefono);
 		if(modificarCliente)
 			txtTelefono.setVisible(true);
@@ -258,6 +269,7 @@ public class Facturar extends JDialog {
 				
 				if(miCliente != null)
 				{
+					cedula = miCliente.getCedula();
 					txtCedula.setText(miCliente.getCedula());
 					txtNombre.setText(miCliente.getNombre());
 					txtDireccion.setText(miCliente.getDireccion());
@@ -268,6 +280,11 @@ public class Facturar extends JDialog {
 					txtNombre.setVisible(true);
 					txtDireccion.setVisible(true);
 					txtTelefono.setVisible(true);
+					txtNombre.setVisible(true);
+					txtDireccion.setVisible(true);
+					txtTelefono.setEditable(false);
+					txtDireccion.setEditable(false);
+					txtNombre.setEditable(false);
 					if(modificarCliente)
 						btnRegistrar.setVisible(true);
 					else
@@ -281,12 +298,27 @@ public class Facturar extends JDialog {
 					txtNombre.setVisible(true);
 					txtDireccion.setVisible(true);
 					txtTelefono.setVisible(true);
+					txtNombre.setText("");
+					txtDireccion.setText("");
+					txtTelefono.setText("");
 					btnRegistrar.setVisible(true);
 				}
 			}
 		});
-		btnBuscarCliente.setBounds(368, 28, 131, 31);
+		btnBuscarCliente.setBounds(438, 91, 131, 31);
 		panel.add(btnBuscarCliente);
+		
+		JLabel lblCdigoDeFactura = new JLabel("C\u00F3digo de factura:");
+		lblCdigoDeFactura.setBounds(17, 36, 156, 23);
+		panel.add(lblCdigoDeFactura);
+		
+		txtFactCode = new JTextField();
+		txtFactCode.setBounds(179, 33, 244, 29);
+		panel.add(txtFactCode);
+		txtFactCode.setFont(new Font("Times New Roman", Font.PLAIN, 19));
+		txtFactCode.setEditable(false);
+		txtFactCode.setColumns(10);
+		txtFactCode.setText("FACT" + Complejo.getGenCodeFact());
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(17, 311, 809, 483);
@@ -311,13 +343,15 @@ public class Facturar extends JDialog {
 		
 		btnBuscarQuesos = new JButton("Buscar");
 		
+		jListRightModel = new DefaultListModel();
+		
 		btnBuscarQuesos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				jListLeftModel = new DefaultListModel();
-				jListRightModel = new DefaultListModel();
 				
 				//Mostrando los quesos en la lista
+				
 				
 				for(Queso cheese : Complejo.getInstance().getQuesos())
 				{
@@ -384,7 +418,7 @@ public class Facturar extends JDialog {
 				
 				if(list_ViewingQuesos.getSelectedIndex() == -1)
 				{
-					JOptionPane.showMessageDialog(null, "Seleccione algún queso", "", 1);
+					JOptionPane.showMessageDialog(null, "Seleccione algún queso", "", JOptionPane.WARNING_MESSAGE);
 				}
 				else
 				{
@@ -406,9 +440,9 @@ public class Facturar extends JDialog {
 					for(Queso cheese : quesos)
 					{
 						
-						total += cheese.getPrecioBase() + cheese.getPrecioUnitario()*cheese.volumen();
+						total += cheese.precioTotal();
 					}
-					txtTotal.setText(String.valueOf(total));
+					txtTotal.setText("$" + String.format("%.2f", total));
 					
 					//removiendo valor de la lista de la izquierda
 					if(jListLeftModel.getSize() != 0)
@@ -432,7 +466,7 @@ public class Facturar extends JDialog {
 				
 				if(list_CompraQuesos.getSelectedIndex() == -1)
 				{
-					JOptionPane.showMessageDialog(rootPane, "Seleccione algún queso", "Notificación", 1);
+					JOptionPane.showMessageDialog(null, "Seleccione algún queso", "Notificación", JOptionPane.WARNING_MESSAGE);
 				}
 				else
 				{
@@ -456,9 +490,10 @@ public class Facturar extends JDialog {
 					for(Queso cheese : quesos)
 					{
 						
-						total += cheese.getPrecioBase() + cheese.getPrecioUnitario()*cheese.volumen();
+						total += cheese.precioTotal();
 					}
-					txtTotal.setText(String.valueOf(total));
+					
+					txtTotal.setText("$" + String.format("%.2f", total));
 					
 					//removiendo valor de la lista de la derecha
 					if(jListRightModel.getSize() != 0)
@@ -496,9 +531,17 @@ public class Facturar extends JDialog {
 						
 						micliente = Complejo.getInstance().buscarClienteByCedula(cedula);
 						
+//						System.out.println("Cliente que se agrega:"+micliente.getCedula());
+//						
+//						for(Queso chese : quesos)
+//						{
+//							System.out.println("Factura:");
+//							System.out.println(chese.getId());
+//						}
+//						
 						if(micliente != null && quesos.size() > 0)
 						{
-							Factura fact = new Factura("FACT" + Complejo.getGenCodeQueso(), micliente, quesos);
+							Factura fact = new Factura(txtFactCode.getText(), micliente, quesos);
 							Complejo.getInstance().agregarFactura(fact);
 							JOptionPane.showMessageDialog(null, "Factura generada satisfactoriamente", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 							dispose();

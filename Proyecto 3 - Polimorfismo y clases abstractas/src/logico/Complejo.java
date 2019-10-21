@@ -9,6 +9,10 @@ public class Complejo {
 	private ArrayList<Factura> facturas;
 	private static int genCodeQueso;
 	private static Complejo miFabrica = null;
+	private static int contEsf;
+	private static int contCil;
+	private static int contHue;
+	private static int genCodeFact;
 	
 	private Complejo()
 	{
@@ -17,8 +21,12 @@ public class Complejo {
 		facturas = new ArrayList<>();
 		clientes = new ArrayList<>();
 		genCodeQueso = 0;
+		contEsf = 0;
+		contCil = 0;
+		contHue = 0;
+		genCodeFact = 0;
 	}
-	
+
 	public static Complejo getInstance()
 	{
 		if(miFabrica == null)
@@ -27,6 +35,22 @@ public class Complejo {
 		}
 		
 		return miFabrica;
+	}
+	
+	public static int getContEsf() {
+		return contEsf;
+	}
+
+	public static int getContCil() {
+		return contCil;
+	}
+
+	public static int getContHue() {
+		return contHue;
+	}
+	
+	public static int getGenCodeFact() {
+		return genCodeFact;
 	}
 	
 	public ArrayList<Queso> getQuesos() {
@@ -66,6 +90,7 @@ public class Complejo {
 	public void agregarFactura(Factura fact)
 	{
 		facturas.add(fact);
+		genCodeFact++;
 	}
 
 	public void agregarCliente(Cliente cliente)
@@ -153,6 +178,35 @@ public class Complejo {
 		return precio;
 	}
 	
+	public void reporteTipoQueso()
+	{
+		for(Queso unQueso: quesos)
+		{
+			if(unQueso.isEstadoDeVenta())
+			{
+				if(unQueso instanceof Esfera)
+				{
+					contEsf++;
+				}
+				else if(unQueso instanceof Cilindro && !(unQueso instanceof CHueco))
+				{
+					contCil++;
+				}
+				else if(unQueso instanceof CHueco)
+				{
+					contHue++;
+				}
+			}
+		}
+	}
+	
+	public void resetReporte()
+	{
+		contCil = 0;
+		contEsf = 0;
+		contHue = 0;
+	}
+	
 	public ArrayList<Queso> obtenerQuesoByType(int tipo)
 	{
 		ArrayList<Queso> quesosADevolver = new ArrayList<>();
@@ -161,14 +215,20 @@ public class Complejo {
 		{
 			//Todos
 			case 0:
-				
-				return quesos;
+				for(Queso unQueso: quesos)
+				{
+					if(unQueso.isEstadoDeVenta())
+					{
+						quesosADevolver.add(unQueso);
+					}
+				}
+				return quesosADevolver;
 				
 			//Esferico
 			case 1:
 				for(Queso unQueso: quesos)
 				{
-					if(unQueso instanceof Esfera)
+					if(unQueso instanceof Esfera && unQueso.isEstadoDeVenta())
 					{
 						quesosADevolver.add(unQueso);
 					}
@@ -179,7 +239,7 @@ public class Complejo {
 			case 2:
 				for(Queso unQueso: quesos)
 				{
-					if(unQueso instanceof Cilindro)
+					if(unQueso instanceof Cilindro && unQueso.isEstadoDeVenta()  && !(unQueso instanceof CHueco))
 					{
 						quesosADevolver.add(unQueso);
 					}
@@ -190,7 +250,7 @@ public class Complejo {
 			case 3:
 				for(Queso unQueso: quesos)
 				{
-					if(unQueso instanceof CHueco)
+					if(unQueso instanceof CHueco && unQueso.isEstadoDeVenta())
 					{
 						quesosADevolver.add(unQueso);
 					}

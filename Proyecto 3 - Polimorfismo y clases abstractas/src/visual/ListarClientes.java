@@ -53,7 +53,7 @@ public class ListarClientes extends JDialog {
 	 */
 	public ListarClientes() {
 		
-		setTitle("Lista de quesos");
+		setTitle("Lista de clientes");
 		setBounds(100, 100, 450, 300);
 		dim = super.getToolkit().getScreenSize();
 		dim.width *= .50;
@@ -129,7 +129,7 @@ public class ListarClientes extends JDialog {
 								
 								Cliente clienteModi = Complejo.getInstance().buscarClienteByCedula(cedula);
 								
-								System.out.println(clienteModi.getCedula());
+								//System.out.println(clienteModi.getCedula());
 								int option = JOptionPane.showConfirmDialog(null, "Está seguro que desea modificar la cuenta: " 
 										   + clienteModi.getCedula(),"Información",JOptionPane.WARNING_MESSAGE);
 								

@@ -6,12 +6,17 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import logico.Complejo;
+import logico.Factura;
+
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.UIManager;
@@ -26,7 +31,8 @@ public class ListarFacturas extends JDialog {
 	private static DefaultTableModel model;
 	private static Object[] row;
 	private JTable table;
-
+	private String code = "";
+	JButton btnReporteDelQueso;
 	/**
 	 * Launch the application.
 	 */
@@ -49,6 +55,7 @@ public class ListarFacturas extends JDialog {
 	 * Create the dialog.
 	 */
 	public ListarFacturas() {
+		setTitle("Facturas");
 		setBounds(100, 100, 450, 300);
 		dim = super.getToolkit().getScreenSize();
 		dim.width *= .50;
@@ -83,6 +90,18 @@ public class ListarFacturas extends JDialog {
 					
 					loadFacturas();
 					
+					table.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							if(table.getSelectedRow()>-1){
+								int index = table.getSelectedRow();
+								btnReporteDelQueso.setEnabled(true);
+								code = String.valueOf(table.getValueAt(index, 0));
+								
+							}
+						}
+					});
+					
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					table.setModel(model);
 					scrollPane.setViewportView(table);
@@ -100,6 +119,28 @@ public class ListarFacturas extends JDialog {
 						dispose();
 					}
 				});
+				{
+					btnReporteDelQueso = new JButton("Reporte del queso esf\u00E9rico de mayor volumen");
+					btnReporteDelQueso.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							
+							if(!code.equals(""))
+							{
+								Factura fact = Complejo.getInstance().buscarFacturaByCode(code);
+								int option = JOptionPane.showConfirmDialog(null, "Conocer el precio del queso esférico de mayor volumen de la factura: " 
+										   + fact.getCodigo(),"Información",JOptionPane.WARNING_MESSAGE);
+								
+								if(option == JOptionPane.OK_OPTION && fact != null)
+								{
+									JOptionPane.showMessageDialog(null, "Precio del queso esférico de mayor volumen: " + fact.precioQuesoEsfericoMayor(), "Reporte", JOptionPane.INFORMATION_MESSAGE);
+								}
+							}
+							
+						}
+					});
+					btnReporteDelQueso.setEnabled(false);
+					buttonPane.add(btnReporteDelQueso);
+				}
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
@@ -110,14 +151,14 @@ public class ListarFacturas extends JDialog {
 	{
 		model.setRowCount(0);
 		Complejo unComp = Complejo.getInstance();
-		//{"Código", "Cédula Cliente", "Cantidad de Quesos"};
+		//{"Código", "Cédula Cliente", "Cantidad de Quesos", "valor total"};
 		row = new Object[model.getColumnCount()];
 		for (int i = 0; i < unComp.getFacturas().size(); i++) 
 		{
 			row[0] = unComp.getFacturas().get(i).getCodigo();
 			row[1] = unComp.getFacturas().get(i).getMiCliente().getCedula();
 			row[2] = unComp.getFacturas().get(i).getMisQuesos().size();
-			row[3] = unComp.getFacturas().get(i).valorTotal();
+			row[3] = "$" + String.format("%.2f", unComp.getFacturas().get(i).valorTotal());
 			model.addRow(row);
 		}
 	}

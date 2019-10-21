@@ -11,6 +11,7 @@ import logico.Esfera;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +21,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.UIManager;
 import javax.swing.JScrollPane;
 
 public class ListarQuesos extends JDialog {
@@ -36,6 +38,11 @@ public class ListarQuesos extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		try {
 			ListarQuesos dialog = new ListarQuesos();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
@@ -50,7 +57,7 @@ public class ListarQuesos extends JDialog {
 	public ListarQuesos() {
 		setAlwaysOnTop(false);
 		setTitle("Lista de quesos");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 567, 397);
 		dim = super.getToolkit().getScreenSize();
 		dim.width *= .50;
 		dim.height *= .50;
@@ -78,7 +85,7 @@ public class ListarQuesos extends JDialog {
 					};
 					
 					
-					String[] header = {"Código", "Tipo", "Volumen", "Precio Base", "Precio Unitario", "Estado de Venta"};
+					String[] header = {"Código", "Tipo", "Volumen", "Precio Base", "Precio Unitario", "Precio Total", "Estado de Venta"};
 					model.setColumnIdentifiers(header);
 					
 					table = new JTable();
@@ -112,6 +119,21 @@ public class ListarQuesos extends JDialog {
 						dispose();
 					}
 				});
+				{
+					JButton btnReporte = new JButton("Reporte de quesos");
+					btnReporte.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							Complejo.getInstance().reporteTipoQueso();
+							JOptionPane.showMessageDialog(null, "Esférico: " + Complejo.getInstance().getContEsf()+ "\n"
+									+ "Cilíndrico: " + Complejo.getInstance().getContCil() + "\n"
+									+ "Cilíndrico Hueco: " + Complejo.getInstance().getContHue()
+									, "Reporte de Quesos", JOptionPane.INFORMATION_MESSAGE);
+							Complejo.getInstance().resetReporte();
+						}
+					});
+					btnReporte.setActionCommand("Cancel");
+					buttonPane.add(btnReporte);
+				}
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
@@ -122,7 +144,7 @@ public class ListarQuesos extends JDialog {
 	{
 		model.setRowCount(0);
 		Complejo.getInstance();
-		//{"Código", "Tipo", "Volumen", "Precio Base", "Precio Unitario", "Estado de Venta"};
+		//{"Código", "Tipo", "Volumen", "Precio Base", "Precio Unitario", "Total", "Estado de Venta"};
 		row = new Object[model.getColumnCount()];
 		for (int i = 0; i < Complejo.getInstance().getQuesos().size(); i++) 
 		{
@@ -144,16 +166,16 @@ public class ListarQuesos extends JDialog {
 			row[2] = String.format("%.2f", Complejo.getInstance().getQuesos().get(i).volumen());
 			row[3] = "$"+Complejo.getInstance().getQuesos().get(i).getPrecioBase();
 			row[4] = "$"+Complejo.getInstance().getQuesos().get(i).getPrecioUnitario();
+			row[5] = "$"+Complejo.getInstance().getQuesos().get(i).precioTotal();
 			
 			if(Complejo.getInstance().getQuesos().get(i).isEstadoDeVenta())
 			{
-				row[5] = "Disponible";
+				row[6] = "Disponible";
 			}
 			else
-				row[5] = "Vendido"; 
+				row[6] = "Vendido"; 
 			
 			model.addRow(row);
 		}
 	}
-
 }
