@@ -41,7 +41,7 @@ public class FabricarQueso extends JDialog {
 	JSpinner spnRadioExtHueco;
 	JSpinner spnRadioIntHueco;
 	
-	JPanel panel_CHueco;
+	private JPanel panel_CHueco;
 	private JPanel panel_Esferico;
 	private JLabel lblRadio_1;
 	private JSpinner spnRadio;
@@ -149,6 +149,7 @@ public class FabricarQueso extends JDialog {
 			panel_CHueco.setLayout(null);
 			panel_CHueco.setBorder(new TitledBorder(null, "Dimensiones", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			
+			panel_CHueco.setVisible(false);
 			JLabel lblRadio = new JLabel("Longitud:");
 			lblRadio.setBounds(25, 53, 87, 23);
 			panel_CHueco.add(lblRadio);
@@ -178,6 +179,8 @@ public class FabricarQueso extends JDialog {
 			panel_Esferico.setBorder(new TitledBorder(null, "Dimensiones", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			panel_Esferico.setBounds(17, 104, 684, 124);
 			panel.add(panel_Esferico);
+			panel_Esferico.setVisible(false);
+
 			
 			lblRadio_1 = new JLabel("Radio:");
 			lblRadio_1.setBounds(25, 53, 87, 23);
@@ -192,6 +195,7 @@ public class FabricarQueso extends JDialog {
 			panel_Cilindro.setBorder(new TitledBorder(null, "Dimensiones", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			panel_Cilindro.setBounds(17, 104, 684, 124);
 			panel.add(panel_Cilindro);
+			panel_Cilindro.setVisible(false);
 			
 			label = new JLabel("Longitud:");
 			label.setBounds(25, 53, 87, 23);
