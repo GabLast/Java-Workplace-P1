@@ -132,7 +132,7 @@ public class ListarFacturas extends JDialog {
 								
 								if(option == JOptionPane.OK_OPTION && fact != null)
 								{
-									JOptionPane.showMessageDialog(null, "Precio del queso esférico de mayor volumen: " + fact.precioQuesoEsfericoMayor(), "Reporte", JOptionPane.INFORMATION_MESSAGE);
+									JOptionPane.showMessageDialog(null, "Precio del queso esférico de mayor volumen: $" + fact.precioQuesoEsfericoMayor(), "Reporte", JOptionPane.INFORMATION_MESSAGE);
 								}
 							}
 							

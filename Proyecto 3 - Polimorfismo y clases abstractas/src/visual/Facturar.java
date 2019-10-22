@@ -160,9 +160,6 @@ public class Facturar extends JDialog {
 		else
 		{
 			btnRegistrar.setVisible(false);
-			txtTelefono.setEditable(false);
-			txtDireccion.setEditable(false);
-			txtNombre.setEditable(false);
 		}
 			
 		btnRegistrar.addActionListener(new ActionListener() {
@@ -185,6 +182,9 @@ public class Facturar extends JDialog {
 						Complejo.getInstance().agregarCliente(miCliente);
 						
 						btnRegistrar.setVisible(false);
+						txtTelefono.setEditable(false);
+						txtDireccion.setEditable(false);
+						txtNombre.setEditable(false);
 						JOptionPane.showMessageDialog(null, "Cliente Registrado", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 					}
 					else
@@ -302,6 +302,10 @@ public class Facturar extends JDialog {
 					txtDireccion.setText("");
 					txtTelefono.setText("");
 					btnRegistrar.setVisible(true);
+					txtTelefono.setEditable(true);
+					txtDireccion.setEditable(true);
+					txtNombre.setEditable(true);
+					
 				}
 			}
 		});

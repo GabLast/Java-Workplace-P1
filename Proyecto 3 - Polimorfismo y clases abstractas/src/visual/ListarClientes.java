@@ -30,6 +30,7 @@ public class ListarClientes extends JDialog {
 	private static Object[] row;
 	private JTable table;
 	private String cedula = "";
+	JButton btnModificar;
 	/**
 	 * Launch the application.
 	 */
@@ -98,6 +99,7 @@ public class ListarClientes extends JDialog {
 							if(table.getSelectedRow()>-1){
 								int index = table.getSelectedRow();
 								cedula = String.valueOf(table.getValueAt(index, 0));
+								btnModificar.setEnabled(true);
 								
 							}
 						}
@@ -120,7 +122,7 @@ public class ListarClientes extends JDialog {
 					}
 				});
 				{
-					JButton btnModificar = new JButton("Modificar");
+					btnModificar = new JButton("Modificar");
 					btnModificar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) 
 						{
@@ -142,7 +144,7 @@ public class ListarClientes extends JDialog {
 							}
 						}
 					});
-					btnModificar.setActionCommand("Cancel");
+					btnModificar.setEnabled(false);
 					buttonPane.add(btnModificar);
 				}
 				cancelButton.setActionCommand("Cancel");

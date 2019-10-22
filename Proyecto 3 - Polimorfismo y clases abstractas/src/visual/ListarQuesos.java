@@ -127,7 +127,7 @@ public class ListarQuesos extends JDialog {
 							JOptionPane.showMessageDialog(null, "Esférico: " + Complejo.getInstance().getContEsf()+ "\n"
 									+ "Cilíndrico: " + Complejo.getInstance().getContCil() + "\n"
 									+ "Cilíndrico Hueco: " + Complejo.getInstance().getContHue()
-									, "Reporte de Quesos", JOptionPane.INFORMATION_MESSAGE);
+									, "Reporte de Quesos Disponibles" , JOptionPane.INFORMATION_MESSAGE);
 							Complejo.getInstance().resetReporte();
 						}
 					});
@@ -154,7 +154,7 @@ public class ListarQuesos extends JDialog {
 			{
 				row[1] = "Esférico";
 			}
-			else if(Complejo.getInstance().getQuesos().get(i) instanceof Cilindro)
+			else if(Complejo.getInstance().getQuesos().get(i) instanceof Cilindro && !(Complejo.getInstance().getQuesos().get(i) instanceof CHueco))
 			{
 				row[1] = "Cilíndrico";
 			}
@@ -166,7 +166,7 @@ public class ListarQuesos extends JDialog {
 			row[2] = String.format("%.2f", Complejo.getInstance().getQuesos().get(i).volumen());
 			row[3] = "$"+Complejo.getInstance().getQuesos().get(i).getPrecioBase();
 			row[4] = "$"+Complejo.getInstance().getQuesos().get(i).getPrecioUnitario();
-			row[5] = "$"+Complejo.getInstance().getQuesos().get(i).precioTotal();
+			row[5] = "$"+String.format("%.2f", Complejo.getInstance().getQuesos().get(i).precioTotal());
 			
 			if(Complejo.getInstance().getQuesos().get(i).isEstadoDeVenta())
 			{

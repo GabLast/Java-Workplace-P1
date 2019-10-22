@@ -279,11 +279,11 @@ public class FabricarQueso extends JDialog {
 							{
 								JOptionPane.showMessageDialog(null, "El radio exterior debe ser mayor que el radio interior", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 							}
-							else if((int)spnRadio.getValue() > 0 || (int)spnRadioCilindro.getValue() > 0 && (int)spnLongitudCilindro.getValue() > 0)
+							else if((int)spnRadio.getValue() < 0 || (int)spnRadioCilindro.getValue() < 0 && (int)spnLongitudCilindro.getValue() < 0)
 							{
 								JOptionPane.showMessageDialog(null, "No se permiten números negativos", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-							}
-							JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+							}else
+								JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 						}
 					}
 				});

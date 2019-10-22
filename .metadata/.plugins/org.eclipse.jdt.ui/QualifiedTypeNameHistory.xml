@@ -42,15 +42,16 @@
 <fullyQualifiedTypeName name="logico.Esfera"/>
 <fullyQualifiedTypeName name="logico.Cilindro"/>
 <fullyQualifiedTypeName name="visual.FabricarQueso"/>
-<fullyQualifiedTypeName name="logico.Factura"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="logico.Queso"/>
 <fullyQualifiedTypeName name="visual.ListarClientes"/>
-<fullyQualifiedTypeName name="logico.CHueco"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="logico.Cliente"/>
 <fullyQualifiedTypeName name="visual.ModificarCliente"/>
 <fullyQualifiedTypeName name="logico.Complejo"/>
-<fullyQualifiedTypeName name="visual.Facturar"/>
 <fullyQualifiedTypeName name="visual.ListarFacturas"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="logico.Queso"/>
+<fullyQualifiedTypeName name="logico.Factura"/>
+<fullyQualifiedTypeName name="visual.ReporteFactura"/>
+<fullyQualifiedTypeName name="visual.Facturar"/>
+<fullyQualifiedTypeName name="logico.CHueco"/>
 </qualifiedTypeNameHistroy>
