@@ -73,7 +73,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmListarQuesos = new JMenuItem("Listar");
 		mntmListarQuesos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ListarQuesos().setVisible(true);
+				new ListadoQuesos().setVisible(true);
 			}
 		});
 		mnQuesos.add(mntmListarQuesos);

@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 import logico.Complejo;
 import logico.Factura;
@@ -30,7 +31,7 @@ public class ListarFacturas extends JDialog {
 	private Dimension dim;
 	private static DefaultTableModel model;
 	private static Object[] row;
-	private JTable table;
+	private static JTable table;
 	private String code = "";
 	JButton btnReporteDelQueso;
 	/**
@@ -132,7 +133,7 @@ public class ListarFacturas extends JDialog {
 								
 								if(option == JOptionPane.OK_OPTION && fact != null)
 								{
-									JOptionPane.showMessageDialog(null, "Precio del queso esférico de mayor volumen: $" + fact.precioQuesoEsfericoMayor(), "Reporte", JOptionPane.INFORMATION_MESSAGE);
+									JOptionPane.showMessageDialog(null, "Precio del queso esférico de mayor volumen: $" + String.format("%.2f", fact.precioQuesoEsfericoMayor()), "Reporte", JOptionPane.INFORMATION_MESSAGE);
 								}
 							}
 							
@@ -161,5 +162,9 @@ public class ListarFacturas extends JDialog {
 			row[3] = "$" + String.format("%.2f", unComp.getFacturas().get(i).valorTotal());
 			model.addRow(row);
 		}
+		table.setModel(model);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		table.getTableHeader().setReorderingAllowed(false);
+
 	}
 }

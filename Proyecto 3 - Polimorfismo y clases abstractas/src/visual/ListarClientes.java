@@ -18,6 +18,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 import logico.Cliente;
 import logico.Complejo;
@@ -28,7 +29,7 @@ public class ListarClientes extends JDialog {
 	private Dimension dim;
 	private static DefaultTableModel model;
 	private static Object[] row;
-	private JTable table;
+	private static JTable table;
 	private String cedula = "";
 	JButton btnModificar;
 	/**
@@ -167,5 +168,8 @@ public class ListarClientes extends JDialog {
 			row[3] = unComp.getClientes().get(i).getTelefono();
 			model.addRow(row);
 		}
+		table.setModel(model);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		table.getTableHeader().setReorderingAllowed(false);
 	}
 }

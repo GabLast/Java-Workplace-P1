@@ -176,7 +176,7 @@ public class Facturar extends JDialog {
 						miCliente = new Cliente(txtNombre.getText(), txtCedula.getText(), txtDireccion.getText(), 
 								txtTelefono.getText());
 						
-						System.out.println(miCliente.getCedula());
+						//System.out.println(miCliente.getCedula());
 						
 						cedula = miCliente.getCedula();
 						Complejo.getInstance().agregarCliente(miCliente);

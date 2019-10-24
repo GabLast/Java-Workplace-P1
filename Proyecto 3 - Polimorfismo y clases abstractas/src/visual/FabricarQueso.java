@@ -113,7 +113,7 @@ public class FabricarQueso extends JDialog {
 			rdBtnEsferico.setBounds(86, 58, 109, 31);
 			panel.add(rdBtnEsferico);
 			
-			rdBtnCilindrico = new JRadioButton("Cil\u00EDdrico");
+			rdBtnCilindrico = new JRadioButton("Cil\u00EDndrico");
 			rdBtnCilindrico.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					rdBtnEsferico.setSelected(false);

@@ -40,7 +40,6 @@
 <fullyQualifiedTypeName name="javax.naming.ldap.Rdn"/>
 <fullyQualifiedTypeName name="visual.ListarQuesos"/>
 <fullyQualifiedTypeName name="logico.Esfera"/>
-<fullyQualifiedTypeName name="logico.Cilindro"/>
 <fullyQualifiedTypeName name="visual.FabricarQueso"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="visual.ListarClientes"/>
@@ -53,5 +52,9 @@
 <fullyQualifiedTypeName name="logico.Factura"/>
 <fullyQualifiedTypeName name="visual.ReporteFactura"/>
 <fullyQualifiedTypeName name="visual.Facturar"/>
+<fullyQualifiedTypeName name="logico.Cilindro"/>
 <fullyQualifiedTypeName name="logico.CHueco"/>
+<fullyQualifiedTypeName name="visual.ListQuesos"/>
+<fullyQualifiedTypeName name="javax.swing.table.TableColumnModel"/>
+<fullyQualifiedTypeName name="visual.ListadoQuesos"/>
 </qualifiedTypeNameHistroy>
