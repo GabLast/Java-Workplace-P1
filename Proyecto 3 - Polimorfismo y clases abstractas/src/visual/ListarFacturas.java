@@ -133,7 +133,7 @@ public class ListarFacturas extends JDialog {
 								
 								if(option == JOptionPane.OK_OPTION && fact != null)
 								{
-									JOptionPane.showMessageDialog(null, "Precio del queso esférico de mayor volumen: $" + String.format("%.2f", fact.precioQuesoEsfericoMayor()), "Reporte", JOptionPane.INFORMATION_MESSAGE);
+									JOptionPane.showMessageDialog(null, "Precio del queso esférico de mayor volumen: RD$" + String.format("%.2f", fact.precioQuesoEsfericoMayor()), "Reporte", JOptionPane.INFORMATION_MESSAGE);
 								}
 							}
 							
@@ -159,7 +159,7 @@ public class ListarFacturas extends JDialog {
 			row[0] = unComp.getFacturas().get(i).getCodigo();
 			row[1] = unComp.getFacturas().get(i).getMiCliente().getCedula();
 			row[2] = unComp.getFacturas().get(i).getMisQuesos().size();
-			row[3] = "$" + String.format("%.2f", unComp.getFacturas().get(i).valorTotal());
+			row[3] = "RD$" + String.format("%.2f", unComp.getFacturas().get(i).valorTotal());
 			model.addRow(row);
 		}
 		table.setModel(model);

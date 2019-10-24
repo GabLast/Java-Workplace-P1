@@ -25,6 +25,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import java.awt.Color;
+import java.awt.Font;
 
 public class FabricarQueso extends JDialog {
 
@@ -80,6 +82,8 @@ public class FabricarQueso extends JDialog {
 	 * Create the dialog.
 	 */
 	public FabricarQueso() {
+		getContentPane().setBackground(new Color(250, 250, 210));
+		setBackground(new Color(238, 232, 170));
 		setTitle("Fabricando Queso");
 		setResizable(false);
 		setBounds(100, 100, 734, 418);
@@ -95,10 +99,12 @@ public class FabricarQueso extends JDialog {
 			panel.setLayout(null);
 			
 			JLabel lblFiguraDelQueso = new JLabel("Figura del queso:");
+			lblFiguraDelQueso.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 			lblFiguraDelQueso.setBounds(17, 19, 147, 23);
 			panel.add(lblFiguraDelQueso);
 			
 			rdBtnEsferico = new JRadioButton("Esf\u00E9rico");
+			rdBtnEsferico.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			rdBtnEsferico.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					rdBtnEsferico.setSelected(true);
@@ -114,6 +120,7 @@ public class FabricarQueso extends JDialog {
 			panel.add(rdBtnEsferico);
 			
 			rdBtnCilindrico = new JRadioButton("Cil\u00EDndrico");
+			rdBtnCilindrico.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			rdBtnCilindrico.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					rdBtnEsferico.setSelected(false);
@@ -129,6 +136,7 @@ public class FabricarQueso extends JDialog {
 			panel.add(rdBtnCilindrico);
 			
 			rdBtnHueco = new JRadioButton("Cilindro Hueco");
+			rdBtnHueco.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			rdBtnHueco.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					rdBtnEsferico.setSelected(false);
@@ -151,14 +159,17 @@ public class FabricarQueso extends JDialog {
 			
 			panel_CHueco.setVisible(false);
 			JLabel lblRadio = new JLabel("Longitud:");
+			lblRadio.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			lblRadio.setBounds(25, 53, 87, 23);
 			panel_CHueco.add(lblRadio);
 			
 			JLabel lblLongitud = new JLabel("Radio exterior:");
+			lblLongitud.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			lblLongitud.setBounds(216, 53, 131, 23);
 			panel_CHueco.add(lblLongitud);
 			
 			JLabel lblRadioInterior = new JLabel("Radio interior:");
+			lblRadioInterior.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			lblRadioInterior.setBounds(451, 53, 125, 23);
 			panel_CHueco.add(lblRadioInterior);
 			
@@ -183,6 +194,7 @@ public class FabricarQueso extends JDialog {
 
 			
 			lblRadio_1 = new JLabel("Radio:");
+			lblRadio_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			lblRadio_1.setBounds(25, 53, 87, 23);
 			panel_Esferico.add(lblRadio_1);
 			
@@ -198,6 +210,7 @@ public class FabricarQueso extends JDialog {
 			panel_Cilindro.setVisible(false);
 			
 			label = new JLabel("Longitud:");
+			label.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			label.setBounds(25, 53, 87, 23);
 			panel_Cilindro.add(label);
 
@@ -206,6 +219,7 @@ public class FabricarQueso extends JDialog {
 			panel_Cilindro.add(spnLongitudCilindro);
 
 			label_1 = new JLabel("Radio:");
+			label_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			label_1.setBounds(216, 53, 131, 23);
 			panel_Cilindro.add(label_1);
 
@@ -214,10 +228,12 @@ public class FabricarQueso extends JDialog {
 			panel_Cilindro.add(spnRadioCilindro);
 			
 			lblNewLabel = new JLabel("Precio Base:");
+			lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			lblNewLabel.setBounds(27, 264, 109, 23);
 			panel.add(lblNewLabel);
 			
 			lblPrecioUnitario = new JLabel("Precio Unitario:");
+			lblPrecioUnitario.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			lblPrecioUnitario.setBounds(356, 264, 138, 23);
 			panel.add(lblPrecioUnitario);
 			
@@ -237,13 +253,15 @@ public class FabricarQueso extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				btnFabricar = new JButton("Fabricar");
+				btnFabricar.setBackground(new Color(204, 204, 255));
 				btnFabricar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						Queso queso = null;
 						
 						if(rdBtnEsferico.isSelected())
 						{
-							if((int)spnRadio.getValue() > 0)
+							if((int)spnRadio.getValue() > 0
+									&& txtPrecioBase.getText().length() > 0 && txtPrecioUnit.getText().length() > 0)
 							{
 								queso = new Esfera("ESF" + Complejo.getGenCodeQueso(), Float.valueOf(txtPrecioBase.getText()),
 										Float.valueOf(txtPrecioUnit.getText()), true, (int)spnRadio.getValue());
@@ -252,7 +270,8 @@ public class FabricarQueso extends JDialog {
 						}
 						else if(rdBtnCilindrico.isSelected())
 						{
-							if((int)spnRadioCilindro.getValue() > 0 && (int)spnLongitudCilindro.getValue() > 0)
+							if((int)spnRadioCilindro.getValue() > 0 && (int)spnLongitudCilindro.getValue() > 0
+									&& txtPrecioBase.getText().length() > 0 && txtPrecioUnit.getText().length() > 0)
 							{
 								queso = new Cilindro("CIL" + Complejo.getGenCodeQueso(), Float.valueOf(txtPrecioBase.getText()),
 										Float.valueOf(txtPrecioUnit.getText()), true, (int)spnRadioCilindro.getValue(), 
@@ -262,7 +281,8 @@ public class FabricarQueso extends JDialog {
 						}
 						else if(rdBtnHueco.isSelected())
 						{
-							if((int)spnRadioExtHueco.getValue() > (int)spnRadioIntHueco.getValue())
+							if((int)spnRadioExtHueco.getValue() > (int)spnRadioIntHueco.getValue() 
+									&& txtPrecioBase.getText().length() > 0 && txtPrecioUnit.getText().length() > 0)
 							{
 								queso = new CHueco("CHUE" + Complejo.getGenCodeQueso(), Float.valueOf(txtPrecioBase.getText()),
 										Float.valueOf(txtPrecioUnit.getText()), true, (int)spnRadioExtHueco.getValue(),
@@ -279,11 +299,11 @@ public class FabricarQueso extends JDialog {
 						}
 						else
 						{
-							if((int)spnRadioExtHueco.getValue() < (int)spnRadioIntHueco.getValue())
+							if(rdBtnHueco.isSelected() && (int)spnRadioExtHueco.getValue() <= (int)spnRadioIntHueco.getValue())
 							{
 								JOptionPane.showMessageDialog(null, "El radio exterior debe ser mayor que el radio interior", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 							}
-							else if((int)spnRadio.getValue() < 0 || (int)spnRadioCilindro.getValue() < 0 && (int)spnLongitudCilindro.getValue() < 0)
+							else if((rdBtnCilindrico.isSelected() || rdBtnEsferico.isSelected()) && (int)spnRadio.getValue() < 0 || (int)spnRadioCilindro.getValue() < 0 && (int)spnLongitudCilindro.getValue() < 0)
 							{
 								JOptionPane.showMessageDialog(null, "No se permiten números negativos", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 							}else
@@ -297,6 +317,7 @@ public class FabricarQueso extends JDialog {
 			}
 			{
 				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.setBackground(new Color(204, 204, 255));
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();

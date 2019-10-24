@@ -26,6 +26,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Font;
 
 public class ListadoQuesos extends JDialog {
 
@@ -58,6 +60,7 @@ public class ListadoQuesos extends JDialog {
 	 * Create the dialog.
 	 */
 	public ListadoQuesos() {
+		setBackground(new Color(250, 250, 210));
 		setTitle("Lista de quesos");
 		setBounds(100, 100, 1207, 759);
 //		dim = super.getToolkit().getScreenSize();
@@ -76,6 +79,7 @@ public class ListadoQuesos extends JDialog {
 			panel.setLayout(null);
 			
 			JLabel lblTipoDeQueso = new JLabel("Tipo de Queso:");
+			lblTipoDeQueso.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			lblTipoDeQueso.setBounds(27, 32, 137, 23);
 			panel.add(lblTipoDeQueso);
 			
@@ -87,7 +91,7 @@ public class ListadoQuesos extends JDialog {
 				}
 			});
 			cbxTipo.setModel(new DefaultComboBoxModel(new String[] {"Todos", "Esf\u00E9ricos", "Cil\u00EDndricos", "Cil\u00EDndrico Huecos"}));
-			cbxTipo.setBounds(156, 29, 222, 29);
+			cbxTipo.setBounds(122, 29, 222, 29);
 			panel.add(cbxTipo);
 			
 			JPanel panel_1 = new JPanel();
@@ -157,9 +161,9 @@ public class ListadoQuesos extends JDialog {
 					}
 					
 					row[2] = String.format("%.2f", cheese.volumen());
-					row[3] = "$"+cheese.getPrecioBase();
-					row[4] = "$"+cheese.getPrecioUnitario();
-					row[5] = "$"+String.format("%.2f", cheese.precioTotal());
+					row[3] = "RD$"+cheese.getPrecioBase();
+					row[4] = "RD$"+cheese.getPrecioUnitario();
+					row[5] = "RD$"+String.format("%.2f", cheese.precioTotal());
 					
 					if(cheese.isEstadoDeVenta())
 					{
@@ -180,9 +184,9 @@ public class ListadoQuesos extends JDialog {
 						row[0] = cheese.getId();
 						row[1] = "Esférico";
 						row[2] = String.format("%.2f", cheese.volumen());
-						row[3] = "$"+cheese.getPrecioBase();
-						row[4] = "$"+cheese.getPrecioUnitario();
-						row[5] = "$"+String.format("%.2f", cheese.precioTotal());
+						row[3] = "RD$"+cheese.getPrecioBase();
+						row[4] = "RD$"+cheese.getPrecioUnitario();
+						row[5] = "RD$"+String.format("%.2f", cheese.precioTotal());
 						
 						if(cheese.isEstadoDeVenta())
 						{
@@ -204,9 +208,9 @@ public class ListadoQuesos extends JDialog {
 						row[0] = cheese.getId();
 						row[1] = "Cilíndrico";
 						row[2] = String.format("%.2f", cheese.volumen());
-						row[3] = "$"+cheese.getPrecioBase();
-						row[4] = "$"+cheese.getPrecioUnitario();
-						row[5] = "$"+String.format("%.2f", cheese.precioTotal());
+						row[3] = "RD$"+cheese.getPrecioBase();
+						row[4] = "RD$"+cheese.getPrecioUnitario();
+						row[5] = "RD$"+String.format("%.2f", cheese.precioTotal());
 						
 						if(cheese.isEstadoDeVenta())
 						{
@@ -226,9 +230,9 @@ public class ListadoQuesos extends JDialog {
 						row[0] = cheese.getId();
 						row[1] = "Cilíndrico Hueco";
 						row[2] = String.format("%.2f", cheese.volumen());
-						row[3] = "$"+cheese.getPrecioBase();
-						row[4] = "$"+cheese.getPrecioUnitario();
-						row[5] = "$"+String.format("%.2f", cheese.precioTotal());
+						row[3] = "RD$"+cheese.getPrecioBase();
+						row[4] = "RD$"+cheese.getPrecioUnitario();
+						row[5] = "RD$"+String.format("%.2f", cheese.precioTotal());
 						
 						if(cheese.isEstadoDeVenta())
 						{

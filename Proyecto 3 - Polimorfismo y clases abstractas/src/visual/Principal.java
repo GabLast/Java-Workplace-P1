@@ -15,6 +15,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class Principal extends JFrame {
 
@@ -46,23 +47,26 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
+		setBackground(new Color(240, 230, 140));
 		setResizable(false);
 		setTitle("Complejo L\u00E1cteo (Ciudad de La Habana)");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		dim = super.getToolkit().getScreenSize();
-		dim.width *= .70;
-		dim.height *= .60;
+		dim.width *= .90;
+		dim.height *= .90;
 		super.setSize(dim.width, dim.height);
 		setLocationRelativeTo(null);
 		
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBackground(new Color(238, 232, 170));
 		setJMenuBar(menuBar);
 		
 		JMenu mnQuesos = new JMenu("Quesos");
 		menuBar.add(mnQuesos);
 		
 		JMenuItem mntmFabricarQueso = new JMenuItem("Fabricar");
+		mntmFabricarQueso.setBackground(new Color(250, 250, 210));
 		mntmFabricarQueso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new FabricarQueso().setVisible(true);
@@ -71,6 +75,7 @@ public class Principal extends JFrame {
 		mnQuesos.add(mntmFabricarQueso);
 		
 		JMenuItem mntmListarQuesos = new JMenuItem("Listar");
+		mntmListarQuesos.setBackground(new Color(250, 250, 210));
 		mntmListarQuesos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new ListadoQuesos().setVisible(true);
@@ -82,6 +87,7 @@ public class Principal extends JFrame {
 		menuBar.add(mnClientes);
 		
 		JMenuItem menuItem = new JMenuItem("Listar");
+		menuItem.setBackground(new Color(250, 250, 210));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new ListarClientes().setVisible(true);
@@ -93,6 +99,7 @@ public class Principal extends JFrame {
 		menuBar.add(mnFacturar);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Generar");
+		mntmNewMenuItem.setBackground(new Color(250, 250, 210));
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Facturar(false).setVisible(true);
@@ -101,6 +108,7 @@ public class Principal extends JFrame {
 		mnFacturar.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Listar");
+		mntmNewMenuItem_1.setBackground(new Color(250, 250, 210));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new ListarFacturas().setVisible(true);
@@ -117,6 +125,7 @@ public class Principal extends JFrame {
 //		mnFacturar.add(mntmReporteDe);
 		
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(230, 230, 250));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);

@@ -79,7 +79,7 @@ public class ReporteFactura extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						Factura fact = Complejo.getInstance().buscarFacturaByCode(txtCode.getText());
-						JOptionPane.showMessageDialog(null, "Precio del queso esférico de mayor volumen: " + fact.precioQuesoEsfericoMayor(), "Reporte", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Precio del queso esférico de mayor volumen: RD$" + fact.precioQuesoEsfericoMayor(), "Reporte", JOptionPane.INFORMATION_MESSAGE);
 					}
 				});
 				okButton.setActionCommand("OK");

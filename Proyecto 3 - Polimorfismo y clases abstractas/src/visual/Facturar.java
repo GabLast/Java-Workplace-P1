@@ -36,6 +36,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import java.awt.Font;
+import javax.swing.DropMode;
 
 public class Facturar extends JDialog {
 
@@ -67,6 +68,7 @@ public class Facturar extends JDialog {
 	
 	private JTextField txtTotal;
 	private JTextField txtFactCode;
+	private JTextField txtCarritoDeCompras;
 	
 	
 	/**
@@ -119,10 +121,12 @@ public class Facturar extends JDialog {
 		contentPanel.add(panel);
 		
 		JLabel lblCdula = new JLabel("C\u00E9dula:");
+		lblCdula.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		lblCdula.setBounds(17, 95, 73, 23);
 		panel.add(lblCdula);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		lblNombre.setBounds(17, 154, 88, 23);
 		panel.add(lblNombre);
 		if(modificarCliente)
@@ -131,6 +135,7 @@ public class Facturar extends JDialog {
 			lblNombre.setVisible(false);
 		
 		JLabel lblDireccin = new JLabel("Direcci\u00F3n:");
+		lblDireccin.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		lblDireccin.setBounds(17, 214, 88, 23);
 		panel.add(lblDireccin);
 		if(modificarCliente)
@@ -139,6 +144,7 @@ public class Facturar extends JDialog {
 			lblDireccin.setVisible(false);
 		
 		JLabel lblTelfono = new JLabel("Tel\u00E9fono:");
+		lblTelfono.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		lblTelfono.setBounds(438, 154, 88, 23);
 		panel.add(lblTelfono);
 		if(modificarCliente)
@@ -170,8 +176,8 @@ public class Facturar extends JDialog {
 				if(miCliente == null)
 				{
 					
-					if(txtCedula.getText().length() > 1 && txtNombre.getText().length() > 1 && txtCedula.getText().length() > 1
-							&& txtDireccion.getText().length() > 1)
+					if(txtCedula.getText().length() >= 1 && txtNombre.getText().length() >= 1 && txtDireccion.getText().length() >= 1
+							&& txtTelefono.getText().length() >= 1)
 					{
 						miCliente = new Cliente(txtNombre.getText(), txtCedula.getText(), txtDireccion.getText(), 
 								txtTelefono.getText());
@@ -189,7 +195,8 @@ public class Facturar extends JDialog {
 					}
 					else
 					{
-						JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Operación Errónea: Llene todos los campos con al menos un dígito",
+								"Notificación", JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
 				else
@@ -313,13 +320,14 @@ public class Facturar extends JDialog {
 		panel.add(btnBuscarCliente);
 		
 		JLabel lblCdigoDeFactura = new JLabel("C\u00F3digo de factura:");
+		lblCdigoDeFactura.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		lblCdigoDeFactura.setBounds(17, 36, 156, 23);
 		panel.add(lblCdigoDeFactura);
 		
 		txtFactCode = new JTextField();
-		txtFactCode.setBounds(179, 33, 244, 29);
+		txtFactCode.setBounds(135, 33, 288, 29);
 		panel.add(txtFactCode);
-		txtFactCode.setFont(new Font("Times New Roman", Font.PLAIN, 19));
+		txtFactCode.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		txtFactCode.setEditable(false);
 		txtFactCode.setColumns(10);
 		txtFactCode.setText("FACT" + Complejo.getGenCodeFact());
@@ -337,12 +345,13 @@ public class Facturar extends JDialog {
 			panel_1.setVisible(true);
 		
 		JLabel lblTipo = new JLabel("Tipo:");
+		lblTipo.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		lblTipo.setBounds(17, 35, 48, 23);
 		panel_1.add(lblTipo);
 		
 		cbxTipoQueso = new JComboBox();
 		cbxTipoQueso.setModel(new DefaultComboBoxModel(new String[] {"Todos", "Esf\u00E9rico", "Cil\u00EDndrico", "Cil\u00EDndrico Hueco"}));
-		cbxTipoQueso.setBounds(82, 32, 204, 29);
+		cbxTipoQueso.setBounds(60, 32, 204, 29);
 		panel_1.add(cbxTipoQueso);
 		
 		btnBuscarQuesos = new JButton("Buscar");
@@ -397,7 +406,7 @@ public class Facturar extends JDialog {
 				list_ViewingQuesos.setModel(jListLeftModel);
 			}
 		});
-		btnBuscarQuesos.setBounds(303, 31, 131, 31);
+		btnBuscarQuesos.setBounds(276, 31, 131, 31);
 		panel_1.add(btnBuscarQuesos);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -446,7 +455,7 @@ public class Facturar extends JDialog {
 						
 						total += cheese.precioTotal();
 					}
-					txtTotal.setText("$" + String.format("%.2f", total));
+					txtTotal.setText("RD$" + String.format("%.2f", total));
 					
 					//removiendo valor de la lista de la izquierda
 					if(jListLeftModel.getSize() != 0)
@@ -497,7 +506,7 @@ public class Facturar extends JDialog {
 						total += cheese.precioTotal();
 					}
 					
-					txtTotal.setText("$" + String.format("%.2f", total));
+					txtTotal.setText("RD$" + String.format("%.2f", total));
 					
 					//removiendo valor de la lista de la derecha
 					if(jListRightModel.getSize() != 0)
@@ -514,16 +523,25 @@ public class Facturar extends JDialog {
 		//multi btns could be here
 		
 		JLabel lblTotal = new JLabel("Total:");
-		lblTotal.setBounds(497, 441, 48, 23);
+		lblTotal.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		lblTotal.setBounds(511, 441, 48, 23);
 		panel_1.add(lblTotal);
 		
 		txtTotal = new JTextField();
-		txtTotal.setFont(new Font("Times New Roman", Font.PLAIN, 19));
+		txtTotal.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		txtTotal.setEditable(false);
 		txtTotal.setBounds(562, 438, 166, 29);
 		panel_1.add(txtTotal);
 		
 		txtTotal.setColumns(10);
+		
+		txtCarritoDeCompras = new JTextField();
+		txtCarritoDeCompras.setText("Carrito de Compras");
+		txtCarritoDeCompras.setFont(new Font("Times New Roman", Font.PLAIN, 19));
+		txtCarritoDeCompras.setEditable(false);
+		txtCarritoDeCompras.setColumns(10);
+		txtCarritoDeCompras.setBounds(562, 30, 166, 29);
+		panel_1.add(txtCarritoDeCompras);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -548,11 +566,12 @@ public class Facturar extends JDialog {
 							Factura fact = new Factura(txtFactCode.getText(), micliente, quesos);
 							Complejo.getInstance().agregarFactura(fact);
 							JOptionPane.showMessageDialog(null, "Factura generada satisfactoriamente", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-							dispose();
+							clean();
+							//dispose();
 						}
 						else
 						{
-							JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Operación Errónea: Busque un cliente y un queso", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 						}
 						
 						
@@ -573,6 +592,16 @@ public class Facturar extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+	
+	private void clean()
+	{
+		txtFactCode.setText("FACT" + Complejo.getGenCodeFact());
+		quesos = new ArrayList<>();
+		jListLeftModel = new DefaultListModel();
+		jListRightModel = new DefaultListModel();
+		list_ViewingQuesos.setModel(jListLeftModel);
+		list_CompraQuesos.setModel(jListRightModel);
 	}
 }
 
