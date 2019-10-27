@@ -16,6 +16,7 @@ import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Font;
 
 public class Principal extends JFrame {
 
@@ -59,13 +60,15 @@ public class Principal extends JFrame {
 		setLocationRelativeTo(null);
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBackground(new Color(238, 232, 170));
+		menuBar.setBackground(Color.WHITE);
 		setJMenuBar(menuBar);
 		
 		JMenu mnQuesos = new JMenu("Quesos");
+		mnQuesos.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		menuBar.add(mnQuesos);
 		
 		JMenuItem mntmFabricarQueso = new JMenuItem("Fabricar");
+		mntmFabricarQueso.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		mntmFabricarQueso.setBackground(new Color(250, 250, 210));
 		mntmFabricarQueso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -75,6 +78,7 @@ public class Principal extends JFrame {
 		mnQuesos.add(mntmFabricarQueso);
 		
 		JMenuItem mntmListarQuesos = new JMenuItem("Listar");
+		mntmListarQuesos.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		mntmListarQuesos.setBackground(new Color(250, 250, 210));
 		mntmListarQuesos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -84,9 +88,11 @@ public class Principal extends JFrame {
 		mnQuesos.add(mntmListarQuesos);
 		
 		JMenu mnClientes = new JMenu("Clientes");
+		mnClientes.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		menuBar.add(mnClientes);
 		
 		JMenuItem menuItem = new JMenuItem("Listar");
+		menuItem.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		menuItem.setBackground(new Color(250, 250, 210));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -96,9 +102,11 @@ public class Principal extends JFrame {
 		mnClientes.add(menuItem);
 		
 		JMenu mnFacturar = new JMenu("Facturar");
+		mnFacturar.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		menuBar.add(mnFacturar);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Generar");
+		mntmNewMenuItem.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		mntmNewMenuItem.setBackground(new Color(250, 250, 210));
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -108,6 +116,7 @@ public class Principal extends JFrame {
 		mnFacturar.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Listar");
+		mntmNewMenuItem_1.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		mntmNewMenuItem_1.setBackground(new Color(250, 250, 210));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

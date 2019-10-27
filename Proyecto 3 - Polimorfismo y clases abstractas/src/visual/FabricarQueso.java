@@ -253,6 +253,7 @@ public class FabricarQueso extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				btnFabricar = new JButton("Fabricar");
+				btnFabricar.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				btnFabricar.setBackground(new Color(204, 204, 255));
 				btnFabricar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -303,9 +304,9 @@ public class FabricarQueso extends JDialog {
 							{
 								JOptionPane.showMessageDialog(null, "El radio exterior debe ser mayor que el radio interior", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 							}
-							else if((rdBtnCilindrico.isSelected() || rdBtnEsferico.isSelected()) && (int)spnRadio.getValue() < 0 || (int)spnRadioCilindro.getValue() < 0 && (int)spnLongitudCilindro.getValue() < 0)
+							else if((rdBtnCilindrico.isSelected() || rdBtnEsferico.isSelected()) && (int)spnRadio.getValue() < 0 || ((int)spnRadioCilindro.getValue() < 0 && (int)spnLongitudCilindro.getValue() < 0))
 							{
-								JOptionPane.showMessageDialog(null, "No se permiten números negativos", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.showMessageDialog(null, "No se permiten números menores que cero", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 							}else
 								JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 						}
@@ -317,6 +318,7 @@ public class FabricarQueso extends JDialog {
 			}
 			{
 				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				btnCancelar.setBackground(new Color(204, 204, 255));
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {

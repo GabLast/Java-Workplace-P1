@@ -17,6 +17,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import java.awt.Font;
 
 public class ModificarCliente extends JDialog {
 
@@ -65,26 +66,31 @@ public class ModificarCliente extends JDialog {
 			contentPanel.add(panel, BorderLayout.CENTER);
 			{
 				JLabel label = new JLabel("C\u00E9dula:");
+				label.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				label.setBounds(17, 32, 73, 23);
 				panel.add(label);
 			}
 			{
 				JLabel label = new JLabel("Nombre:");
+				label.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				label.setBounds(17, 87, 88, 23);
 				panel.add(label);
 			}
 			{
 				JLabel label = new JLabel("Direcci\u00F3n:");
+				label.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				label.setBounds(17, 142, 88, 23);
 				panel.add(label);
 			}
 			{
 				JLabel label = new JLabel("Tel\u00E9fono:");
+				label.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				label.setBounds(17, 197, 88, 23);
 				panel.add(label);
 			}
 			{
 				txtCedula = new JTextField();
+				txtCedula.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				txtCedula.setColumns(10);
 				txtCedula.setBounds(107, 29, 244, 29);
 				txtCedula.setText(miCliente.getCedula());
@@ -92,6 +98,7 @@ public class ModificarCliente extends JDialog {
 			}
 			{
 				txtNombre = new JTextField();
+				txtNombre.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				txtNombre.setColumns(10);
 				txtNombre.setBounds(107, 84, 244, 29);
 				txtNombre.setText(miCliente.getNombre());
@@ -99,6 +106,7 @@ public class ModificarCliente extends JDialog {
 			}
 			{
 				txtDireccion = new JTextField();
+				txtDireccion.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				txtDireccion.setColumns(10);
 				txtDireccion.setBounds(107, 139, 244, 29);
 				txtDireccion.setText(miCliente.getDireccion());
@@ -106,6 +114,7 @@ public class ModificarCliente extends JDialog {
 			}
 			{
 				txtTelefono = new JTextField();
+				txtTelefono.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				txtTelefono.setColumns(10);
 				txtTelefono.setBounds(107, 194, 244, 29);
 				txtTelefono.setText(miCliente.getTelefono());
@@ -118,15 +127,16 @@ public class ModificarCliente extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnModi = new JButton("Modificar");
+				btnModi.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				btnModi.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if(txtCedula.getText().length() > 1 && txtNombre.getText().length() > 1 && txtTelefono.getText().length() > 1
-								&& txtDireccion.getText().length() > 1)
+						if(txtCedula.getText().length() >=1 && txtNombre.getText().length() >= 1 && txtTelefono.getText().length() >= 1
+								&& txtDireccion.getText().length() >= 1)
 						{
-							txtNombre.setText(txtNombre.getText());
-							txtDireccion.setText(txtDireccion.getText());
-							txtTelefono.setText(txtTelefono.getText());
-							txtCedula.setText(txtCedula.getText());
+//							txtNombre.setText(txtNombre.getText());
+//							txtDireccion.setText(txtDireccion.getText());
+//							txtTelefono.setText(txtTelefono.getText());
+//							txtCedula.setText(txtCedula.getText());
 							
 							miCliente.setCedula(txtCedula.getText());
 							miCliente.setNombre(txtNombre.getText());
@@ -145,6 +155,7 @@ public class ModificarCliente extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancelar");
+				cancelButton.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();

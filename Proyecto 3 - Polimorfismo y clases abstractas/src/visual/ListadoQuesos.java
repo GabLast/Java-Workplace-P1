@@ -84,6 +84,7 @@ public class ListadoQuesos extends JDialog {
 			panel.add(lblTipoDeQueso);
 			
 			JComboBox cbxTipo = new JComboBox();
+			cbxTipo.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 			cbxTipo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					int selection = cbxTipo.getSelectedIndex();
@@ -123,6 +124,7 @@ public class ListadoQuesos extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton cancelButton = new JButton("Salir");
+				cancelButton.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();

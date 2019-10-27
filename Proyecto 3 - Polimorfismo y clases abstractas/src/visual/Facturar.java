@@ -93,7 +93,7 @@ public class Facturar extends JDialog {
 	 * Create the dialog.
 	 */
 	public Facturar(boolean modificarCliente) {
-		setTitle("Facturando");
+		setTitle("Generar Factura");
 		
 		setResizable(false);
 		if(modificarCliente)
@@ -121,12 +121,12 @@ public class Facturar extends JDialog {
 		contentPanel.add(panel);
 		
 		JLabel lblCdula = new JLabel("C\u00E9dula:");
-		lblCdula.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		lblCdula.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		lblCdula.setBounds(17, 95, 73, 23);
 		panel.add(lblCdula);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		lblNombre.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		lblNombre.setBounds(17, 154, 88, 23);
 		panel.add(lblNombre);
 		if(modificarCliente)
@@ -135,7 +135,7 @@ public class Facturar extends JDialog {
 			lblNombre.setVisible(false);
 		
 		JLabel lblDireccin = new JLabel("Direcci\u00F3n:");
-		lblDireccin.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		lblDireccin.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		lblDireccin.setBounds(17, 214, 88, 23);
 		panel.add(lblDireccin);
 		if(modificarCliente)
@@ -144,7 +144,7 @@ public class Facturar extends JDialog {
 			lblDireccin.setVisible(false);
 		
 		JLabel lblTelfono = new JLabel("Tel\u00E9fono:");
-		lblTelfono.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		lblTelfono.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		lblTelfono.setBounds(438, 154, 88, 23);
 		panel.add(lblTelfono);
 		if(modificarCliente)
@@ -154,6 +154,7 @@ public class Facturar extends JDialog {
 		
 		
 		JButton btnRegistrar = new JButton("Registrar");
+		btnRegistrar.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		if(modificarCliente)
 		{
 //			btnRegistrar.setText("Modificar");
@@ -231,11 +232,13 @@ public class Facturar extends JDialog {
 		panel.add(btnRegistrar);
 		
 		txtCedula = new JTextField();
+		txtCedula.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		txtCedula.setBounds(107, 92, 314, 29);
 		panel.add(txtCedula);
 		txtCedula.setColumns(10);
 		
 		txtNombre = new JTextField();
+		txtNombre.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		txtNombre.setColumns(10);
 		txtNombre.setBounds(107, 151, 314, 29);
 		panel.add(txtNombre);
@@ -245,6 +248,7 @@ public class Facturar extends JDialog {
 			txtNombre.setVisible(false);
 		
 		txtDireccion = new JTextField();
+		txtDireccion.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		txtDireccion.setColumns(10);
 		txtDireccion.setBounds(107, 211, 314, 29);
 		panel.add(txtDireccion);
@@ -255,6 +259,7 @@ public class Facturar extends JDialog {
 		
 		
 		txtTelefono = new JTextField();
+		txtTelefono.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		txtTelefono.setColumns(10);
 		txtTelefono.setBounds(529, 151, 263, 29);
 		panel.add(txtTelefono);
@@ -265,6 +270,7 @@ public class Facturar extends JDialog {
 		
 		
 		btnBuscarCliente = new JButton("Buscar");
+		btnBuscarCliente.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		if(modificarCliente)
 			btnBuscarCliente.setVisible(false);
 		else
@@ -320,14 +326,14 @@ public class Facturar extends JDialog {
 		panel.add(btnBuscarCliente);
 		
 		JLabel lblCdigoDeFactura = new JLabel("C\u00F3digo de factura:");
-		lblCdigoDeFactura.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		lblCdigoDeFactura.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		lblCdigoDeFactura.setBounds(17, 36, 156, 23);
 		panel.add(lblCdigoDeFactura);
 		
 		txtFactCode = new JTextField();
 		txtFactCode.setBounds(135, 33, 288, 29);
 		panel.add(txtFactCode);
-		txtFactCode.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		txtFactCode.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		txtFactCode.setEditable(false);
 		txtFactCode.setColumns(10);
 		txtFactCode.setText("FACT" + Complejo.getGenCodeFact());
@@ -350,11 +356,13 @@ public class Facturar extends JDialog {
 		panel_1.add(lblTipo);
 		
 		cbxTipoQueso = new JComboBox();
+		cbxTipoQueso.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		cbxTipoQueso.setModel(new DefaultComboBoxModel(new String[] {"Todos", "Esf\u00E9rico", "Cil\u00EDndrico", "Cil\u00EDndrico Hueco"}));
 		cbxTipoQueso.setBounds(60, 32, 204, 29);
 		panel_1.add(cbxTipoQueso);
 		
 		btnBuscarQuesos = new JButton("Buscar");
+		btnBuscarQuesos.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		
 		jListRightModel = new DefaultListModel();
 		
@@ -424,6 +432,7 @@ public class Facturar extends JDialog {
 		scrollPane_1.setViewportView(list_CompraQuesos);
 		
 		btnRight = new JButton(">");
+		btnRight.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//MOVIENDO DE IZQUIERDA A DERECHA
@@ -472,6 +481,7 @@ public class Facturar extends JDialog {
 		panel_1.add(btnRight);
 		
 		btnLeft = new JButton("<");
+		btnLeft.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		btnLeft.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//MOVIENDO DE DERECHA A IZQUIERDA
@@ -548,6 +558,7 @@ public class Facturar extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnGenerar = new JButton("Generar");
+				btnGenerar.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				btnGenerar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						
@@ -583,6 +594,7 @@ public class Facturar extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancelar");
+				cancelButton.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();

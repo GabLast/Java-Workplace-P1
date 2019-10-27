@@ -24,6 +24,7 @@ import javax.swing.UIManager;
 import javax.swing.BoxLayout;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import java.awt.Font;
 
 public class ListarFacturas extends JDialog {
 
@@ -115,6 +116,7 @@ public class ListarFacturas extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton cancelButton = new JButton("Salir");
+				cancelButton.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
@@ -122,6 +124,7 @@ public class ListarFacturas extends JDialog {
 				});
 				{
 					btnReporteDelQueso = new JButton("Reporte del queso esf\u00E9rico de mayor volumen");
+					btnReporteDelQueso.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 					btnReporteDelQueso.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							

@@ -22,6 +22,7 @@ import javax.swing.table.TableColumnModel;
 
 import logico.Cliente;
 import logico.Complejo;
+import java.awt.Font;
 
 public class ListarClientes extends JDialog {
 
@@ -117,6 +118,7 @@ public class ListarClientes extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton cancelButton = new JButton("Salir");
+				cancelButton.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
@@ -124,6 +126,7 @@ public class ListarClientes extends JDialog {
 				});
 				{
 					btnModificar = new JButton("Modificar");
+					btnModificar.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 					btnModificar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) 
 						{

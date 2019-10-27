@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.Font;
 
 public class ReporteFactura extends JDialog {
 
@@ -60,11 +61,13 @@ public class ReporteFactura extends JDialog {
 			panel.setBorder(new TitledBorder(null, "Factura", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			{
 				JLabel lblCdigo = new JLabel("C\u00F3digo:");
+				lblCdigo.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				lblCdigo.setBounds(17, 52, 72, 23);
 				panel.add(lblCdigo);
 			}
 			{
 				txtCode = new JTextField();
+				txtCode.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				txtCode.setBounds(91, 49, 225, 29);
 				panel.add(txtCode);
 				txtCode.setColumns(10);
@@ -76,6 +79,7 @@ public class ReporteFactura extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("Buscar");
+				okButton.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						Factura fact = Complejo.getInstance().buscarFacturaByCode(txtCode.getText());
@@ -88,6 +92,7 @@ public class ReporteFactura extends JDialog {
 			}
 			{
 				JButton btnCancel = new JButton("Salir");
+				btnCancel.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 				btnCancel.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
