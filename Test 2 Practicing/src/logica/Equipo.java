@@ -67,9 +67,7 @@ public class Equipo {
 		{
 			if(aPlayer instanceof Libero)
 			{
-				Libero temp = (Libero) aPlayer;
-				
-				if(temp.getErrores() > temp.getRecibosEfectivos())
+				if(aPlayer.getErrores() > ((Libero) aPlayer).getRecibosEfectivos())
 				{
 					cantidad++;
 				}
