@@ -3076,3 +3076,6 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.ui 4 4 2019-11-04 21:03:19.597
 !MESSAGE Plug-in 'org.eclipse.egit.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.search.menu' is invalid): org.eclipse.egit.ui.actions.OpenCommitSearchPage
+
+!ENTRY org.eclipse.equinox.security 1 0 2019-11-04 22:30:11.905
+!MESSAGE New keyring password generated. 
