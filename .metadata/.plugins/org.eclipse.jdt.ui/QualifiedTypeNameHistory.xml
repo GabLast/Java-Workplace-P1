@@ -57,4 +57,5 @@
 <fullyQualifiedTypeName name="visual.ListQuesos"/>
 <fullyQualifiedTypeName name="javax.swing.table.TableColumnModel"/>
 <fullyQualifiedTypeName name="visual.ListadoQuesos"/>
+<fullyQualifiedTypeName name="logico.Biblioteca"/>
 </qualifiedTypeNameHistroy>
