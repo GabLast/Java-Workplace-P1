@@ -1,8 +1,10 @@
 package logico;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Prestamo {
+public class Prestamo implements Serializable{
+	private static final long serialVersionUID = 1L;
   private Date inic;
   private Date fin;
   private Publicacion prestamo;

@@ -1,7 +1,10 @@
 package logico;
 
-public class Publicacion {
+import java.io.Serializable;
+
+public class Publicacion implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	protected String id;
 	protected String titulo;
 	protected String autor;

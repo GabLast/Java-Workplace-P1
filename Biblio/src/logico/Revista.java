@@ -4,6 +4,7 @@ public class Revista extends Publicacion {
  
     private int anno;
     private int numero;
+    private static final long serialVersionUID = 1L;
     
 	public Revista(String id, String titulo, String autor, int cant,
 			boolean status, String materia, int anno, int numero) {

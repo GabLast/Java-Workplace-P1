@@ -1,9 +1,15 @@
 package logico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Biblioteca {
+public class Biblioteca implements Serializable{
+	private static final long serialVersionUID = 1L;
+	private ArrayList<User> misUsers;
+	private static User loginUser;
+	private static boolean firstTime;
+	
   private ArrayList<Cliente> misClientes;
   private ArrayList<Publicacion> misPublicaciones;
   private ArrayList<Prestamo> misPrestamos;
@@ -14,6 +20,7 @@ public class Biblioteca {
 	misClientes = new ArrayList<>();
 	misPrestamos = new ArrayList<>();
 	misPublicaciones = new ArrayList<>();
+	misUsers = new ArrayList<>();
 }
   
  public static Biblioteca getInstance(){
@@ -176,4 +183,51 @@ public int[] prestamosByType(String cedula){
 	 return iCanRemove;
  }
  
+ public ArrayList<User> getMisUsers() {
+		return misUsers;
+	}
+
+	public void setMisUsers(ArrayList<User> misUsers) {
+		this.misUsers = misUsers;
+	}
+ 
+ public static User getLoginUser() {
+		return loginUser;
+	}
+
+	public static void setLoginUser(User loginUser) {
+		Biblioteca.loginUser = loginUser;
+	}
+
+	public void regUser(User user) {
+		misUsers.add(user);
+		
+	}
+	
+	public static boolean isFirstTime() {
+		return firstTime;
+	}
+
+	public static void setFirstTime(boolean firstTime) {
+		Biblioteca.firstTime = firstTime;
+	}
+ 
+	public static Biblioteca getBiblioteca() {
+		return biblio;
+	}
+
+	public static void setBiblioteca(Biblioteca biblio) {
+		Biblioteca.biblio = biblio;
+	}
+	
+	public boolean confirmLogin(String username, String password) {
+		boolean login = false;
+		for (User user : misUsers) {
+			if(user.getUserName().equalsIgnoreCase(username) && user.getPass().equals(password)){
+				loginUser = user;
+				login = true;
+			}
+		}
+		return login;
+	}
 }
