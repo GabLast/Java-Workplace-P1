@@ -41,7 +41,6 @@
 <fullyQualifiedTypeName name="visual.ListarQuesos"/>
 <fullyQualifiedTypeName name="logico.Esfera"/>
 <fullyQualifiedTypeName name="visual.FabricarQueso"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="visual.ListarClientes"/>
 <fullyQualifiedTypeName name="logico.Cliente"/>
 <fullyQualifiedTypeName name="visual.ModificarCliente"/>
@@ -58,4 +57,6 @@
 <fullyQualifiedTypeName name="javax.swing.table.TableColumnModel"/>
 <fullyQualifiedTypeName name="visual.ListadoQuesos"/>
 <fullyQualifiedTypeName name="logico.Biblioteca"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="logica.Auxiliar"/>
 </qualifiedTypeNameHistroy>
