@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.swing.JComboBox"/>
 <fullyQualifiedTypeName name="logic.Almacen"/>
 <fullyQualifiedTypeName name="Visual.RegSuplidor"/>
 <fullyQualifiedTypeName name="logic.Suministrador"/>
@@ -56,7 +55,9 @@
 <fullyQualifiedTypeName name="visual.ListQuesos"/>
 <fullyQualifiedTypeName name="javax.swing.table.TableColumnModel"/>
 <fullyQualifiedTypeName name="visual.ListadoQuesos"/>
-<fullyQualifiedTypeName name="logico.Biblioteca"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="logica.Auxiliar"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="logico.User"/>
+<fullyQualifiedTypeName name="logico.Biblioteca"/>
 </qualifiedTypeNameHistroy>
