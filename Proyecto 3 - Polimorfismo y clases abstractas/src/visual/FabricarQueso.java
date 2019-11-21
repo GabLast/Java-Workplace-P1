@@ -27,6 +27,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.SpinnerNumberModel;
 
 public class FabricarQueso extends JDialog {
 
@@ -57,6 +58,7 @@ public class FabricarQueso extends JDialog {
 	
 	private JTextField txtPrecioBase;
 	private JTextField txtPrecioUnit;
+	private JPanel panel_2;
 	
 	//panel_CHueco.setBounds(17, 104, 684, 124);
 	
@@ -98,59 +100,6 @@ public class FabricarQueso extends JDialog {
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 			
-			JLabel lblFiguraDelQueso = new JLabel("Figura del queso:");
-			lblFiguraDelQueso.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-			lblFiguraDelQueso.setBounds(17, 19, 147, 23);
-			panel.add(lblFiguraDelQueso);
-			
-			rdBtnEsferico = new JRadioButton("Esf\u00E9rico");
-			rdBtnEsferico.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-			rdBtnEsferico.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					rdBtnEsferico.setSelected(true);
-					rdBtnCilindrico.setSelected(false);
-					rdBtnHueco.setSelected(false);
-					
-					panel_Esferico.setVisible(true);
-					panel_Cilindro.setVisible(false);
-					panel_CHueco.setVisible(false);
-				}
-			});
-			rdBtnEsferico.setBounds(86, 58, 109, 31);
-			panel.add(rdBtnEsferico);
-			
-			rdBtnCilindrico = new JRadioButton("Cil\u00EDndrico");
-			rdBtnCilindrico.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-			rdBtnCilindrico.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					rdBtnEsferico.setSelected(false);
-					rdBtnCilindrico.setSelected(true);
-					rdBtnHueco.setSelected(false);
-					
-					panel_Esferico.setVisible(false);
-					panel_Cilindro.setVisible(true);
-					panel_CHueco.setVisible(false);
-				}
-			});
-			rdBtnCilindrico.setBounds(281, 58, 109, 31);
-			panel.add(rdBtnCilindrico);
-			
-			rdBtnHueco = new JRadioButton("Cilindro Hueco");
-			rdBtnHueco.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-			rdBtnHueco.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					rdBtnEsferico.setSelected(false);
-					rdBtnCilindrico.setSelected(false);
-					rdBtnHueco.setSelected(true);
-					
-					panel_Esferico.setVisible(false);
-					panel_Cilindro.setVisible(false);
-					panel_CHueco.setVisible(true);
-				}
-			});
-			rdBtnHueco.setBounds(476, 58, 153, 31);
-			panel.add(rdBtnHueco);
-			
 			panel_CHueco = new JPanel();
 			panel_CHueco.setBounds(17, 104, 684, 124);
 			panel.add(panel_CHueco);
@@ -174,23 +123,26 @@ public class FabricarQueso extends JDialog {
 			panel_CHueco.add(lblRadioInterior);
 			
 			spnLongitudHueco = new JSpinner();
+			spnLongitudHueco.setModel(new SpinnerNumberModel(new Float(1), new Float(1), null, new Float(1)));
 			spnLongitudHueco.setBounds(115, 50, 54, 30);
 			panel_CHueco.add(spnLongitudHueco);
 			
 			spnRadioExtHueco = new JSpinner();
+			spnRadioExtHueco.setModel(new SpinnerNumberModel(new Float(1), new Float(1), null, new Float(1)));
 			spnRadioExtHueco.setBounds(350, 50, 54, 30);
 			panel_CHueco.add(spnRadioExtHueco);
 			
 			spnRadioIntHueco = new JSpinner();
+			spnRadioIntHueco.setModel(new SpinnerNumberModel(new Float(1), new Float(1), null, new Float(1)));
 			spnRadioIntHueco.setBounds(578, 50, 54, 30);
 			panel_CHueco.add(spnRadioIntHueco);
 			
-			panel_Esferico = new JPanel();
+			panel_Esferico  = new JPanel();
 			panel_Esferico.setLayout(null);
 			panel_Esferico.setBorder(new TitledBorder(null, "Dimensiones", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			panel_Esferico.setBounds(17, 104, 684, 124);
 			panel.add(panel_Esferico);
-			panel_Esferico.setVisible(false);
+			panel_Esferico.setVisible(true);
 
 			
 			lblRadio_1 = new JLabel("Radio:");
@@ -199,6 +151,7 @@ public class FabricarQueso extends JDialog {
 			panel_Esferico.add(lblRadio_1);
 			
 			spnRadio = new JSpinner();
+			spnRadio.setModel(new SpinnerNumberModel(new Float(1), new Float(1), null, new Float(1)));
 			spnRadio.setBounds(90, 50, 54, 30);
 			panel_Esferico.add(spnRadio);
 			
@@ -215,6 +168,7 @@ public class FabricarQueso extends JDialog {
 			panel_Cilindro.add(label);
 
 			spnLongitudCilindro = new JSpinner();
+			spnLongitudCilindro.setModel(new SpinnerNumberModel(new Float(1), new Float(1), null, new Float(1)));
 			spnLongitudCilindro.setBounds(109, 50, 54, 30);
 			panel_Cilindro.add(spnLongitudCilindro);
 
@@ -224,28 +178,90 @@ public class FabricarQueso extends JDialog {
 			panel_Cilindro.add(label_1);
 
 			spnRadioCilindro = new JSpinner();
+			spnRadioCilindro.setModel(new SpinnerNumberModel(new Float(1), new Float(1), null, new Float(1)));
 			spnRadioCilindro.setBounds(280, 50, 54, 30);
 			panel_Cilindro.add(spnRadioCilindro);
 			
-			lblNewLabel = new JLabel("Precio Base:");
-			lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-			lblNewLabel.setBounds(27, 264, 109, 23);
-			panel.add(lblNewLabel);
+			JPanel panel_1 = new JPanel();
+			panel_1.setBorder(new TitledBorder(null, "Forma del Queso", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			panel_1.setBounds(17, 13, 684, 78);
+			panel.add(panel_1);
+			panel_1.setLayout(null);
 			
-			lblPrecioUnitario = new JLabel("Precio Unitario:");
-			lblPrecioUnitario.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-			lblPrecioUnitario.setBounds(356, 264, 138, 23);
-			panel.add(lblPrecioUnitario);
+			rdBtnEsferico = new JRadioButton("Esf\u00E9rico");
+			rdBtnEsferico.setBounds(103, 23, 75, 25);
+			panel_1.add(rdBtnEsferico);
+			rdBtnEsferico.setSelected(true);
+			rdBtnEsferico.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			
+			rdBtnCilindrico = new JRadioButton("Cil\u00EDndrico");
+			rdBtnCilindrico.setBounds(281, 23, 83, 25);
+			panel_1.add(rdBtnCilindrico);
+			rdBtnCilindrico.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			
+			rdBtnHueco = new JRadioButton("Cilindro Hueco");
+			rdBtnHueco.setBounds(467, 23, 113, 25);
+			panel_1.add(rdBtnHueco);
+			rdBtnHueco.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			
+			panel_2 = new JPanel();
+			panel_2.setBorder(new TitledBorder(null, "Precios", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			panel_2.setBounds(17, 241, 684, 67);
+			panel.add(panel_2);
+			panel_2.setLayout(null);
+			
+			lblNewLabel = new JLabel("Precio Base:");
+			lblNewLabel.setBounds(12, 25, 69, 17);
+			panel_2.add(lblNewLabel);
+			lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			
 			txtPrecioBase = new JTextField();
-			txtPrecioBase.setBounds(134, 261, 166, 29);
-			panel.add(txtPrecioBase);
+			txtPrecioBase.setBounds(93, 19, 166, 29);
+			panel_2.add(txtPrecioBase);
 			txtPrecioBase.setColumns(10);
 			
+			lblPrecioUnitario = new JLabel("Precio Unitario:");
+			lblPrecioUnitario.setBounds(351, 22, 105, 23);
+			panel_2.add(lblPrecioUnitario);
+			lblPrecioUnitario.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			
 			txtPrecioUnit = new JTextField();
+			txtPrecioUnit.setBounds(467, 19, 166, 29);
+			panel_2.add(txtPrecioUnit);
 			txtPrecioUnit.setColumns(10);
-			txtPrecioUnit.setBounds(490, 261, 166, 29);
-			panel.add(txtPrecioUnit);
+			rdBtnHueco.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					rdBtnEsferico.setSelected(false);
+					rdBtnCilindrico.setSelected(false);
+					rdBtnHueco.setSelected(true);
+					
+					panel_Esferico.setVisible(false);
+					panel_Cilindro.setVisible(false);
+					panel_CHueco.setVisible(true);
+				}
+			});
+			rdBtnCilindrico.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					rdBtnEsferico.setSelected(false);
+					rdBtnCilindrico.setSelected(true);
+					rdBtnHueco.setSelected(false);
+					
+					panel_Esferico.setVisible(false);
+					panel_Cilindro.setVisible(true);
+					panel_CHueco.setVisible(false);
+				}
+			});
+			rdBtnEsferico.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					rdBtnEsferico.setSelected(true);
+					rdBtnCilindrico.setSelected(false);
+					rdBtnHueco.setSelected(false);
+					
+					panel_Esferico.setVisible(true);
+					panel_Cilindro.setVisible(false);
+					panel_CHueco.setVisible(false);
+				}
+			});
 		}
 		{
 			JPanel buttonPane = new JPanel();
