@@ -68,7 +68,6 @@ public class Facturar extends JDialog {
 	
 	private JTextField txtTotal;
 	private JTextField txtFactCode;
-	private JTextField txtCarritoDeCompras;
 	
 	
 	/**
@@ -534,24 +533,21 @@ public class Facturar extends JDialog {
 		
 		JLabel lblTotal = new JLabel("Total:");
 		lblTotal.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		lblTotal.setBounds(511, 441, 48, 23);
+		lblTotal.setBounds(519, 441, 48, 23);
 		panel_1.add(lblTotal);
 		
 		txtTotal = new JTextField();
 		txtTotal.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		txtTotal.setEditable(false);
-		txtTotal.setBounds(562, 438, 166, 29);
+		txtTotal.setBounds(572, 438, 166, 29);
 		panel_1.add(txtTotal);
 		
 		txtTotal.setColumns(10);
 		
-		txtCarritoDeCompras = new JTextField();
-		txtCarritoDeCompras.setText("Carrito de Compras");
-		txtCarritoDeCompras.setFont(new Font("Times New Roman", Font.PLAIN, 19));
-		txtCarritoDeCompras.setEditable(false);
-		txtCarritoDeCompras.setColumns(10);
-		txtCarritoDeCompras.setBounds(562, 30, 166, 29);
-		panel_1.add(txtCarritoDeCompras);
+		JLabel lblCarritoDeCompras = new JLabel("Carrito de Compras");
+		lblCarritoDeCompras.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		lblCarritoDeCompras.setBounds(583, 35, 145, 23);
+		panel_1.add(lblCarritoDeCompras);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
