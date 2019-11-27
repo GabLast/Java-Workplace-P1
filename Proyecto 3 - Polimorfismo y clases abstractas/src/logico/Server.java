@@ -8,6 +8,7 @@ import java.util.Vector;
 public class Server extends Thread
 {
 	public static Vector usuarios = new Vector();
+	
 	public static void main (String args[])
 	{
 		ServerSocket socketServer = null;
