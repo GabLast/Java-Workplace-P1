@@ -1,0 +1,13 @@
+Departamento: Administrativo
+Cantidad de Trabajadores: 12Cédula: C-0 -- : Pepe0 -- Salario: 1000.0
+Cédula: C-1 -- : Pepe1 -- Salario: 1000.0
+Cédula: C-2 -- : Pepe2 -- Salario: 1000.0
+Cédula: C-3 -- : Pepe3 -- Salario: 1000.0
+Cédula: C-4 -- : Pepe4 -- Salario: 1000.0
+Cédula: C-5 -- : Pepe5 -- Salario: 1000.0
+Cédula: C-6 -- : Pepe6 -- Salario: 1000.0
+Cédula: C-7 -- : Pepe7 -- Salario: 1000.0
+Cédula: C-8 -- : Pepe8 -- Salario: 1000.0
+Cédula: C-9 -- : Pepe9 -- Salario: 1000.0
+Cédula: C-10 -- : Pepe10 -- Salario: 1000.0
+Cédula: C-11 -- : Pepe11 -- Salario: 1000.0
