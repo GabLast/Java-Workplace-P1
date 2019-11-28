@@ -79,7 +79,7 @@ public class ListadoQuesos extends JDialog {
 			panel.setLayout(null);
 			
 			JLabel lblTipoDeQueso = new JLabel("Tipo de Queso:");
-			lblTipoDeQueso.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			lblTipoDeQueso.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 			lblTipoDeQueso.setBounds(27, 32, 137, 23);
 			panel.add(lblTipoDeQueso);
 			
@@ -92,7 +92,7 @@ public class ListadoQuesos extends JDialog {
 				}
 			});
 			cbxTipo.setModel(new DefaultComboBoxModel(new String[] {"Todos", "Esf\u00E9ricos", "Cil\u00EDndricos", "Cil\u00EDndrico Huecos"}));
-			cbxTipo.setBounds(122, 29, 222, 29);
+			cbxTipo.setBounds(131, 28, 222, 29);
 			panel.add(cbxTipo);
 			
 			JPanel panel_1 = new JPanel();

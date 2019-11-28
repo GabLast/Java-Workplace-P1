@@ -201,7 +201,7 @@ public class Principal extends JFrame {
 //		mnFacturar.add(mntmReporteDe);
 		
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(230, 230, 250));
+		contentPane.setBackground(UIManager.getColor("Button.light"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);

@@ -23,6 +23,7 @@ import javax.swing.table.TableColumnModel;
 import logico.Cliente;
 import logico.Complejo;
 import java.awt.Font;
+import javax.swing.border.TitledBorder;
 
 public class ListarClientes extends JDialog {
 
@@ -73,6 +74,7 @@ public class ListarClientes extends JDialog {
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
+			panel.setBorder(new TitledBorder(null, "Listado de clientes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(new BorderLayout(0, 0));
 			{

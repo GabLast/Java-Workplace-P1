@@ -1,8 +1,9 @@
 package logico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Complejo {
+public class Complejo implements Serializable{
 
 	private ArrayList<Queso> quesos;
 	private ArrayList<Cliente> clientes;
@@ -13,6 +14,7 @@ public class Complejo {
 	private static int contCil;
 	private static int contHue;
 	private static int genCodeFact;
+	private static final long serialVersionUID = 1L;
 	
 	private Complejo()
 	{

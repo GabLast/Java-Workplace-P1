@@ -346,7 +346,7 @@ public class Facturar extends JDialog {
 		txtFactCode = new JTextField();
 		txtFactCode.setBounds(135, 33, 288, 29);
 		panel.add(txtFactCode);
-		txtFactCode.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		txtFactCode.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		txtFactCode.setEditable(false);
 		txtFactCode.setColumns(10);
 		txtFactCode.setText("FACT" + Complejo.getGenCodeFact());
@@ -364,7 +364,7 @@ public class Facturar extends JDialog {
 			panel_1.setVisible(true);
 		
 		JLabel lblTipo = new JLabel("Tipo:");
-		lblTipo.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		lblTipo.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		lblTipo.setBounds(17, 35, 48, 23);
 		panel_1.add(lblTipo);
 		
@@ -714,13 +714,13 @@ public class Facturar extends JDialog {
 		{
 			System.out.println("No se puede acceder al servidor.");
 			JOptionPane.showMessageDialog(null, "No se puede acceder al servidor", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-			System.exit(1);
+			//System.exit(1);
 		}
 		catch (IOException ioe)
 		{
 			System.out.println("Comunicación con el servidor rechazada.");
 			JOptionPane.showMessageDialog(null, "Comunicación con el servidor rechazada", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-			System.exit(1);
+			//System.exit(1);
 		}
 		
 	}

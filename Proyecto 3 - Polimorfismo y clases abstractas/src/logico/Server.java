@@ -39,30 +39,36 @@ public class Server extends Thread {
 				socket = serverSocket.accept();
 
 				fecha = new SimpleDateFormat("yyMMddHHmmss").format(new Date());
-				System.out.println("Conexion aceptada de: "+ socket.getInetAddress());
+				System.out.println("Conexión aceptada de: "+ socket.getInetAddress());
+				JOptionPane.showMessageDialog(null, "Conexión aceptada de: "+ socket.getInetAddress(), "Notificación", JOptionPane.INFORMATION_MESSAGE);
 
 			} catch (IOException ex) {
 				System.out.println("El cliente no pudo conectarse.");
+				JOptionPane.showMessageDialog(null, "Conexión aceptada de: "+ socket.getInetAddress(), "Notificación", JOptionPane.INFORMATION_MESSAGE);
 			}
 
 			try {
 				in = socket.getInputStream();
 			} catch (IOException ex) {
 				System.out.println("No se pudo recibir la informacion del cliente.");
+				JOptionPane.showMessageDialog(null, "No se pudo recibir la informacion del cliente", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 			}
 
 			try {
 				out = new FileOutputStream("facturaRecibida-"+fecha+".txt");
 			} catch (FileNotFoundException ex) {
 				System.out.println("Archivo no encontrado.");
+				JOptionPane.showMessageDialog(null, "Archivo no encontrado", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 			}
 
 
 			int count;
-			while ((count = in.read(bytes)) > 0) {
+			while ((count = in.read(bytes)) > 0) 
+			{
 				out.write(bytes, 0, count);
-				System.out.println(count);
+				//System.out.println(count);
 			}
+			JOptionPane.showMessageDialog(null, "Archivo almacenado en el servidor", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 			out.close();
 			in.close();
 

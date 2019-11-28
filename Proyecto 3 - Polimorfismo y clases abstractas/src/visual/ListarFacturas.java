@@ -25,6 +25,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import java.awt.Font;
+import javax.swing.border.TitledBorder;
+import java.awt.Color;
 
 public class ListarFacturas extends JDialog {
 
@@ -70,6 +72,7 @@ public class ListarFacturas extends JDialog {
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
+			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Listado de facturas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
 			{

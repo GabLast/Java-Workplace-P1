@@ -108,17 +108,17 @@ public class FabricarQueso extends JDialog {
 			
 			panel_CHueco.setVisible(false);
 			JLabel lblRadio = new JLabel("Longitud:");
-			lblRadio.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			lblRadio.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			lblRadio.setBounds(25, 53, 87, 23);
 			panel_CHueco.add(lblRadio);
 			
 			JLabel lblLongitud = new JLabel("Radio exterior:");
-			lblLongitud.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-			lblLongitud.setBounds(216, 53, 131, 23);
+			lblLongitud.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+			lblLongitud.setBounds(233, 53, 131, 23);
 			panel_CHueco.add(lblLongitud);
 			
 			JLabel lblRadioInterior = new JLabel("Radio interior:");
-			lblRadioInterior.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			lblRadioInterior.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			lblRadioInterior.setBounds(451, 53, 125, 23);
 			panel_CHueco.add(lblRadioInterior);
 			
@@ -146,11 +146,12 @@ public class FabricarQueso extends JDialog {
 
 			
 			lblRadio_1 = new JLabel("Radio:");
-			lblRadio_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			lblRadio_1.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			lblRadio_1.setBounds(25, 53, 87, 23);
 			panel_Esferico.add(lblRadio_1);
 			
 			spnRadio = new JSpinner();
+			spnRadio.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			spnRadio.setModel(new SpinnerNumberModel(new Float(1), new Float(1), null, new Float(1)));
 			spnRadio.setBounds(90, 50, 54, 30);
 			panel_Esferico.add(spnRadio);
@@ -163,21 +164,23 @@ public class FabricarQueso extends JDialog {
 			panel_Cilindro.setVisible(false);
 			
 			label = new JLabel("Longitud:");
-			label.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			label.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			label.setBounds(25, 53, 87, 23);
 			panel_Cilindro.add(label);
 
 			spnLongitudCilindro = new JSpinner();
+			spnLongitudCilindro.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			spnLongitudCilindro.setModel(new SpinnerNumberModel(new Float(1), new Float(1), null, new Float(1)));
 			spnLongitudCilindro.setBounds(109, 50, 54, 30);
 			panel_Cilindro.add(spnLongitudCilindro);
 
 			label_1 = new JLabel("Radio:");
-			label_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			label_1.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			label_1.setBounds(216, 53, 131, 23);
 			panel_Cilindro.add(label_1);
 
 			spnRadioCilindro = new JSpinner();
+			spnRadioCilindro.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			spnRadioCilindro.setModel(new SpinnerNumberModel(new Float(1), new Float(1), null, new Float(1)));
 			spnRadioCilindro.setBounds(280, 50, 54, 30);
 			panel_Cilindro.add(spnRadioCilindro);
@@ -192,17 +195,17 @@ public class FabricarQueso extends JDialog {
 			rdBtnEsferico.setBounds(76, 38, 113, 25);
 			panel_1.add(rdBtnEsferico);
 			rdBtnEsferico.setSelected(true);
-			rdBtnEsferico.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			rdBtnEsferico.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			
 			rdBtnCilindrico = new JRadioButton("Cil\u00EDndrico");
 			rdBtnCilindrico.setBounds(265, 38, 124, 25);
 			panel_1.add(rdBtnCilindrico);
-			rdBtnCilindrico.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			rdBtnCilindrico.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			
 			rdBtnHueco = new JRadioButton("Cilindro Hueco");
 			rdBtnHueco.setBounds(465, 38, 142, 25);
 			panel_1.add(rdBtnHueco);
-			rdBtnHueco.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			rdBtnHueco.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			
 			panel_2 = new JPanel();
 			panel_2.setBorder(new TitledBorder(null, "Precios", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -211,19 +214,19 @@ public class FabricarQueso extends JDialog {
 			panel_2.setLayout(null);
 			
 			lblNewLabel = new JLabel("Precio Base:");
-			lblNewLabel.setBounds(12, 25, 69, 17);
+			lblNewLabel.setBounds(17, 28, 82, 17);
 			panel_2.add(lblNewLabel);
-			lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			
 			txtPrecioBase = new JTextField();
-			txtPrecioBase.setBounds(93, 19, 166, 29);
+			txtPrecioBase.setBounds(97, 19, 166, 29);
 			panel_2.add(txtPrecioBase);
 			txtPrecioBase.setColumns(10);
 			
 			lblPrecioUnitario = new JLabel("Precio Unitario:");
-			lblPrecioUnitario.setBounds(351, 22, 105, 23);
+			lblPrecioUnitario.setBounds(351, 25, 105, 23);
 			panel_2.add(lblPrecioUnitario);
-			lblPrecioUnitario.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			lblPrecioUnitario.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			
 			txtPrecioUnit = new JTextField();
 			txtPrecioUnit.setBounds(467, 19, 166, 29);
