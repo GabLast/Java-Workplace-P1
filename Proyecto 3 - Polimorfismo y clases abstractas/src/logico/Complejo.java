@@ -37,6 +37,14 @@ public class Complejo {
 		return miFabrica;
 	}
 	
+	public static Complejo getMiFabrica() {
+		return miFabrica;
+	}
+
+	public static void setMiFabrica(Complejo miFabrica) {
+		Complejo.miFabrica = miFabrica;
+	}
+	
 	public static int getContEsf() {
 		return contEsf;
 	}

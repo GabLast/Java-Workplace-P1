@@ -18,7 +18,7 @@ public class Myclass {
 		
 		
 		 // Instancia un FileWriter que se encargara de escribir
-		/*File archivo = new File ("F:/myFile.txt");
+		File archivo = new File ("F:/myFile.txt");
         FileWriter escritor;
 	
 			try {
@@ -32,7 +32,7 @@ public class Myclass {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			    */
+			    
 	        
 	           
 	        // Cierra el stream
@@ -43,7 +43,7 @@ public class Myclass {
         // Informa que el archivo ha sido escrito
      //   System.out.println("El archivo ha sido escrito...");
 		
-	/*	File archivo = new File ("F:/myFile.txt");
+		File archivo = new File ("F:/myFile.txt");
 	      // Defino variables
         boolean eof = false;
         String lineaLeida = "";
@@ -71,7 +71,7 @@ public class Myclass {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}/*
+		}
          
         // Lee el archivoEntrada de forma eficiente e imprime los datos en pantalla
        

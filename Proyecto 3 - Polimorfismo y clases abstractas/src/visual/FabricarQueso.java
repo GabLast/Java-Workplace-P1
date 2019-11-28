@@ -189,18 +189,18 @@ public class FabricarQueso extends JDialog {
 			panel_1.setLayout(null);
 			
 			rdBtnEsferico = new JRadioButton("Esf\u00E9rico");
-			rdBtnEsferico.setBounds(103, 23, 75, 25);
+			rdBtnEsferico.setBounds(76, 38, 113, 25);
 			panel_1.add(rdBtnEsferico);
 			rdBtnEsferico.setSelected(true);
 			rdBtnEsferico.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			
 			rdBtnCilindrico = new JRadioButton("Cil\u00EDndrico");
-			rdBtnCilindrico.setBounds(281, 23, 83, 25);
+			rdBtnCilindrico.setBounds(265, 38, 124, 25);
 			panel_1.add(rdBtnCilindrico);
 			rdBtnCilindrico.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			
 			rdBtnHueco = new JRadioButton("Cilindro Hueco");
-			rdBtnHueco.setBounds(467, 23, 113, 25);
+			rdBtnHueco.setBounds(465, 38, 142, 25);
 			panel_1.add(rdBtnHueco);
 			rdBtnHueco.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 			
@@ -277,33 +277,31 @@ public class FabricarQueso extends JDialog {
 						
 						if(rdBtnEsferico.isSelected())
 						{
-							if((int)spnRadio.getValue() > 0
-									&& txtPrecioBase.getText().length() > 0 && txtPrecioUnit.getText().length() > 0)
+							if(txtPrecioBase.getText().length() > 0 && txtPrecioUnit.getText().length() > 0)
 							{
 								queso = new Esfera("ESF" + Complejo.getGenCodeQueso(), Float.valueOf(txtPrecioBase.getText()),
-										Float.valueOf(txtPrecioUnit.getText()), true, (int)spnRadio.getValue());
+										Float.valueOf(txtPrecioUnit.getText()), true, (float)spnRadio.getValue());
 								clean();
 							}
 						}
 						else if(rdBtnCilindrico.isSelected())
 						{
-							if((int)spnRadioCilindro.getValue() > 0 && (int)spnLongitudCilindro.getValue() > 0
-									&& txtPrecioBase.getText().length() > 0 && txtPrecioUnit.getText().length() > 0)
+							if(txtPrecioBase.getText().length() > 0 && txtPrecioUnit.getText().length() > 0)
 							{
 								queso = new Cilindro("CIL" + Complejo.getGenCodeQueso(), Float.valueOf(txtPrecioBase.getText()),
-										Float.valueOf(txtPrecioUnit.getText()), true, (int)spnRadioCilindro.getValue(), 
-										(int)spnLongitudCilindro.getValue());
+										Float.valueOf(txtPrecioUnit.getText()), true, (float)spnRadioCilindro.getValue(), 
+										(float)spnLongitudCilindro.getValue());
 								clean();
 							}
 						}
 						else if(rdBtnHueco.isSelected())
 						{
-							if((int)spnRadioExtHueco.getValue() > (int)spnRadioIntHueco.getValue() 
+							if((float)spnRadioExtHueco.getValue() > (float)spnRadioIntHueco.getValue() 
 									&& txtPrecioBase.getText().length() > 0 && txtPrecioUnit.getText().length() > 0)
 							{
 								queso = new CHueco("CHUE" + Complejo.getGenCodeQueso(), Float.valueOf(txtPrecioBase.getText()),
-										Float.valueOf(txtPrecioUnit.getText()), true, (int)spnRadioExtHueco.getValue(),
-										(int)spnRadioIntHueco.getValue(), (int)spnLongitudHueco.getValue());
+										Float.valueOf(txtPrecioUnit.getText()), true, (float)spnRadioExtHueco.getValue(),
+										(float)spnRadioIntHueco.getValue(), (float)spnLongitudHueco.getValue());
 								clean();
 							}
 							
@@ -316,7 +314,7 @@ public class FabricarQueso extends JDialog {
 						}
 						else
 						{
-							if(rdBtnHueco.isSelected() && (int)spnRadioExtHueco.getValue() <= (int)spnRadioIntHueco.getValue())
+							if(rdBtnHueco.isSelected() && (float)spnRadioExtHueco.getValue() <= (float)spnRadioIntHueco.getValue())
 							{
 								JOptionPane.showMessageDialog(null, "El radio exterior debe ser mayor que el radio interior", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 							}
@@ -349,12 +347,12 @@ public class FabricarQueso extends JDialog {
 	
 	private void clean() {
 
-		spnRadio.setValue(0);
-		spnLongitudCilindro.setValue(0);
-		spnRadioCilindro.setValue(0);
-		spnLongitudHueco.setValue(0);
-		spnRadioExtHueco.setValue(0);
-		spnRadioIntHueco.setValue(0);
+		spnRadio.setModel(new SpinnerNumberModel(new Float(1), new Float(1), null, new Float(1)));
+		spnLongitudCilindro.setModel(new SpinnerNumberModel(new Float(1), new Float(1), null, new Float(1)));
+		spnRadioCilindro.setModel(new SpinnerNumberModel(new Float(1), new Float(1), null, new Float(1)));
+		spnLongitudHueco.setModel(new SpinnerNumberModel(new Float(1), new Float(1), null, new Float(1)));
+		spnRadioExtHueco.setModel(new SpinnerNumberModel(new Float(1), new Float(1), null, new Float(1)));
+		spnRadioIntHueco.setModel(new SpinnerNumberModel(new Float(1), new Float(1), null, new Float(1)));
 		txtPrecioBase.setText("");
 		txtPrecioUnit.setText("");
 	}

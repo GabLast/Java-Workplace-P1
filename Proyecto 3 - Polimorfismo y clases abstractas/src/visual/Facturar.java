@@ -20,6 +20,20 @@ import logico.Factura;
 import logico.Queso;
 
 import java.awt.event.ActionListener;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
@@ -575,6 +589,7 @@ public class Facturar extends JDialog {
 							JOptionPane.showMessageDialog(null, "Factura generada satisfactoriamente", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 							clean();
 							//dispose();
+							crearFile(fact);
 						}
 						else
 						{
@@ -610,6 +625,104 @@ public class Facturar extends JDialog {
 		jListRightModel = new DefaultListModel();
 		list_ViewingQuesos.setModel(jListLeftModel);
 		list_CompraQuesos.setModel(jListRightModel);
+	}
+	
+	private void crearFile(Factura miFactura)
+	{		
+		PrintWriter facturaFile;
+		Socket socket = null;
+		InputStream inFile = null;
+		OutputStream streamOutToServer = null;
+		byte[] bytes = new byte[1024];
+		
+		String string = "Código de la factura: "	+miFactura.getCodigo()+ "\n\n"
+						+"Nombre del cliente: " + miFactura.getMiCliente().getNombre() + "\n\n";
+		
+		string += "Código del queso\t\tTipo de Queso\t\t\tPrecio total\n\n";
+		
+		float total = 0;
+		for(Queso cheese : miFactura.getMisQuesos())
+		{
+			if(cheese instanceof Esfera)
+			{
+				string += cheese.getId() + "\t\t\t\tQueso Esférico\t\t\tRD$" + String.format("%.2f", cheese.precioTotal()) + "\n";
+			}
+			if(cheese instanceof Cilindro && !(cheese instanceof CHueco))
+			{
+				string += cheese.getId() + "\t\t\t\tQueso Cilíndrico\t\tRD$" + String.format("%.2f", cheese.precioTotal()) + "\n";
+			}
+			if(cheese instanceof CHueco)
+			{
+				string += cheese.getId() + "\t\t\t\tQueso Cilíndrico Hueco\t\tRD$" + String.format("%.2f", cheese.precioTotal()) + "\n";
+			}
+			total += cheese.precioTotal();
+		}
+		
+		string += "\n\n";
+		
+		string += "\t\t\t\t\t\t\t\tSubtotal: RD$" + String.format("%.2f", total) + "\n";
+		string += "\t\t\t\t\t\t\t\tITBIS: RD$" + String.format("%.2f", total*0.18) + "\n";
+		string += "\t\t\t\t\t\t\t\tTOTAL:: RD$" + String.format("%.2f", total*1.18) + "\n";
+
+		
+//		System.out.println(string);
+		
+		//Creando mi archivo txt
+		
+		try {
+			facturaFile = new PrintWriter("factura_" + miFactura.getCodigo() + ".txt");
+			facturaFile.println(string);
+			facturaFile.close();
+		} catch (FileNotFoundException e) {
+			JOptionPane.showMessageDialog(null, "Archivo no encontrado", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+			e.printStackTrace();
+		}
+		
+		
+		//Conectando con mi servidor
+		
+		//Tomo el file y lo meto en un flujo
+		try 
+		{
+			inFile = new FileInputStream(new File("factura_" + miFactura.getCodigo() + ".txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try
+		{
+			//Abro mi link con el server
+			socket = new Socket("127.0.0.1", 8000);
+			
+			//tomo el link
+			streamOutToServer = socket.getOutputStream();
+			
+			//leo el file en bytes para ir enviandoselo al server de esa manera
+			int count;
+	        while((count = inFile.read(bytes)) > 0) //cuando cuando se lee el file completo, termina
+	        {
+	        	streamOutToServer.write(bytes, 0, count);
+	        }
+	        //cierro los archivos y el socket
+	        inFile.close();
+			streamOutToServer.close();
+			socket.close();
+			
+		}
+		catch (UnknownHostException uhe)
+		{
+			System.out.println("No se puede acceder al servidor.");
+			JOptionPane.showMessageDialog(null, "No se puede acceder al servidor", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+			System.exit(1);
+		}
+		catch (IOException ioe)
+		{
+			System.out.println("Comunicación con el servidor rechazada.");
+			JOptionPane.showMessageDialog(null, "Comunicación con el servidor rechazada", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+			System.exit(1);
+		}
+		
 	}
 }
 

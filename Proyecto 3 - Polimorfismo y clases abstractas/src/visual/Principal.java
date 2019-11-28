@@ -10,10 +10,19 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
@@ -28,7 +37,46 @@ public class Principal extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+			public void run() 
+			{
+				FileInputStream complejoFileIn;
+				FileOutputStream complejoFileOut;
+				ObjectInputStream complejoRead;
+				ObjectOutputStream complejoWrite;
+				
+				try {
+					
+					complejoFileIn = new FileInputStream ("fabrica.dat");
+					complejoRead = new ObjectInputStream(complejoFileIn);
+					
+					Complejo temp = (Complejo)complejoRead.readObject();
+					
+					Complejo.setMiFabrica(temp);
+					complejoFileIn.close();
+					complejoRead.close();
+				} catch (FileNotFoundException e) {
+					try {
+						
+						complejoFileOut = new  FileOutputStream("fabrica.dat");
+						complejoWrite = new ObjectOutputStream(complejoFileOut);
+
+						complejoWrite.writeObject(Complejo.getInstance());
+						
+						complejoFileOut.close();
+						complejoWrite.close();
+						
+					} catch (FileNotFoundException e1) {
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+					}
+				} catch (IOException e) {
+					
+					
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 				try {
 					UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 				} catch (Throwable e) {
@@ -48,6 +96,25 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				FileOutputStream complejoOut;
+				ObjectOutputStream complejoWrite;
+				try {
+					complejoOut = new  FileOutputStream("fabrica.dat");
+					complejoWrite = new ObjectOutputStream(complejoOut);
+					complejoWrite.writeObject(Complejo.getInstance());
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		setBackground(new Color(240, 230, 140));
 		setResizable(false);
 		setTitle("Complejo L\u00E1cteo (Ciudad de La Habana)");
