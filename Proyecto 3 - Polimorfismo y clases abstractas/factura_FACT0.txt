@@ -1,0 +1,14 @@
+Código de la factura: FACT0
+
+Nombre del cliente: Gabriel Marte
+
+Código del queso		Tipo de Queso			Precio total
+
+ESF0				Queso Esférico			RD$169967,02
+CIL2				Queso Cilíndrico		RD$615108313088,00
+
+
+								Subtotal: RD$615108509696,00
+								ITBIS: RD$110719531745,28
+								TOTAL:: RD$725828041441,28
+

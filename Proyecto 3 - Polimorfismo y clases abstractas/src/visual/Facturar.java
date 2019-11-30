@@ -215,29 +215,7 @@ public class Facturar extends JDialog {
 				}
 				else
 				{
-//					if(txtCedula.getText().length() > 1 && txtNombre.getText().length() > 1 && txtTelefono.getText().length() > 1
-//							&& txtDireccion.getText().length() > 1)
-					if(true)
-					{
-						//System.out.println(miCliente.getCedula());
-						//btnRegistrar.setText("Modificar");
-						cedula = miCliente.getCedula();
-						btnRegistrar.setVisible(false);
-						txtNombre.setText(miCliente.getNombre());
-						txtDireccion.setText(miCliente.getDireccion());
-						txtTelefono.setText(miCliente.getTelefono());
-						txtCedula.setText(miCliente.getCedula());
-						miCliente.setNombre(txtNombre.getText());
-						miCliente.setDireccion(txtDireccion.getText());
-						miCliente.setTelefono(txtTelefono.getText());
-						miCliente.setCedula(txtCedula.getText());
-//						ListarClientes.loadClientes();
-//						dispose();
-//						JOptionPane.showMessageDialog(null, "Modificación realizada", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-					}
-//					else
-//						JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-					
+					JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});
@@ -662,7 +640,7 @@ public class Facturar extends JDialog {
 		
 		string += "\t\t\t\t\t\t\t\tSubtotal: RD$" + String.format("%.2f", total) + "\n";
 		string += "\t\t\t\t\t\t\t\tITBIS: RD$" + String.format("%.2f", total*0.18) + "\n";
-		string += "\t\t\t\t\t\t\t\tTOTAL:: RD$" + String.format("%.2f", total*1.18) + "\n";
+		string += "\t\t\t\t\t\t\t\tTOTAL: RD$" + String.format("%.2f", total*1.18) + "\n";
 
 		
 //		System.out.println(string);
@@ -713,7 +691,7 @@ public class Facturar extends JDialog {
 		catch (UnknownHostException uhe)
 		{
 			System.out.println("No se puede acceder al servidor.");
-			JOptionPane.showMessageDialog(null, "No se puede acceder al servidor", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "No se puede acceder al servidor. Recuerde conectar el server corriendo la clase Server", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 			//System.exit(1);
 		}
 		catch (IOException ioe)

@@ -5,16 +5,17 @@ import java.util.ArrayList;
 
 public class Complejo implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	private static Complejo miFabrica = null;
 	private ArrayList<Queso> quesos;
 	private ArrayList<Cliente> clientes;
 	private ArrayList<Factura> facturas;
 	private static int genCodeQueso;
-	private static Complejo miFabrica = null;
 	private static int contEsf;
 	private static int contCil;
 	private static int contHue;
 	private static int genCodeFact;
-	private static final long serialVersionUID = 1L;
+	
 	
 	private Complejo()
 	{
@@ -89,6 +90,14 @@ public class Complejo implements Serializable{
 	
 	public static int getGenCodeQueso() {
 		return genCodeQueso;
+	}
+	
+	public static void setGenCodeQueso(int genCodeQueso) {
+		Complejo.genCodeQueso = genCodeQueso;
+	}
+
+	public static void setGenCodeFact(int genCodeFact) {
+		Complejo.genCodeFact = genCodeFact;
 	}
 
 	public void agregarQueso(Queso queso)

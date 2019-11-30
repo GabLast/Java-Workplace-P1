@@ -143,8 +143,11 @@ public class ListarClientes extends JDialog {
 								
 								if(option == JOptionPane.OK_OPTION && clienteModi != null)
 								{
-									new ModificarCliente(clienteModi).setVisible(true);
+									
 									//new Facturar(true, clienteModi);
+									ModificarCliente window = new ModificarCliente(clienteModi);
+									window.setModal(true);
+									window.setVisible(true);
 								}
 								
 							}

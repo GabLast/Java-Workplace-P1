@@ -219,7 +219,7 @@ public class FabricarQueso extends JDialog {
 			lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			
 			txtPrecioBase = new JTextField();
-			txtPrecioBase.setBounds(97, 19, 166, 29);
+			txtPrecioBase.setBounds(116, 22, 166, 29);
 			panel_2.add(txtPrecioBase);
 			txtPrecioBase.setColumns(10);
 			
@@ -229,7 +229,7 @@ public class FabricarQueso extends JDialog {
 			lblPrecioUnitario.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 			
 			txtPrecioUnit = new JTextField();
-			txtPrecioUnit.setBounds(467, 19, 166, 29);
+			txtPrecioUnit.setBounds(467, 22, 166, 29);
 			panel_2.add(txtPrecioUnit);
 			txtPrecioUnit.setColumns(10);
 			rdBtnHueco.addActionListener(new ActionListener() {
@@ -273,14 +273,15 @@ public class FabricarQueso extends JDialog {
 			{
 				btnFabricar = new JButton("Fabricar");
 				btnFabricar.setFont(new Font("Times New Roman", Font.PLAIN, 19));
-				btnFabricar.setBackground(new Color(204, 204, 255));
+				btnFabricar.setBackground(new Color(0, 0, 0));
 				btnFabricar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						Queso queso = null;
 						
 						if(rdBtnEsferico.isSelected())
 						{
-							if(txtPrecioBase.getText().length() > 0 && txtPrecioUnit.getText().length() > 0)
+							if(!txtPrecioBase.getText().isEmpty() && !txtPrecioUnit.getText().isEmpty()
+									&& (float)spnRadio.getValue() > 0)
 							{
 								queso = new Esfera("ESF" + Complejo.getGenCodeQueso(), Float.valueOf(txtPrecioBase.getText()),
 										Float.valueOf(txtPrecioUnit.getText()), true, (float)spnRadio.getValue());
@@ -289,7 +290,8 @@ public class FabricarQueso extends JDialog {
 						}
 						else if(rdBtnCilindrico.isSelected())
 						{
-							if(txtPrecioBase.getText().length() > 0 && txtPrecioUnit.getText().length() > 0)
+							if(!txtPrecioBase.getText().isEmpty() && !txtPrecioUnit.getText().isEmpty()
+									&& (float)spnRadioCilindro.getValue() > 0 && (float)spnLongitudCilindro.getValue() > 0)
 							{
 								queso = new Cilindro("CIL" + Complejo.getGenCodeQueso(), Float.valueOf(txtPrecioBase.getText()),
 										Float.valueOf(txtPrecioUnit.getText()), true, (float)spnRadioCilindro.getValue(), 
@@ -300,7 +302,8 @@ public class FabricarQueso extends JDialog {
 						else if(rdBtnHueco.isSelected())
 						{
 							if((float)spnRadioExtHueco.getValue() > (float)spnRadioIntHueco.getValue() 
-									&& txtPrecioBase.getText().length() > 0 && txtPrecioUnit.getText().length() > 0)
+									&& !txtPrecioBase.getText().isEmpty() && !txtPrecioUnit.getText().isEmpty()
+									&& (float)spnRadioExtHueco.getValue() > 0 && (float)spnRadioIntHueco.getValue() > 0	&& (float)spnLongitudHueco.getValue() > 0)
 							{
 								queso = new CHueco("CHUE" + Complejo.getGenCodeQueso(), Float.valueOf(txtPrecioBase.getText()),
 										Float.valueOf(txtPrecioUnit.getText()), true, (float)spnRadioExtHueco.getValue(),
@@ -313,19 +316,21 @@ public class FabricarQueso extends JDialog {
 						if(queso != null)
 						{
 							Complejo.getInstance().agregarQueso(queso);
-							JOptionPane.showMessageDialog(null, "Queso fabricado satisfactoriamente", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Queso fabricado satisfactoriamente.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 						}
-						else
+						else if(queso == null)
 						{
 							if(rdBtnHueco.isSelected() && (float)spnRadioExtHueco.getValue() <= (float)spnRadioIntHueco.getValue())
 							{
-								JOptionPane.showMessageDialog(null, "El radio exterior debe ser mayor que el radio interior", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.showMessageDialog(null, "El radio exterior debe ser mayor que el radio interior.", "Error", JOptionPane.WARNING_MESSAGE);
 							}
-							else if((rdBtnCilindrico.isSelected() || rdBtnEsferico.isSelected()) && (int)spnRadio.getValue() < 0 || ((int)spnRadioCilindro.getValue() < 0 && (int)spnLongitudCilindro.getValue() < 0))
+							else if((float)spnRadio.getValue() < 0
+									|| (float)spnRadioCilindro.getValue() < 0 || (float)spnLongitudCilindro.getValue() < 0
+									|| (float)spnRadioExtHueco.getValue() < 0 || (float)spnRadioIntHueco.getValue() < 0	|| (float)spnLongitudHueco.getValue() < 0)
 							{
-								JOptionPane.showMessageDialog(null, "No se permiten números menores que cero", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.showMessageDialog(null, "No se permiten números menores que cero.", "Error", JOptionPane.WARNING_MESSAGE);
 							}else
-								JOptionPane.showMessageDialog(null, "Operación Errónea", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.showMessageDialog(null, "Operación Errónea. Vuelva a revisar las casillas a llenar.", "Error", JOptionPane.WARNING_MESSAGE);
 						}
 					}
 				});
@@ -334,9 +339,9 @@ public class FabricarQueso extends JDialog {
 				getRootPane().setDefaultButton(btnFabricar);
 			}
 			{
-				JButton btnCancelar = new JButton("Cancelar");
+				JButton btnCancelar = new JButton("Salir");
 				btnCancelar.setFont(new Font("Times New Roman", Font.PLAIN, 19));
-				btnCancelar.setBackground(new Color(204, 204, 255));
+				btnCancelar.setBackground(new Color(0, 0, 51));
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();

@@ -51,7 +51,13 @@ public class Principal extends JFrame {
 					
 					Complejo temp = (Complejo)complejoRead.readObject();
 					
+					int cantQuesosYFacturasPrevias = temp.getQuesos().size();
+					temp.setGenCodeQueso(cantQuesosYFacturasPrevias);
+					cantQuesosYFacturasPrevias = temp.getFacturas().size();
+					temp.setGenCodeFact(cantQuesosYFacturasPrevias);
+					
 					Complejo.setMiFabrica(temp);
+					
 					complejoFileIn.close();
 					complejoRead.close();
 				} catch (FileNotFoundException e) {
@@ -139,7 +145,10 @@ public class Principal extends JFrame {
 		mntmFabricarQueso.setBackground(new Color(250, 250, 210));
 		mntmFabricarQueso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new FabricarQueso().setVisible(true);
+				
+				FabricarQueso window = new FabricarQueso();
+				window.setModal(true);
+				window.setVisible(true);
 			}
 		});
 		mnQuesos.add(mntmFabricarQueso);
@@ -149,7 +158,10 @@ public class Principal extends JFrame {
 		mntmListarQuesos.setBackground(new Color(250, 250, 210));
 		mntmListarQuesos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ListadoQuesos().setVisible(true);
+				
+				ListadoQuesos window = new ListadoQuesos();
+				window.setModal(true);
+				window.setVisible(true);
 			}
 		});
 		mnQuesos.add(mntmListarQuesos);
@@ -163,7 +175,10 @@ public class Principal extends JFrame {
 		menuItem.setBackground(new Color(250, 250, 210));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ListarClientes().setVisible(true);
+				
+				ListarClientes window = new ListarClientes();
+				window.setModal(true);
+				window.setVisible(true);
 			}
 		});
 		mnClientes.add(menuItem);
@@ -177,7 +192,9 @@ public class Principal extends JFrame {
 		mntmNewMenuItem.setBackground(new Color(250, 250, 210));
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Facturar(false).setVisible(true);
+				Facturar window = new Facturar(false);
+				window.setModal(true);
+				window.setVisible(true);
 			}
 		});
 		mnFacturar.add(mntmNewMenuItem);
@@ -187,7 +204,9 @@ public class Principal extends JFrame {
 		mntmNewMenuItem_1.setBackground(new Color(250, 250, 210));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ListarFacturas().setVisible(true);
+				ListarFacturas window = new ListarFacturas();
+				window.setModal(true);
+				window.setVisible(true);
 			}
 		});
 		mnFacturar.add(mntmNewMenuItem_1);

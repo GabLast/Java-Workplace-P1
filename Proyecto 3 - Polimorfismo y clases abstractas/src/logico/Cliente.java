@@ -1,11 +1,14 @@
 package logico;
 
-public class Cliente {
+import java.io.Serializable;
+
+public class Cliente implements Serializable{
 
 	private String nombre;
 	private String cedula;
 	private String direccion;
 	private String telefono;
+	private static final long serialVersionUID = 1L;
 	
 	public Cliente(String nombre, String cedula, String direccion, String telefono) {
 		super();

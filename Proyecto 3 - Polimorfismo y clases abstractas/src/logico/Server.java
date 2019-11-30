@@ -40,25 +40,25 @@ public class Server extends Thread {
 
 				fecha = new SimpleDateFormat("yyMMddHHmmss").format(new Date());
 				System.out.println("Conexión aceptada de: "+ socket.getInetAddress());
-				JOptionPane.showMessageDialog(null, "Conexión aceptada de: "+ socket.getInetAddress(), "Notificación", JOptionPane.INFORMATION_MESSAGE);
+				//JOptionPane.showMessageDialog(null, "Conexión aceptada de: "+ socket.getInetAddress(), "Notificación", JOptionPane.INFORMATION_MESSAGE);
 
 			} catch (IOException ex) {
 				System.out.println("El cliente no pudo conectarse.");
-				JOptionPane.showMessageDialog(null, "Conexión aceptada de: "+ socket.getInetAddress(), "Notificación", JOptionPane.INFORMATION_MESSAGE);
+				//JOptionPane.showMessageDialog(null, "Conexión aceptada de: "+ socket.getInetAddress(), "Notificación", JOptionPane.INFORMATION_MESSAGE);
 			}
 
 			try {
 				in = socket.getInputStream();
 			} catch (IOException ex) {
 				System.out.println("No se pudo recibir la informacion del cliente.");
-				JOptionPane.showMessageDialog(null, "No se pudo recibir la informacion del cliente", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+				//JOptionPane.showMessageDialog(null, "No se pudo recibir la informacion del cliente", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 			}
 
 			try {
 				out = new FileOutputStream("facturaRecibida-"+fecha+".txt");
 			} catch (FileNotFoundException ex) {
 				System.out.println("Archivo no encontrado.");
-				JOptionPane.showMessageDialog(null, "Archivo no encontrado", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+				//JOptionPane.showMessageDialog(null, "Archivo no encontrado", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 			}
 
 
@@ -69,6 +69,7 @@ public class Server extends Thread {
 				//System.out.println(count);
 			}
 			JOptionPane.showMessageDialog(null, "Archivo almacenado en el servidor", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+			System.out.println("Archivo almacenado en el servidor.");
 			out.close();
 			in.close();
 
