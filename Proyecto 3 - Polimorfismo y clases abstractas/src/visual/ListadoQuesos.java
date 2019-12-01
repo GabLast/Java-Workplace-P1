@@ -96,7 +96,7 @@ public class ListadoQuesos extends JDialog {
 			panel.add(cbxTipo);
 			
 			JPanel panel_1 = new JPanel();
-			panel_1.setBounds(17, 61, 1139, 564);
+			panel_1.setBounds(10, 66, 1161, 592);
 			
 			panel.add(panel_1);
 			panel_1.setLayout(new BorderLayout(0, 0));

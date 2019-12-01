@@ -1,0 +1,13 @@
+Código de la factura: FACT4
+
+Nombre del cliente: Carlos Polanco
+
+Código del queso		Tipo de Queso			Precio total
+
+ESF8				Queso Esférico			RD$1838,87
+
+
+								Subtotal: RD$1838,87
+								ITBIS: RD$331,00
+								TOTAL: RD$2169,86
+

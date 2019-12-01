@@ -1,0 +1,13 @@
+Código de la factura: FACT2
+
+Nombre del cliente: Gabriel Marte
+
+Código del queso		Tipo de Queso			Precio total
+
+CHUE7				Queso Cilíndrico Hueco		RD$86204218504149730000,00
+
+
+								Subtotal: RD$86204218504149730000,00
+								ITBIS: RD$15516759330746952000,00
+								TOTAL: RD$101720977834896670000,00
+

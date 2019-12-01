@@ -1,0 +1,13 @@
+Código de la factura: FACT3
+
+Nombre del cliente: Pedro Batista
+
+Código del queso		Tipo de Queso			Precio total
+
+ESF6				Queso Esférico			RD$4329571090432,00
+
+
+								Subtotal: RD$4329571090432,00
+								ITBIS: RD$779322796277,76
+								TOTAL: RD$5108893886709,76
+

@@ -29,15 +29,15 @@ public class Ventana2 extends JFrame{
         // Fuente de Datos
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.setValue(8, "Mujeres", "Lunes");
-        dataset.setValue(7, "Hombres", "Lunes");
+        //dataset.setValue(7, "Hombres", "Lunes");
         dataset.setValue(9, "Mujeres", "Martes");
-        dataset.setValue(4, "Hombres", "Martes");
+        //dataset.setValue(4, "Hombres", "Martes");
         dataset.setValue(4, "Mujeres", "Miercoles");
-        dataset.setValue(5, "Hombres", "Miercoles");
+        //dataset.setValue(5, "Hombres", "Miercoles");
         dataset.setValue(8, "Mujeres", "Jueves");
-        dataset.setValue(9, "Hombres", "Jueves");
+        //dataset.setValue(9, "Hombres", "Jueves");
         dataset.setValue(7, "Mujeres", "Viernes");
-        dataset.setValue(8, "Hombres", "Viernes");
+        //dataset.setValue(8, "Hombres", "Viernes");
         // Creando el Grafico
         JFreeChart chart = ChartFactory.createBarChart3D
         ("Participacion por Genero","Genero", "Dias", 

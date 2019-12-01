@@ -296,6 +296,7 @@ public class Facturar extends JDialog {
 				}
 				else
 				{
+					cedula = "";
 					lblNombre.setVisible(true);
 					lblDireccin.setVisible(true);
 					lblTelfono.setVisible(true);
