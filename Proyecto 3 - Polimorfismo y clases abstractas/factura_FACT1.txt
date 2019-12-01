@@ -1,0 +1,15 @@
+Código de la factura: FACT1
+
+Nombre del cliente: Gabriel Marte
+
+Código del queso		Tipo de Queso			Precio total
+
+ESF3				Queso Esférico			RD$329751986176,00
+CHUE4				Queso Cilíndrico Hueco		RD$10392608768,00
+ESF5				Queso Esférico			RD$44780952,00
+
+
+								Subtotal: RD$340189380608,00
+								ITBIS: RD$61234088509,44
+								TOTAL: RD$401423469117,44
+

@@ -68,7 +68,7 @@ public class Server extends Thread {
 				out.write(bytes, 0, count);
 				//System.out.println(count);
 			}
-			JOptionPane.showMessageDialog(null, "Archivo almacenado en el servidor", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Archivo almacenado en el servidor", "Notificación", JOptionPane.INFORMATION_MESSAGE);
 			System.out.println("Archivo almacenado en el servidor.");
 			out.close();
 			in.close();
