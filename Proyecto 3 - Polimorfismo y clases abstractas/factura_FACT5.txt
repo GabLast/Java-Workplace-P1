@@ -1,0 +1,14 @@
+Código de la factura: FACT5
+
+Nombre del cliente: Gabriel Marte
+
+Código del queso		Tipo de Queso			Precio total
+
+ESF9				Queso Esférico			RD$126488.41
+ESF1				Queso Esférico			RD$5611238400.00
+
+
+								Subtotal: RD$5611364864.00
+								ITBIS: RD$1010045675.52
+								TOTAL: RD$6621410539.52
+
